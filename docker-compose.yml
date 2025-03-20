@@ -1,0 +1,27 @@
+name: itp4523m
+
+services:
+  php:
+    container_name: itp4523m
+    image: php:8-apache
+    networks:
+      - backend
+    ports:
+      - 80:80
+    volumes:
+      - ./htdocs:/var/www/html
+  database:
+    container_name: itp4523m-database
+    image: mariadb:11
+    networks:
+      - backend
+    environment:
+      MARIADB_DATABASE: itp4523m
+      MARIADB_USER: itp4523m
+      MARIADB_PASSWORD: itp4523m
+      MARIADB_RANDOM_ROOT_PASSWORD: "true"
+    volumes:
+      - ./CreateProjectDB.sql:/docker-entrypoint-initdb.d/CreateProjectDB.sql
+
+networks:
+  backend:
