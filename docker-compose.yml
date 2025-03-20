@@ -3,7 +3,12 @@ name: itp4523m
 services:
   php:
     container_name: itp4523m
-    image: php:8-apache
+    image: php:8-apached
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
     networks:
       - backend
     ports:
@@ -12,7 +17,12 @@ services:
       - ./htdocs:/var/www/html
   database:
     container_name: itp4523m-database
-    image: mariadb:11
+    image: mariadb:11d
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     networks:
       - backend
     environment:
@@ -21,7 +31,7 @@ services:
       MARIADB_PASSWORD: itp4523m
       MARIADB_RANDOM_ROOT_PASSWORD: "true"
     volumes:
-      - ./CreateProjectDB.sql:/docker-entrypoint-initdb.d/CreateProjectDB.sql
+      - ./CreateProjectDB.sql:/docker-entrypoint-initdb.d/CreateProjectDB.sql:ro
 
 networks:
   backend:
