@@ -3,7 +3,7 @@ name: itp4523m
 services:
   php:
     container_name: itp4523m
-    image: php:8-apached
+    image: php:8-apache
     depends_on:
       database:
         condition: service_healthy
@@ -17,7 +17,7 @@ services:
       - ./htdocs:/var/www/html
   database:
     container_name: itp4523m-database
-    image: mariadb:11d
+    image: mariadb:11
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect"]
       interval: 10s
