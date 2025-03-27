@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/assets/bulma.min.css">
+    <script defer src="/assets/fontawesome/js/fontawesome.js"></script>
+    <script defer src="/assets/fontawesome/js/solid.js"></script>
+</head>
+<body class="is-flex-direction-row is-align-content-center" style="height: 100vh;">
+    <main class="columns is-centered">
+        <div class="column is-three-fifths">
+            <header class="hero is-primary">
+                <div class="hero-body">
+                    <h1 class="title">Login</h1>
+                </div>
+            </header>
+            <form class="m-4 mt-5" action="/login.php" method="post">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label for="username" class="label">Username</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                                <input id="username" class="input" name="username" type="text" autocomplete="username" placeholder="Username">
+                                <span class="icon is-small is-left">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label for="password" class="label">Password</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                                <input id="password" class="input" name="password" type="password" autocomplete="current-password" placeholder="Password">
+                                <span class="icon is-small is-left">
+                                    <i class="fa-solid fa-lock-keyhole"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="field is-horizontal">
+                    <div class="field-label"></div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">
+                                    <span class="icon is-small">
+                                        <i class="fa-solid fa-right-to-bracket"></i>
+                                    </span>
+                                    <span>Login</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
