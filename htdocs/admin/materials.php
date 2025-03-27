@@ -1,5 +1,4 @@
 <?php
-$ENTRYPOINT = true;
 
 if (!isset($_GET["action"])) { $_GET["action"] = "list"; }
 
@@ -14,4 +13,7 @@ switch ($_GET["action"])
     case "delete":
         break;
     default:
+        header("Location: /admin/materials.php", true, 301);
+        exit();
+        break;
 }

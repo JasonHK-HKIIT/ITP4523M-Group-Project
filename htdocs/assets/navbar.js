@@ -7,7 +7,7 @@ for (const burger of burgers)
         {
             if (burger.dataset.target)
             {
-                document.getElementById(burger.dataset.target)?.classList.toggle("is-active");
+                burger.classList.toggle("is-active", document.getElementById(burger.dataset.target)?.classList.toggle("is-active"));
             }
         });
     }
