@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Product</title>
+    <link rel="stylesheet" href="/assets/bulma.min.css">
+    <script defer src="/assets/fontawesome/js/solid.min.js"></script>
+    <script defer src="/assets/fontawesome/js/duotone.min.js"></script>
+    <script defer src="/assets/fontawesome/js/fontawesome.min.js"></script>
+</head>
+<body>
+    <nav class="navbar is-spaced has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/admin">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                Smile & Sunshine Toy Co. Ltd.
+            </a>
+            <a class="navbar-burger">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Orders</a>
+                <a class="navbar-item">Products</a>
+                <a class="navbar-item">Materials</a>
+                <a class="navbar-item">Reports</a>
+            </div>
+    
+            <div class="navbar-end">
+                <a class="navbar-item">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero is-primary is-medium">
+        <div class="hero-body container is-max-desktop">
+            <h1 class="title">
+                New Product
+            </h1>
+        </div>
+    </header>
+    <main class="m-4 mt-5">
+        <form class="container is-max-desktop" action="/admin/materials/new" method="post" enctype="multipart/form-data">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="name" class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input id="name" class="input" name="name" type="text" placeholder="Name" required />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="name" class="label">Description</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <textarea id="description" name="description" class="textarea" placeholder="Description" rows="5" required></textarea>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="image" class="label">Image</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <p class="control">
+                            <div class="file has-name">
+                                <label class="file-label">
+                                    <input id="image" name="image" class="file-input" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" required />
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fa-solid fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">Choose a file…</span>
+                                    </span>
+                                    <span id="image-name" class="file-name" style="width: var(--bulma-file-name-max-width);"></span>
+                                </label>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="unit-cost" class="label">Unit Cost</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow has-addons">
+                        <p class="control">
+                            <a class="button is-static">HK$</a>
+                        </p>
+                        <p class="control">
+                            <input id="unit-cost" class="input" name="unit_cost" type="number" inputmode="numeric" value="0" min="0"
+                                step="0.1" required />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Materials</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <p class="control">
+                            <input id="physical-quantity" class="input" name="physical_quantity" type="number" inputmode="numeric" value="0" min="0" required />
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="field is-horizontal">
+                <div class="field-label"></div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="submit">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-plus"></i>
+                                </span>
+                                <span>Create</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("image").addEventListener("change", () =>
+        {
+            document.getElementById("image-name").innerText = document.getElementById("image").files[0]?.name ?? "";
+        });
+    </script>
+</body>
+</html>
