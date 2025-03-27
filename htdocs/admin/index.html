@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal :: Smile & Sunshine Toy Co. Ltd.</title>
+    <link rel="stylesheet" href="/assets/bulma.min.css">
+    <script src="/assets/navbar.js" defer async></script>
+    <script src="/assets/fontawesome/js/solid.min.js" defer></script>
+    <script src="/assets/fontawesome/js/duotone.min.js" defer></script>
+    <script src="/assets/fontawesome/js/fontawesome.min.js" defer></script>
+    <style>
+        @media screen and (min-width: 1024px)
+        {
+            .hero.is-fullheight-with-navbar
+            {
+                min-height: calc(100vh - var(--bulma-navbar-height) - 2rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-primary is-spaced">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/admin">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                <strong>Smile & Sunshine Toy Co. Ltd.</strong>
+            </a>
+            <a class="navbar-burger" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/admin/">Home</a>
+                <a class="navbar-item" href="/admin/orders.php">Orders</a>
+                <a class="navbar-item" href="/admin/products.php">Products</a>
+                <a class="navbar-item" href="/admin/materials.php">Materials</a>
+                <a class="navbar-item" href="/admin/reports.php">Reports</a>
+            </div>
+    
+            <div class="navbar-end">
+                <a class="navbar-item" href="/admin/logout.php">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <main class="hero is-primary is-fullheight-with-navbar">
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+                <h1 class="title">
+                    Staff Portal
+                </h1>
+                <p class="subtitle">
+                    Smile & Sunshine Toy Co. Ltd.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("image").addEventListener("change", () =>
+        {
+            document.getElementById("image-name").innerText = document.getElementById("image").files[0]?.name ?? "";
+        });
+    </script>
+</body>
+</html>

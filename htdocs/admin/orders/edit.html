@@ -41,32 +41,75 @@
     <header class="hero is-primary is-medium">
         <div class="hero-body container is-max-desktop">
             <h1 class="title">
-                New Product
+                Update Order
             </h1>
         </div>
     </header>
     <main class="m-4 mt-5">
-        <form class="container is-max-desktop" action="/admin/materials/new" method="post" enctype="multipart/form-data">
+        <form class="container is-max-desktop" action="/admin/materials/new" method="post" enctype="application/x-www-form-urlencoded">
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label for="name" class="label">Name</label>
+                    <label for="order-date" class="label">Date</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded">
-                            <input id="name" class="input" name="name" type="text" placeholder="Name" required />
+                            <input id="order-date" class="input is-static" type="date" value="2025-05-05" readonly />
                         </p>
                     </div>
                 </div>
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label for="name" class="label">Description</label>
+                    <label for="order-status" class="label">Order Status</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="select">
+                            <select id="order-status" name="order_status">
+                                <option value="0">Rejected</option>
+                                <option value="1" selected>Open</option>
+                                <option value="2">Processing</option>
+                                <option value="3">Approved</option>
+                                <option value="4">Pending Delivery</option>
+                                <option value="5">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="client-name" class="label">Client Name</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded">
-                            <textarea id="description" name="description" class="textarea" placeholder="Description" rows="5" required></textarea>
+                            <input id="client-name" class="input is-static" type="text" value="Client Name" readonly />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="client-telephone" class="label">Client Telephone</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input id="client-telephone" name="client_telephone" class="input is-static" type="tel" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="delivery-address" class="label">Delivery Address</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <textarea id="delivery-address" name="delivery_address" class="textarea" rows="3" required></textarea>
                         </p>
                     </div>
                 </div>
@@ -143,12 +186,5 @@
             </div>
         </form>
     </main>
-
-    <script>
-        document.getElementById("image").addEventListener("change", () =>
-        {
-            document.getElementById("image-name").innerText = document.getElementById("image").files[0]?.name ?? "";
-        });
-    </script>
 </body>
 </html>
