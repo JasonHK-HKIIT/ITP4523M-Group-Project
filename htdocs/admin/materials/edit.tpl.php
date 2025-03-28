@@ -5,8 +5,10 @@
         </h1>
     </div>
 </header>
+
 <main class="m-4 mt-5">
     <form class="container is-max-desktop" action="/admin/materials.php?action=<?= $action ?>" method="post" enctype="multipart/form-data">
+
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label for="name" class="label">Name</label>
@@ -85,7 +87,7 @@
                         </button>
                     </div>
                     <div class="control">
-                        <button class="button is-light is-cancel" type="submit">
+                        <button class="button is-light is-cancel">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
@@ -95,6 +97,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 </main>
 
