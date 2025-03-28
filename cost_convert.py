@@ -1,5 +1,4 @@
 from flask import Flask
-from werkzeug.exceptions import BadRequest
 
 CURRENCIES = ("EUR", "HKD", "JPY")
 
