@@ -17,5 +17,4 @@ switch ($_GET["action"])
     default:
         header("Location: /admin/products.php", true, 301);
         exit();
-        break;
 }
