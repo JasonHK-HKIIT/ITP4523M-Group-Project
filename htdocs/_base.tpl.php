@@ -12,7 +12,7 @@
     <script defer src="/assets/fontawesome/js/fontawesome.min.js"></script>
 </head>
 <body>
-<nav class="navbar is-primary is-spaced">
+<nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
         <div class="navbar-brand">
             <a class="navbar-item" href="/admin">
                 <span class="icon-text">
@@ -30,7 +30,7 @@
             </a>
         </div>
         <div id="main-menu" class="navbar-menu">
-            <? ((isset($navbar_menu_tpl)) ? require($navbar_menu_tpl) : ""); ?>
+            <? isset($navbar_menu_tpl) ? require($navbar_menu_tpl) : "" ?>
         </div>
     </nav>
     <? require($tpl); ?>
