@@ -31,7 +31,7 @@
                                     </span>
                                     <span>Edit</span>
                                 </a>
-                                <a class="button is-hidden-tablet" href="/admin/materials.php?action=edit&id=<?= $material["id"] ?>">
+                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/materials.php?action=edit&id=<?= $material["id"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
