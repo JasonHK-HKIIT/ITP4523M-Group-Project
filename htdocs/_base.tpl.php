@@ -15,8 +15,12 @@
 <nav class="navbar is-primary is-spaced">
         <div class="navbar-brand">
             <a class="navbar-item" href="/admin">
-                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
-                Smile & Sunshine Toy Co. Ltd.
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                    </span>
+                    <span>Smile & Sunshine Toy Co. Ltd.</span>
+                </span>
             </a>
             <a class="navbar-burger" data-target="main-menu">
                 <span aria-hidden="true"></span>
