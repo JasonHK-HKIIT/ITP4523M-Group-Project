@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+    <link rel="stylesheet" href="C:\Users\1\ITP4523M-Group-Project\htdocs\assets\bulma.min.css">
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/navbar.js" defer async></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/solid.min.js" defer></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/duotone.min.js" defer></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/fontawesome.min.js" defer></script>
+</head>
+<style>
+    #order-container {
+            display: none;
+        }
+</style>
+<body>
+    <nav class="navbar is-spaced has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/admin">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                Smile & Sunshine Toy Co. Ltd.
+            </a>
+            <a class="navbar-burger" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Orders</a>
+                <a class="navbar-item">Products</a>
+                <a class="navbar-item">Materials</a>
+                <a class="navbar-item">Reports</a>
+            </div>
+    
+            <div class="navbar-end">
+                <a class="navbar-item">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero is-primary is-medium">
+        <div class="hero-body container is-max-desktop">
+            <h1 class="title">
+                Register customer data
+            </h1>
+        </div>
+    </header>
+    <main class="m-4 mt-5">
+        <form class="container is-max-desktop" action="/admin/createorders/new" method="post" enctype="multipart/form-data">
+            <div class="field">
+                <label class="label">Customer Name:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Customer Name:">
+                </div>
+            </div>
+
+              <div class="field">
+                <label class="label">Customer Password</label>
+                <div class="control">
+                  <input class="input" type="password" placeholder="********" />
+                </div>
+              </div>
+
+            <div class="field">
+                <label class="label">Customer Number:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Phone Number:">
+                </div>
+            </div>
+           
+
+            <div class="field">
+                <label class="label">Address:</label>
+                <div class="control">
+                    <textarea class="textarea" id="customer-address"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Company Name:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Company Name:">
+                </div>
+            </div>
+
+            <a href="C:\Users\1\ITP4523M-Group-Project\htdocs\Customer\createorders\order.html" class = "button">Submit</a>
+
+        </form>
+
+</body>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   

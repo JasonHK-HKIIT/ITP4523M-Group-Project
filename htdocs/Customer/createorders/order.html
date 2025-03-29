@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+    <link rel="stylesheet" href="C:\Users\1\ITP4523M-Group-Project\htdocs\assets\bulma.min.css">
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/navbar.js" defer async></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/solid.min.js" defer></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/duotone.min.js" defer></script>
+    <script src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/fontawesome/js/fontawesome.min.js" defer></script>
+</head>
+<style>
+    #order-container {
+            display: none;
+        }
+</style>
+<body>
+    <nav class="navbar is-spaced has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/admin">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                Smile & Sunshine Toy Co. Ltd.
+            </a>
+            <a class="navbar-burger" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Orders</a>
+                <a class="navbar-item">Products</a>
+                <a class="navbar-item">Materials</a>
+                <a class="navbar-item">Reports</a>
+            </div>
+    
+            <div class="navbar-end">
+                <a class="navbar-item">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero is-primary is-medium">
+        <div class="hero-body container is-max-desktop">
+            <h1 class="title">
+                Create Order
+            </h1>
+        </div>
+    </header>
+    <div class = "box">
+        <div class="columns">
+            <div class="column is-8">
+                <h1 class="title is-2">Choose Product</h1>
+
+            <div class = "list">
+                <div class="list-item box">
+                    <div class="list-item-image">
+                        <figure class="image is-96x96">
+                            <img src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/products/1.jpg" alt="ProductID:1">
+                        </figure>
+                    </div>
+                    <div class = "list-item-content">
+                        <div class = "list-item-title">Toy Car</div>
+                        <div class = "list-item-description">Price: $20.00 | Stock: 20</div>
+                    </div>
+                    <div class="list-item-controls">
+                        <div class="buttons is-right">
+                            <button class="button">
+                                <span class="icon">
+                                    <i class="fas fa-cart-plus"></i>
+                                </span>
+                                <span>Add</span>
+                            </button>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <div class = "list">
+                <div class="list-item box">
+                    <div class="list-item-image">
+                        <figure class="image is-96x96">
+                            <img src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/products/1.jpg" alt="ProductID:1">
+                        </figure>
+                    </div>
+                    <div class = "list-item-content">
+                        <div class = "list-item-title">Toy Car</div>
+                        <div class = "list-item-description">Price: $20.00 | Stock: 20</div>
+                    </div>
+                    <div class="list-item-controls">
+                        <div class="buttons is-right">
+                            <button class="button">
+                                <span class="icon">
+                                    <i class="fas fa-cart-plus"></i>
+                                </span>
+                                <span>Add</span>
+                            </button>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            <div class = "list">
+                <div class="list-item box">
+                    <div class="list-item-image">
+                        <figure class="image is-96x96">
+                            <img src="C:\Users\1\ITP4523M-Group-Project\htdocs/assets/products/1.jpg" alt="ProductID:1">
+                        </figure>
+                    </div>
+                    <div class = "list-item-content">
+                        <div class = "list-item-title">Toy Car</div>
+                        <div class = "list-item-description">Price: $20.00 | Stock: 20</div>
+                    </div>
+                    <div class="list-item-controls">
+                        <div class="buttons is-right">
+                            <button class="button">
+                                <span class="icon">
+                                    <i class="fas fa-cart-plus"></i>
+                                </span>
+                                <span>Add</span>
+                            </button>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-3">
+                <div class="box" id="order-summary">
+                    <h2 class="title is-4">Product Order</h2>
+                    
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantitu</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-items">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th id="total-quantity">0</th>
+                                <th id="total-price">¥0.00</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    
+                    <div class="field mt-5">
+                        <div class="control">
+                            <button class="button is-success is-fullwidth">
+                                <span class="icon">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span>Submit Order</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
