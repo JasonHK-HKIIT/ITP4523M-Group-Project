@@ -16,5 +16,4 @@ switch ($_GET["action"])
     default:
         header("Location: /admin/orders.php", true, 301);
         exit();
-        break;
 }
