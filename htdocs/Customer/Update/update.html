@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+    <link rel="stylesheet" href="../../assets\bulma.min.css">
+    <script src="../../assets/navbar.js" defer async></script>
+    <script src="../../assets/fontawesome/js/solid.min.js" defer></script>
+    <script src="../../assets/fontawesome/js/duotone.min.js" defer></script>
+    <script src="../../assets/fontawesome/js/fontawesome.min.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar is-spaced has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../CutomerBase/customer.html">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                Smile & Sunshine Toy Co. Ltd.
+            </a>
+            <a class="navbar-burger" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../CutomerBase/customer.html">Home</a>
+                <a class="navbar-item" href="../../Customer/createorders/createorders.html">Create Orders</a>
+                <a class="navbar-item" href="../../Customer/vieworder/vieworder.html">View Order</a>
+                <a class="navbar-item" href="../../Customer/Update/update.html">Update Customer</a>
+            </div>
+
+            <div class="navbar-end">
+                <a class="navbar-item">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero is-primary is-medium">
+        <div class="hero-body container is-max-desktop">
+            <h1 class="title">
+                Update Profile
+            </h1>
+        </div>
+    </header>
+    <main class="m-4 mt-5">
+        <form class="container is-max-desktop" action="/admin/createorders/new" method="post"
+            enctype="multipart/form-data">
+
+            <div class="field">
+                <label class="label">Customer Number:</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Phone Number:">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">New Password</label>
+                <div class="control">
+                    <input class="input" type="password" id="new-password" placeholder="Enter new password" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control">
+                    <input class="input" type="password" id="confirm-password" placeholder="Re-enter new password" required>
+                </div>
+            </div>
+
+
+
+            <div class="field">
+                <label class="label">Address:</label>
+                <div class="control">
+                    <textarea class="textarea" id="customer-address"></textarea>
+                </div>
+            </div>
+
+
+
+            <a href="../../Customer/Update/updatasuccess.html" class="button is-success box has-text-centered">
+                <span class="icon">
+                    <i class="fas fa-save"></i>
+                </span>
+                <span>Update Profile</span>
+            </a>
+
+            <a  href="../CutomerBase/customer.html" class="button is-success box has-text-centered">
+                <span>Cancel</span>
+            </a>
+
+        </form>
+</body>
