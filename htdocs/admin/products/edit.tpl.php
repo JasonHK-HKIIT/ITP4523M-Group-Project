@@ -81,10 +81,20 @@
                 <label class="label">Materials</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="physical-quantity" class="input" name="physical_quantity" type="number" inputmode="numeric" value="0" min="0" required />
+                <div class="is-flex is-flex-direction-column is-flex-grow-1">
+                    <p class="buttons">
+                        <button class="button is-add-item" type="button" data-template="material" data-target="materials">
+                            <span class="icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                            <span>Add Material</span>
+                        </button>
                     </p>
+                    <div id="materials" class="list has-visible-pointer-controls">
+                        <? foreach ($materials as $material): ?>
+                            <? require "_material_select.tpl.php" ?>
+                        <? endforeach ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +127,7 @@
 </main>
 
 <template id="material">
-    
+    <? require "_material_select.tpl.php" ?>
 </template>
 
 <script src="/assets/forms.js" defer async></script>
