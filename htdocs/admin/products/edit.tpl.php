@@ -82,7 +82,7 @@
             </div>
             <div class="field-body">
                 <div class="is-flex is-flex-direction-column is-flex-grow-1">
-                    <p class="buttons">
+                    <p class="buttons mb-0">
                         <button class="button is-add-item" type="button" data-template="material" data-target="materials">
                             <span class="icon">
                                 <i class="fa-solid fa-plus"></i>
