@@ -51,136 +51,196 @@
             </h1>
         </div>
     </header>
-    <main class="m-4 mt-5">
-        <form class="container is-max-desktop" action="/admin/createorders/new" method="post"
-            enctype="multipart/form-data">
-            <div class="field is-horizontal">
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Serach Order" id="order-search">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-search"></i>
-                            </span>
+
+            <main class="m-4 mt-5">
+                <form class="container is-max-desktop" action="/admin/createorders/new" method="post"
+                    enctype="multipart/form-data">
+                    <div class="box">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <input class="input" type="text" placeholder="Serach Order ID">
+                            </p>
+                            <p class="control">
+                                <button class="button is-primary">Serach</button>
+                            </p>
                         </div>
-                    </div>
 
-                    <div class="button is-primary">
-                        Search
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-body">
-                    <div class="field">
-                        <label class="label">Sorting Method</label>
-                        <div class="select">
-                            <select id="sort-column">
-                                <option value="order-date">Order Date</option>
-                                <option value="delivery-date">Payment Date</option>
-                                <option value="order-cost">Order Amount</option>
-                                <option value="customer-id">Customer ID</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Sorting Direction</label>
-                        <div class="select">
-                            <select id="sort-direction">
-                                <option value="asc">Ascending Order</option>
-                                <option value="desc">Descending Order</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="control" style="margin-top: 1.8rem;">
-                            <div class="button is-primary">
-                                <span class="icon">
-                                    <i class="fas fa-sort"></i>
-                                </span>
-                                <span>Sorting</span>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Sorting</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select>
+                                                <option>Order Date</option>
+                                                <option>Payment Date</option>
+                                                <option>Order Cost</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select>
+                                                <option>Ascending Order</option>
+                                                <option>Descending Order</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="table-container">
-                <table class="table is-fullwidth is-striped is-hoverable">
-                    <thead>
-                        <tr>
-                            <th class="sortable">Order ID <i class="fas fa-sort"></i></th>
-                            <th class="sortable">Order Date <i class="fas fa-sort"></i></th>
-                            <th>Product ID</th>
-                            <th>Quantity</th>
-                            <th class="sortable">¥Price <i class="fas fa-sort"></i></th>
-                            <th>Customer ID</th>
-                            <th class="sortable">Payment Date <i class="fas fa-sort"></i></th>
-                            <th>State</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="orders-table">
-                        <tr>
-                            <td>ORD01</td>
-                            <td>2025-02-15</td>
-                            <td>PRD01</td>
-                            <td>2</td>
-                            <td>¥200.00</td>
-                            <td>C001</td>
-                            <td>2025-02-28</td>
-                            <td><span class="order-status status-pending">Prepare</span></td>
-                            <td>
-                                <div class="button is-small is-danger">
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
+                    <div class="order-card card status-pending">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Order ID: ORD001</p>
+                                    <p class="subtitle is-6">Order Date: 2025-3-15 | Customer ID: CUST001</p>
                                 </div>
-                            </td>
-                        </tr>
+                            </div>
 
-                        <tr>
-                            <td>ORD02</td>
-                            <td>2025-04-16</td>
-                            <td>PRD02</td>
-                            <td>1</td>
-                            <td>¥150.00</td>
-                            <td>C002</td>
-                            <td>2025-04-20</td>
-                            <td><span class="order-status status-processing">Work</span></td>
-                            <td>
-                                <div class="button is-small is-danger">
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
+                            <div class="content">
+                                <table class="product-table table is-fullwidth is-hoverable">
+                                    <thead>
+                                        <tr>
+                                            <th>ProductID</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PROD-001</td>
+                                            <td>$100.00</td>
+                                            <td>2</td>
+                                            <td>$200.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PROD002</td>
 
-                        <tr>
-                            <td>ORD003</td>
-                            <td>2025-03-17</td>
-                            <td>PRD01</td>
-                            <td>3</td>
-                            <td>¥300.00</td>
-                            <td>C003</td>
-                            <td>2025-03-22</td>
-                            <td><span class="order-status status-delivered">Finish</span></td>
-                            <td>
-                                <div class="button is-small is-danger">
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
+                                            <td>¥200.00</td>
+                                            <td>3</td>
+                                            <td>¥600.00</td>
+                                        </tr>
+                                        <tr class="total-row">
+                                            <td colspan="3"></td>
+                                            <td>Total: ¥800.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <p><strong>Delivery Date:</strong> 2025-03-27</p>
+                                    </div>
+                                    <div class="column">
+                                        <p><strong>Status:</strong> <span class="tag is-warning">Pending</span></p>
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-</form>
-</main>
+
+                                <div class="order-card card status-pending">
+                                    <div class="card-content">
+                                        <div class="media">
+                                            <div class="media-content">
+                                                <p class="title is-4">Order ID: ORD002</p>
+                                                <p class="subtitle is-6">Order Date: 2025-02-15 | Customer ID: CUST001
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <table class="product-table table is-fullwidth is-hoverable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ProductID</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>PROD-001</td>
+                                                        <td>$100.00</td>
+                                                        <td>3</td>
+                                                        <td>$300.00</td>
+                                                    </tr>
+                                                    <tr class="total-row">
+                                                        <td colspan="3"></td>
+                                                        <td>Total: ¥300.00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <p><strong>Delivery Date:</strong> 2025-03-10</p>
+                                                </div>
+                                                <div class="column">
+                                                    <p><strong>Status:</strong> <span
+                                                            class="tag is-success">Delivered</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="order-card card status-pending">
+                                                <div class="card-content">
+                                                    <div class="media">
+                                                        <div class="media-content">
+                                                            <p class="title is-4">Order ID: ORD003</p>
+                                                            <p class="subtitle is-6">Order Date: 2025-03-15 | Customer
+                                                                ID:
+                                                                CUST001</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="content">
+                                                        <table class="product-table table is-fullwidth is-hoverable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ProductID</th>
+                                                                    <th>Price</th>
+                                                                    <th>Quantity</th>
+                                                                    <th>total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>PROD-001</td>
+                                                                    <td>$100.00</td>
+                                                                    <td>4</td>
+                                                                    <td>$400.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>PROD002</td>
+
+                                                                    <td>¥200.00</td>
+                                                                    <td>6</td>
+                                                                    <td>¥1200.00</td>
+                                                                </tr>
+                                                                <tr class="total-row">
+                                                                    <td colspan="3"></td>
+                                                                    <td>Total: ¥1600.00</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <div class="columns">
+                                                            <div class="column">
+                                                                <p><strong>Delivery Date:</strong> 2025-04-10</p>
+                                                            </div>
+                                                            <div class="column">
+                                                                <p><strong>Status:</strong> <span
+                                                                        class="tag is-warning">Pending</span></p>
+                                                            </div>
+                                                        </div>
+                </form>
+            </main>
 </body>
+
 </html>
