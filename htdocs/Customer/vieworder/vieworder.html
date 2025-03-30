@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+    <link rel="stylesheet" href="../../assets\bulma.min.css">
+    <script src="../../assets/navbar.js" defer async></script>
+    <script src="../../assets/fontawesome/js/solid.min.js" defer></script>
+    <script src="../../assets/fontawesome/js/duotone.min.js" defer></script>
+    <script src="../../assets/fontawesome/js/fontawesome.min.js" defer></script>
+</head>
+<style>
+    #order-container {
+        display: none;
+    }
+</style>
+
+<body>
+    <nav class="navbar is-spaced has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/admin">
+                <i class="fa-duotone fa-solid fa-teddy-bear"></i>
+                Smile & Sunshine Toy Co. Ltd.
+            </a>
+            <a class="navbar-burger" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Create Orders</a>
+                <a class="navbar-item">View Order</a>
+                <a class="navbar-item">Update Customer</a>
+            </div>
+
+            <div class="navbar-end">
+                <a class="navbar-item">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero is-primary is-medium">
+        <div class="hero-body container is-max-desktop">
+            <h1 class="title">
+                View Order
+            </h1>
+        </div>
+    </header>
+    <main class="m-4 mt-5">
+        <form class="container is-max-desktop" action="/admin/createorders/new" method="post"
+            enctype="multipart/form-data">
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Serach Order" id="order-search">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="button is-primary">
+                        Search
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <label class="label">Sorting Method</label>
+                        <div class="select">
+                            <select id="sort-column">
+                                <option value="order-date">Order Date</option>
+                                <option value="delivery-date">Payment Date</option>
+                                <option value="order-cost">Order Amount</option>
+                                <option value="customer-id">Customer ID</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Sorting Direction</label>
+                        <div class="select">
+                            <select id="sort-direction">
+                                <option value="asc">Ascending Order</option>
+                                <option value="desc">Descending Order</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control" style="margin-top: 1.8rem;">
+                            <div class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-sort"></i>
+                                </span>
+                                <span>Sorting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="table is-fullwidth is-striped is-hoverable">
+                    <thead>
+                        <tr>
+                            <th class="sortable">Order ID <i class="fas fa-sort"></i></th>
+                            <th class="sortable">Order Date <i class="fas fa-sort"></i></th>
+                            <th>Product ID</th>
+                            <th>Quantity</th>
+                            <th class="sortable">$Price <i class="fas fa-sort"></i></th>
+                            <th>Customer ID</th>
+                            <th class="sortable">Payment Date <i class="fas fa-sort"></i></th>
+                            <th>State</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table">
+                        <tr>
+                            <td>ORD01</td>
+                            <td>2025-02-15</td>
+                            <td>PRD01</td>
+                            <td>2</td>
+                            <td>¥200.00</td>
+                            <td>C001</td>
+                            <td>2025-02-28</td>
+                            <td><span class="order-status status-pending">Prepare</span></td>
+                            <td>
+                                <div class="button is-small is-danger">
+                                    <span class="icon">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>ORD02</td>
+                            <td>2025-04-16</td>
+                            <td>PRD02</td>
+                            <td>1</td>
+                            <td>¥150.00</td>
+                            <td>C002</td>
+                            <td>2025-04-20</td>
+                            <td><span class="order-status status-processing">Work</span></td>
+                            <td>
+                                <div class="button is-small is-danger">
+                                    <span class="icon">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>ORD003</td>
+                            <td>2025-03-17</td>
+                            <td>PRD01</td>
+                            <td>3</td>
+                            <td>¥300.00</td>
+                            <td>C003</td>
+                            <td>2025-03-22</td>
+                            <td><span class="order-status status-delivered">Finish</span></td>
+                            <td>
+                                <div class="button is-small is-danger">
+                                    <span class="icon">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</form>
+</main>
+</body>
+</html>
