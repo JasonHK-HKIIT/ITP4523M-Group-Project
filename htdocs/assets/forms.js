@@ -22,3 +22,24 @@
         }
     }
 }
+
+{
+    const buttons = document.querySelectorAll(".is-add-item");
+    for (const button of buttons)
+    {
+        if (button instanceof HTMLElement)
+        {
+            const template = document.getElementById(button.dataset.template);
+            if (!(template instanceof HTMLTemplateElement)) { throw new Error(`#${button.dataset.template} was not a <template /> element.`); }
+
+            const target = document.getElementById(button.dataset.target);
+            if (!target) { throw new Error("No target was set."); }
+
+            button.addEventListener("click", () =>
+            {
+                const node = template.content.cloneNode(true);
+                target.appendChild(node);
+            });
+        }
+    }
+}
