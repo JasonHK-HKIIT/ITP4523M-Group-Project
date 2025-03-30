@@ -8,7 +8,7 @@
         <div class="field">
             <div class="select">
                 <select>
-                    <option value="" data-image="" data-unit="&nbsp;">Select Material</option>
+                    <option value="" data-image="" data-unit="&ZeroWidthSpace;">Select Material</option>
                     <? foreach ($materials as $material): ?>
                         <option value="<?= $material["id"] ?>" data-image="/assets/materials/<?= $material["id"] ?>.jpg" data-unit="<?= $material["unit"] ?>"><?= $material["name"] ?></option>
                     <? endforeach ?>
@@ -23,7 +23,7 @@
                     <input class="input" type="number" size="4" min="0" value="0">
                 </p>
                 <p class="control">
-                    <a class="button is-static">&nbsp;</a>
+                    <a class="button is-static">&ZeroWidthSpace;</a>
                 </p>
             </div>
             <div class="buttons ml-3">
