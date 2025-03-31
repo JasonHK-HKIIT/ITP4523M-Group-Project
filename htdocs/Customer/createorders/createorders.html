@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,7 @@
     <script src="../../assets/fontawesome/js/duotone.min.js" defer></script>
     <script src="../../assets/fontawesome/js/fontawesome.min.js" defer></script>
 </head>
-<style>
-    #order-container {
-            display: none;
-        }
-</style>
+
 <body>
     <nav class="navbar is-spaced has-shadow">
         <div class="navbar-brand">
@@ -37,7 +34,7 @@
                 <a class="navbar-item" href="../../Customer/Update/update.html">Update Customer</a>
                 <a class="navbar-item" href="../../Customer/DeleteOrder/deleteorder.html">Delete Order</a>
             </div>
-    
+
             <div class="navbar-end">
                 <a class="navbar-item">Log Out</a>
             </div>
@@ -46,99 +43,284 @@
     <header class="hero is-primary is-medium">
         <div class="hero-body container is-max-desktop">
             <h1 class="title">
-                Register customer data
+                Create Order
             </h1>
         </div>
     </header>
+
     <main class="m-4 mt-5">
-        <form class="container is-max-desktop" action="/admin/createorders/new" method="post" enctype="multipart/form-data">
-            <div class="field">
-                <label class="label">Customer ID:</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Customer ID:">
+        <div class="container is-max-desktop">
+            <div class="box">
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input" type="text" placeholder="Serach Product">
+                    </p>
+                    <p class="control">
+                        <button class="button is-primary">Serach</button>
+                    </p>
+                </div>
+            </div>
+            <div class="list has-visible-pointer-controls">
+                <div class="list">
+                    <div class="list-item box">
+                        <div class="list-item-image">
+                            <figure class="image is-96x96">
+                                <img src="../../assets/products/1.jpg" alt="ProductID:1">
+                            </figure>
+                        </div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Toy Car</div>
+                            <div class="list-item-description">Price: $20.00 | Stock: 20</div>
+                        </div>
+                        <div class="list-item-controls">
+                            <div class="buttons is-right">
+                                <button class="button" onclick="addToOrder(this,'Toy Car',20,'PRD01')">
+                                    <span class="icon">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </span>
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="list-item box">
+                        <div class="list-item-image">
+                            <figure class="image is-96x96">
+                                <img src="../../assets/products/1.jpg" alt="ProductID:1">
+                            </figure>
+                        </div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Toy Car</div>
+                            <div class="list-item-description">Price: $20.00 | Stock: 20</div>
+                        </div>
+                        <div class="list-item-controls">
+                            <div class="buttons is-right">
+                                <button class="button" onclick="addToOrder(this,'Toy Car',20,'PRD01')">
+                                    <span class="icon">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </span>
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="list">
+                    <div class="list-item box">
+                        <div class="list-item-image">
+                            <figure class="image is-96x96">
+                                <img src="../../assets/products/1.jpg" alt="ProductID:1">
+                            </figure>
+                        </div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Toy Car</div>
+                            <div class="list-item-description">Price: $20.00 | Stock: 20</div>
+                        </div>
+                        <div class="list-item-controls">
+                            <div class="buttons is-right">
+                                <button class="button is-hidden-table" onclick="addToOrder(this,'Toy Car',20,'PRD01')">
+                                    <span class="icon">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </span>
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="box">
+                    <h2 class="title is-4">Product Order</h2>
+
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>OrderID</th>
+                                <th>Product</th>
+                                <th>Quantitu</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-items">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th id="total-quantity">0</th>
+                                <th id="total-price">¥0.00</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
 
-            
-            <div class="field">
-                <label class="label">Customer Name:</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Customer Name:">
-                </div>
-            </div>
 
-              <div class="field">
-                <label class="label">Customer Password</label>
-                <div class="control">
-                  <input class="input" type="password" placeholder="********" />
-                </div>
-              </div>
 
-            <div class="field">
-                <label class="label">Customer Number:</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Phone Number:">
-                </div>
-            </div>
-           
-
-            <div class="field">
-                <label class="label">Address:</label>
-                <div class="control">
-                    <textarea class="textarea" id="customer-address"></textarea>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Company Name:</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Company Name:">
-                </div>
-            </div>
-
-            <a href="../../Customer/createorders/order.html" class="button is-success box has-text-centered"> 
+            <a href="../../Customer/createorders/registercustomer.html" class="button is-success box has-text-centered"
+                onclick="return validateOrder()">
                 <span class="icon">
                     <i class="fas fa-check"></i>
                 </span>
-                <span>Submit</span>
-               </a>
+                <span>Submit Order</span>
+            </a>
 
-        </form>
+            <div class="field mt-5">
+                <div class="control">
+                    <button class="button is-light" onclick="clearOrder()">
+                        <span class="icon">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
 
+        let orderItems = [];
+
+        function addToOrder(button, productName, price, productId) {
+            const existingItem = orderItems.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                orderItems.push({
+                    id: productId,
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateOrderDisplay();
+        }
+
+
+        function updateOrderDisplay() {
+            const orderTable = document.getElementById('order-items');
+            let totalQuantity = 0;
+            let totalPrice = 0;
+
+            orderTable.innerHTML = '';
+
+
+            orderItems.forEach(item => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <button class="button is-small" onclick="adjustQuantity('${item.id}', -1)">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="control">
+                                    <input class="input is-small" type="number" value="${item.quantity}" min="1" 
+                                           onchange="updateQuantity('${item.id}', this.value)" style="width: 60px; text-align: center">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-small" onclick="adjustQuantity('${item.id}', 1)">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                        <td>
+                            <button class="button is-small is-danger" onclick="removeItem('${item.id}')">
+                                <span class="icon is-small">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                            </button>
+                        </td>
+                    `;
+
+                orderTable.appendChild(row);
+
+
+                totalQuantity += item.quantity;
+                totalPrice += item.price * item.quantity;
+            });
+
+
+            document.getElementById('total-quantity').textContent = totalQuantity;
+            document.getElementById('total-price').textContent = `$${totalPrice.toFixed(2)}`;
+        }
+
+
+        function adjustQuantity(productId, change) {
+            const item = orderItems.find(item => item.id === productId);
+            if (item) {
+                const newQuantity = item.quantity + change;
+                if (newQuantity >= 1) {
+                    item.quantity = newQuantity;
+                    updateOrderDisplay();
+                }
+            }
+        }
+
+
+        function updateQuantity(productId, newQuantity) {
+            const item = orderItems.find(item => item.id === productId);
+            if (item) {
+                const quantity = parseInt(newQuantity);
+                if (!isNaN(quantity) && quantity >= 1) {
+                    item.quantity = quantity;
+                    updateOrderDisplay();
+                }
+            }
+        }
+
+
+        function removeItem(productId) {
+            orderItems = orderItems.filter(item => item.id !== productId);
+            updateOrderDisplay();
+        }
+
+
+        function clearOrder() {
+            orderItems = [];
+            updateOrderDisplay();
+        }
+
+        function validateOrder() {
+            if (orderItems.length === 0) {
+
+                const notification = document.createElement('div');
+                notification.className = 'notification is-danger is-light';
+                notification.innerHTML = `
+            <button class="delete" onclick="this.parentElement.remove()"></button>
+            <strong>The order cannot be empty!</strong> Please add at least one item before placing your order。
+        `;
+
+
+                const main = document.querySelector('main');
+                main.insertBefore(notification, main.firstChild);
+
+                // 自动3秒后消失
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+
+                return false;
+            }
+            return true;
+        }
+
+
+    </script>
 </body>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   

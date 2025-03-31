@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Order</title>
-    <link rel="stylesheet" href="../../assets\bulma.min.css">
+    <link rel="stylesheet" href="../../assets/bulma.min.css">
     <script src="../../assets/navbar.js" defer async></script>
     <script src="../../assets/fontawesome/js/solid.min.js" defer></script>
     <script src="../../assets/fontawesome/js/duotone.min.js" defer></script>
     <script src="../../assets/fontawesome/js/fontawesome.min.js" defer></script>
 </head>
+<style>
+    #order-container {
+        display: none;
+    }
+</style>
 
 <body>
     <nav class="navbar is-spaced has-shadow">
@@ -43,13 +48,26 @@
     <header class="hero is-primary is-medium">
         <div class="hero-body container is-max-desktop">
             <h1 class="title">
-                Update Profile
+                Register customer data
             </h1>
         </div>
     </header>
     <main class="m-4 mt-5">
         <form class="container is-max-desktop" action="/admin/createorders/new" method="post"
             enctype="multipart/form-data">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="name" class="label">Customer ID:</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input id="ID" class="input" name="ID" type="text" placeholder="Customer ID" required />
+                        </p>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -67,13 +85,13 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label for="password" class="label"> New Password</label>
+                    <label for="password" class="label">Password</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
-                            <input id="new-password" class="input" name="password" type="password" 
-                            autocomplete="new-password" placeholder="Password">
+                            <input id="password" class="input" name="password" type="password"
+                                autocomplete="current-password" placeholder="Password">
                             <span class="icon is-small is-left">
                                 <i class="fa-solid fa-lock-keyhole"></i>
                             </span>
@@ -84,16 +102,27 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label for="password" class="label">Confirm Password</label>
+                    <label for="name" class="label">Customer Number:</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control is-expanded has-icons-left has-icons-right">
-                            <input id="confirm-password" class="input" name="confirm_password" type="password"
-                            autocomplete="new-password" placeholder="Password">
-                            <span class="icon is-small is-left">
-                                <i class="fa-solid fa-lock-keyhole"></i>
-                            </span>
+                        <p class="control is-expanded">
+                            <input id="number" class="input" name="number" type="text" placeholder="Customer Number"
+                                required />
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="name" class="label">Company Name:</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input id="company" class="input" name="company" type="text" placeholder="Company Name"
+                                required />
                         </p>
                     </div>
                 </div>
@@ -155,60 +184,76 @@
             </div>
 
 
-
-
-            <div class="buttons is-centered" style="margin-top: 1.5rem;">
-                <a href="../../Customer/Update/updatasuccess.html" class="button is-success">
-                    <span class="icon">
-                        <i class="fas fa-save"></i>
-                    </span>
-                    <span>Update Profile</span>
-                </a>
-                <a href="../CutomerBase/customer.html" class="button is-danger">
-                    <span>Cancel</span>
-                </a>
-            </div>
+            <a href="../../Customer/createorders/submitsuccess.html" class="button is-success box has-text-centered"
+                id="submit-button">
+                <span class="icon">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span>Submit</span>
+            </a>
 
         </form>
+
 </body>
 <script>
-
-    const form = document.querySelector('form');
-    const submitButton = document.querySelector('a.button.is-success[href="../../Customer/Update/updatasuccess.html"]');
-    
-
-    submitButton.addEventListener('click', function(e) {
+    document.getElementById('submit-button').addEventListener('click', function (e) {
         e.preventDefault();
+
+    
+        const passwordField = document.getElementById('password');
         
-
-        const newPassword = document.getElementById('new-password');
-        const confirmPassword = document.getElementById('confirm-password');
-
+   
         const oldError = document.querySelector('.password-error');
         if (oldError) oldError.remove();
-        confirmPassword.classList.remove('is-danger');
-        
+        passwordField.classList.remove('is-danger');
 
-        if (newPassword.value !== confirmPassword.value) {
-
-            confirmPassword.classList.add('is-danger');
+     
+        if (!passwordField.value.trim()) {
+   
+            passwordField.classList.add('is-danger');
+            
+            const help = document.createElement('p');
+            help.className = 'help is-danger password-error';
+            help.textContent = 'Please enter password';
             
 
-            const errorDiv = document.createElement('p');
-            errorDiv.className = 'help is-danger password-error';
-            errorDiv.textContent = 'The passwords you entered twice do not match';
+            passwordField.parentNode.parentNode.appendChild(help);
             
 
-            confirmPassword.parentNode.parentNode.appendChild(errorDiv);
-            
-
-            confirmPassword.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            confirmPassword.focus();
-            
- 
+            passwordField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            passwordField.focus();
             return false;
-        } else {
- 
+        }
+
+
+        const requiredFields = document.querySelectorAll('[required]');
+        let isValid = true;
+
+        document.querySelectorAll('.help.is-danger').forEach(el => el.remove());
+        document.querySelectorAll('.input').forEach(el => el.classList.remove('is-danger'));
+
+        for (const field of requiredFields) {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('is-danger');
+
+                const help = document.createElement('p');
+                help.className = 'help is-danger';
+                help.textContent = 'Please fill in the content';
+
+                if (field.closest('.field-body')) {
+                    field.closest('.field').appendChild(help);
+                } else {
+                    field.parentNode.insertBefore(help, field.nextSibling);
+                }
+
+                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                field.focus();
+                break;
+            }
+        }
+
+        if (isValid) {
             window.location.href = this.getAttribute('href');
         }
     });
