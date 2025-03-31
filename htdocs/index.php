@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-        phpinfo();
-    ?>
-</body>
-</html>
+<?php
+
+$tpl = $_SERVER["DOCUMENT_ROOT"] . "/index.tpl.php";
+$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/_navbar.tpl.php";
+$page_title = "Client Portal";
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
