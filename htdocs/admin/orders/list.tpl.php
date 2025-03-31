@@ -40,7 +40,7 @@
                             <th><?= $order["id"] ?></th>
                             <td><?= $order["date"] ?></td>
                             <td><?= $order["client_name"] ?></td>
-                            <td><?= $order["total"] ?></td>
+                            <td><?= sprintf("\$%.2F", $order["total"]) ?></td>
                             <td><?= $order["status"] ?></td>
                             <td><?= $order["delivery_date"] ?></td>
                             <td>
