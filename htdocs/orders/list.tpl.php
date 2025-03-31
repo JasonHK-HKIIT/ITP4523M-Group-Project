@@ -16,7 +16,6 @@
                     <tr>
                         <th>#</th>
                         <th>Date</th>
-                        <th>Client</th>
                         <th>Total</th>
                         <th>Status</th>
                         <th>Delivery Date</th>
@@ -27,7 +26,6 @@
                     <tr>
                         <th>#</th>
                         <th>Date</th>
-                        <th>Client</th>
                         <th>Total</th>
                         <th>Status</th>
                         <th>Delivery Date</th>
@@ -39,18 +37,17 @@
                         <tr>
                             <th><?= $order["id"] ?></th>
                             <td><?= $order["date"] ?></td>
-                            <td><?= $order["client_name"] ?></td>
                             <td><?= sprintf("\$%.2F", $order["total"]) ?></td>
                             <td><?= $order["status"] ?></td>
                             <td><?= $order["delivery_date"] ?></td>
                             <td>
                                 <div class="buttons are-small">
-                                    <a class="button is-primary" href="/admin/orders.php?action=edit&id=<?= $order["id"] ?>">
+                                    <a class="button is-primary" href="/orders.php?action=view&id=<?= $order["id"] ?>">
                                         <span class="icon is-small">
-                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </span>
                                     </a>
-                                    <a class="button is-danger" href="/admin/orders.php?action=delete&id=<?= $order["id"] ?>">
+                                    <a class="button is-danger" href="/orders.php?action=delete&id=<?= $order["id"] ?>">
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-trash"></i>
                                         </span>

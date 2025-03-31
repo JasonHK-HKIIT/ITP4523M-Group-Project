@@ -7,5 +7,5 @@
 </div>
 
 <div class="navbar-end">
-    <a class="navbar-item" href="/admin/logout.php">Log Out</a>
+    <a class="navbar-item" href="/logout.php">Log Out</a>
 </div>
