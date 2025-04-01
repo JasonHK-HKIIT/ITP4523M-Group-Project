@@ -10,6 +10,7 @@
         :root
         {
             --bulma-primary-h: 199deg;
+            --bulma-primary-l: 61%;
         }
     </style>
     <script src="/assets/navbar.js" defer async></script>
