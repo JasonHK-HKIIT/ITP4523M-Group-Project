@@ -47,7 +47,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input" name="telephone" type="tel" placeholder="Telephone" required />
+                        <input id="telephone" class="input" name="telephone" type="tel" size="8" placeholder="Telephone" required />
                     </p>
                 </div>
             </div>
