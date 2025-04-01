@@ -142,21 +142,13 @@
         <div class="field is-horizontal">
             <div class="field-label"></div>
             <div class="field-body">
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-primary" type="submit">
-                            <span class="icon is-small">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                            </span>
-                            <span>Save</span>
-                        </button>
-                    </div>
+                <div class="field">
                     <div class="control">
                         <button class="button is-light is-cancel">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
-                            <span>Cancel</span>
+                            <span>Close</span>
                         </button>
                     </div>
                 </div>
