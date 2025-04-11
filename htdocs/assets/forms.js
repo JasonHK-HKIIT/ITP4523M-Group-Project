@@ -24,7 +24,7 @@
 }
 
 {
-    const buttons = document.querySelectorAll(".is-add-item");
+    const buttons = document.querySelectorAll("[data-action=new-item]");
     for (const button of buttons)
     {
         if (button instanceof HTMLElement)

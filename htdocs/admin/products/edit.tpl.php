@@ -7,7 +7,11 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="/admin/products.php?action=<?= $action ?>" method="post" enctype="multipart/form-data">
+    <form class="container is-max-desktop" action="<?= $_SERVER["REQUEST_URI"] ?>" method="post" enctype="multipart/form-data">
+
+        <? if ($action === "edit"): ?>
+            <input name="pid" value="<?= $product["pid"] ?>" type="hidden" />
+        <? endif ?>
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -16,7 +20,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input" name="name" type="text" placeholder="Name" required />
+                        <input id="name" class="input" name="pname" placeholder="Name" value="<?= $product["pname"] ?? "" ?>" type="text" required />
                     </p>
                 </div>
             </div>
@@ -29,7 +33,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="description" name="description" class="textarea" placeholder="Description" rows="5" required></textarea>
+                        <textarea id="description" class="textarea" name="pdesc" placeholder="Description" rows="5" required><?= $product["pdesc"] ?? "" ?></textarea>
                     </p>
                 </div>
             </div>
@@ -44,7 +48,7 @@
                     <p class="control">
                         <div class="file has-name">
                             <label class="file-label">
-                                <input id="image" name="image" class="file-input" data-display="image-name" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" required />
+                                <input id="image" class="file-input" name="image" data-display="image-name" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fa-solid fa-upload"></i>
@@ -69,8 +73,7 @@
                         <a class="button is-static">US$</a>
                     </p>
                     <p class="control">
-                        <input id="unit-cost" class="input" name="unit_cost" type="number" inputmode="numeric" value="0" min="0"
-                            step="0.01" required />
+                        <input id="unit-cost" class="input" name="pcost" value="<?= doubleval($product["pcost"] ?? 0) ?>" type="number" inputmode="numeric" min="0" step="0.01" required />
                     </p>
                 </div>
             </div>
@@ -83,7 +86,7 @@
             <div class="field-body">
                 <div class="is-flex is-flex-direction-column is-flex-grow-1">
                     <p class="buttons mb-0">
-                        <button class="button is-add-item" type="button" data-template="material" data-target="materials">
+                        <button class="button" type="button" data-action="new-item" data-target="materials" data-template="material">
                             <span class="icon">
                                 <i class="fa-solid fa-plus"></i>
                             </span>
@@ -94,6 +97,7 @@
                         <? foreach ($materials as $material): ?>
                             <? require "_material_select.tpl.php" ?>
                         <? endforeach ?>
+                        <? unset($material) ?>
                     </div>
                 </div>
             </div>
@@ -131,3 +135,4 @@
 </template>
 
 <script src="/assets/forms.js" defer async></script>
+<script src="/assets/product-edit.js" defer async></script>
