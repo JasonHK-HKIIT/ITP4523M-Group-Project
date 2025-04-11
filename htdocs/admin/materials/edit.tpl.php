@@ -10,7 +10,7 @@
     <form class="container is-max-desktop" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
 
         <? if ($action === "edit"): ?>
-        <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
+            <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
         <? endif ?>
 
         <div class="field is-horizontal">
@@ -21,6 +21,30 @@
                 <div class="field">
                     <p class="control is-expanded">
                         <input id="name" class="input" name="name" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" required />
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="image" class="label">Image</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p class="control">
+                        <div class="file has-name">
+                            <label class="file-label">
+                                <input id="image" name="image" class="file-input" data-display="image-name" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fa-solid fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">Choose a file…</span>
+                                </span>
+                                <span id="image-name" class="file-name" style="width: var(--bulma-file-name-max-width);"></span>
+                            </label>
+                        </div>
                     </p>
                 </div>
             </div>
