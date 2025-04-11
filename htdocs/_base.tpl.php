@@ -13,10 +13,10 @@
             --bulma-primary-l: 61%;
         }
     </style>
+    <link rel="stylesheet" href="/assets/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/duotone.min.css">
     <script src="/assets/navbar.js" defer async></script>
-    <script defer src="/assets/fontawesome/js/solid.min.js"></script>
-    <script defer src="/assets/fontawesome/js/duotone.min.js"></script>
-    <script defer src="/assets/fontawesome/js/fontawesome.min.js"></script>
 </head>
 <body>
 <nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
