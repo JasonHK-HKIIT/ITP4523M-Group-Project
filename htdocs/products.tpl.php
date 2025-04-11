@@ -15,11 +15,11 @@
                 <div class="list-item">
                     <div class="list-item-image">
                         <figure class="image is-96x96">
-                            <img src="/assets/products/<?= $product["id"] ?>.jpg" alt="<?= $product["name"] ?>">
+                            <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= $product["pname"] ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= $product["name"] ?></div>
+                        <div class="list-item-title"><?= $product["pname"] ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
@@ -28,8 +28,8 @@
                                     <input class="input" type="number" size="5" value="1" min="1">
                                 </p>
                                 <p class="control">
-                                    <a class="button is-static">
-                                        $0.00
+                                    <a class="button is-static" data-price="<?= doubleval($product["pcost"]) ?>">
+                                        $<?= sprintf("%.2f", doubleval($product["pcost"])) ?>
                                     </a>
                                 </p>
                             </div>
