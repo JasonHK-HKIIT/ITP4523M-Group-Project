@@ -1,12 +1,12 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
         <form class="container is-max-desktop has-text-centered" action="/admin/products.php?action=delete" method="post" type="application/x-www-form-urlencoded">
-            <input type="hidden" name="id" value="<?= $product["id"] ?>" />
+            <input type="hidden" name="id" value="<?= $product["pid"] ?>" />
             <h1 class="title">
                 Delete Product
             </h1>
             <p class="subtitle">
-                Are you sure to delete the product “<?= $product["name"] ?>” (ID: <?= $product["id"] ?>)?
+                Are you sure to delete the product “<?= $product["pname"] ?>” (ID: <?= $product["pid"] ?>)?
                 <div class="buttons is-centered">
                     <button class="button is-danger is-dark" type="submit">
                         <span class="icon">

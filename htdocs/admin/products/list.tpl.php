@@ -15,27 +15,27 @@
                 <div class="list-item">
                     <div class="list-item-image">
                         <figure class="image is-96x96">
-                            <img src="/assets/products/<?= $product["id"] ?>.jpg" alt="<?= $product["name"] ?>">
+                            <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= $product["pname"] ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= $product["name"] ?></div>
+                        <div class="list-item-title"><?= $product["pname"] ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
                             <div class="buttons ml-3">
-                                <a class="button is-hidden-mobile" href="/admin/products.php?action=edit&id=<?= $product["id"] ?>">
+                                <a class="button is-hidden-mobile" href="/admin/products.php?action=edit&id=<?= $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                     <span>Edit</span>
                                 </a>
-                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/products.php?action=edit&id=<?= $product["id"] ?>">
+                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/products.php?action=edit&id=<?= $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?= $product["id"] ?>">
+                                <a class="button" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?= $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>
