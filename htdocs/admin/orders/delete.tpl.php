@@ -1,6 +1,6 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
-        <form class="container is-max-desktop has-text-centered" action="/admin/orders.php?action=delete" method="post" type="application/x-www-form-urlencoded">
+        <form class="container is-max-desktop has-text-centered" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" type="application/x-www-form-urlencoded">
             <input type="hidden" name="id" value="<?= $order["id"] ?>" />
             <h1 class="title">
                 Delete Order

@@ -7,9 +7,11 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="/admin/materials.php?action=<?= $action ?>" method="post" enctype="multipart/form-data">
+    <form class="container is-max-desktop" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
 
+        <? if ($action === "edit"): ?>
         <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
+        <? endif ?>
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">

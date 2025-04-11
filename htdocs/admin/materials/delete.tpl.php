@@ -1,6 +1,6 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
-        <form class="container is-max-desktop has-text-centered" action="/admin/materials.php?action=delete" method="post" type="application/x-www-form-urlencoded">
+        <form class="container is-max-desktop has-text-centered" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" type="application/x-www-form-urlencoded">
             
             <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
 
