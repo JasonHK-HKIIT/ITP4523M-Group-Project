@@ -9,6 +9,8 @@
 <main class="m-4 mt-5">
     <form class="container is-max-desktop" action="/admin/materials.php?action=<?= $action ?>" method="post" enctype="multipart/form-data">
 
+        <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
+
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label for="name" class="label">Name</label>
@@ -16,7 +18,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input" name="name" type="text" placeholder="Name" required />
+                        <input id="name" class="input" name="name" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" required />
                     </p>
                 </div>
             </div>
@@ -29,7 +31,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="unit" class="input" name="unit" type="text" placeholder="Unit" required />
+                        <input id="unit" class="input" name="unit" placeholder="Unit" value="<?= $material["munit"] ?? "" ?>" type="text" required />
                     </p>
                 </div>
             </div>
@@ -42,7 +44,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="reserved-quantity" class="input" name="reserved_quantity" type="number" inputmode="numeric" value="0" min="0" required />
+                        <input id="reserved-quantity" class="input" name="reserved_quantity" value="<?= $material["mqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                 </div>
             </div>
@@ -55,7 +57,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="physical-quantity" class="input" name="physical_quantity" type="number" inputmode="numeric" value="0" min="0" required />
+                        <input id="physical-quantity" class="input" name="physical_quantity" value="<?= $material["mrqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                 </div>
             </div>
@@ -68,7 +70,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="reorder-level" class="input" name="reorder_level" type="number" inputmode="numeric" value="0" min="0" required />
+                        <input id="reorder-level" class="input" name="reorder_level" value="<?= $material["mreorderqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                 </div>
             </div>
