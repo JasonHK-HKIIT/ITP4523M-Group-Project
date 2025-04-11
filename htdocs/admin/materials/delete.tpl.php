@@ -1,12 +1,12 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
         <form class="container is-max-desktop has-text-centered" action="/admin/materials.php?action=delete" method="post" type="application/x-www-form-urlencoded">
-            <input type="hidden" name="id" value="<?= $material["id"] ?>" />
+            <input type="hidden" name="id" value="<?= $material["mid"] ?>" />
             <h1 class="title">
                 Delete Material
             </h1>
             <p class="subtitle">
-                Are you sure to delete the material “<?= $material["name"] ?>” (ID: <?= $material["id"] ?>)?
+                Are you sure to delete the material “<?= $material["mname"] ?>” (ID: <?= $material["mid"] ?>)?
                 <div class="buttons is-centered">
                     <button class="button is-danger is-dark" type="submit">
                         <span class="icon">

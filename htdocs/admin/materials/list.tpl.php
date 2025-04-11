@@ -15,27 +15,27 @@
                 <div class="list-item">
                     <div class="list-item-image">
                         <figure class="image is-96x96">
-                            <img src="/assets/materials/<?= $material["id"] ?>.jpg" alt="<?= $material["name"] ?>">
+                            <img src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= $material["mname"] ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= $material["name"] ?></div>
+                        <div class="list-item-title"><?= $material["mname"] ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
                             <div class="buttons ml-3">
-                                <a class="button is-hidden-mobile" href="/admin/materials.php?action=edit&id=<?= $material["id"] ?>">
+                                <a class="button is-hidden-mobile" href="/admin/materials.php?action=edit&id=<?= $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                     <span>Edit</span>
                                 </a>
-                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/materials.php?action=edit&id=<?= $material["id"] ?>">
+                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/materials.php?action=edit&id=<?= $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?= $material["id"] ?>">
+                                <a class="button" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?= $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>

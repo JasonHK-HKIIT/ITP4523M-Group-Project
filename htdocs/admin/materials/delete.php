@@ -1,6 +1,11 @@
 <?php
 
-$material = ["id" => 1, "name" => "Rubber"];
+require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
+
+$statement = $database->prepare("SELECT `mid`, `mname` FROM `material` WHERE `mid` = ?");
+$statement->execute([$_GET["id"]]);
+$result = $statement->get_result();
+$material = $result->fetch_assoc();
 
 $navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_navbar.tpl.php";
 $navbar_theme = "warning";
