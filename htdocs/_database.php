@@ -1,0 +1,10 @@
+<?php
+
+$DB_HOSTNAME = "database";
+$DB_USERNAME = "itp4523m";
+$DB_PASSWORD = "itp4523m";
+$DB_DATABASE = "itp4523m";
+
+$database = new mysqli($DB_HOSTNAME, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+
+unset($DB_HOSTNAME, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);

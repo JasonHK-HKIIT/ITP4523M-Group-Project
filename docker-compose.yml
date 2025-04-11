@@ -3,7 +3,9 @@ name: itp4523m
 services:
   php:
     container_name: itp4523m
-    image: php:8-apache
+    build:
+      context: .
+      dockerfile: php.Dockerfile
     depends_on:
       database:
         condition: service_healthy
@@ -29,9 +31,12 @@ services:
       MARIADB_DATABASE: itp4523m
       MARIADB_USER: itp4523m
       MARIADB_PASSWORD: itp4523m
-      MARIADB_RANDOM_ROOT_PASSWORD: "true"
+      # MARIADB_RANDOM_ROOT_PASSWORD: "true"
+      MARIADB_ROOT_PASSWORD: password
     volumes:
       - ./CreateProjectDB.sql:/docker-entrypoint-initdb.d/CreateProjectDB.sql:ro
+    tmpfs:
+      - /var/lib/mysql
 
 networks:
   backend:
