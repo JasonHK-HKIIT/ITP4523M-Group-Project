@@ -11,12 +11,25 @@
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
+                <label for="name" class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p class="control">
+                        <input id="name" class="input" name="cname" placeholder="Name" value="<?= $client["cname"] ?>" type="text" autocomplete="name" required />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
                 <label for="current-password" class="label">Current Password</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="current-password" class="input" name="current_password" type="password" autocomplete="current-password" placeholder="Current Password" required />
+                        <input id="current-password" class="input" name="cpassword" placeholder="Current Password" type="password" autocomplete="current-password" />
                     </p>
                 </div>
             </div>
@@ -29,12 +42,12 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="new-password" class="input" name="new_password" type="password" autocomplete="new-password" placeholder="New Password" />
+                        <input id="new-password" class="input" name="cpassword_new" placeholder="New Password" type="password" autocomplete="new-password" />
                     </p>
                 </div>
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="confirm-password" class="input" name="confirm_password" type="password" autocomplete="new-password" placeholder="Confirm New Password" />
+                        <input id="confirm-password" class="input" name="cpassword_confirm" placeholder="Confirm New Password" type="password" autocomplete="new-password" />
                     </p>
                 </div>
             </div>
@@ -47,7 +60,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input" name="telephone" type="tel" size="8" placeholder="Telephone" required />
+                        <input id="telephone" class="input" name="ctel" placeholder="Telephone" value="<?= $client["ctel"] ?? "" ?>" type="tel" size="8" />
                     </p>
                 </div>
             </div>
@@ -60,7 +73,20 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" name="address" class="textarea" rows="3" required></textarea>
+                        <textarea id="address" name="address" class="textarea" rows="3"><?= $client["caddr"] ?? "" ?></textarea>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="company" class="label">Company</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p class="control">
+                        <input id="company" class="input" name="company" placeholder="Company" value="<?= $client["company"] ?>" type="text" />
                     </p>
                 </div>
             </div>
