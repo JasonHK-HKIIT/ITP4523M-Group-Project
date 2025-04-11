@@ -1,7 +1,9 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
         <form class="container is-max-desktop has-text-centered" action="/admin/materials.php?action=delete" method="post" type="application/x-www-form-urlencoded">
-            <input type="hidden" name="id" value="<?= $material["mid"] ?>" />
+            
+            <input name="mid" value="<?= $material["mid"] ?>" type="hidden" />
+
             <h1 class="title">
                 Delete Material
             </h1>
@@ -22,6 +24,7 @@
                     </button>
                 </div>
             </p>
+            
         </form>
     </div>
 </main>
