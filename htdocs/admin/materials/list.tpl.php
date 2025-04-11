@@ -10,6 +10,14 @@
 
 <main class="m-4 mt-5">
     <div class="container is-max-desktop">
+        <div class="buttons">
+            <a class="button is-primary" href="/admin/materials.php?action=new">
+                <span class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span>New Material</span>
+            </a>
+        </div>
         <div class="list has-visible-pointer-controls">
             <? foreach ($materials as $material): ?>
                 <div class="list-item">

@@ -10,6 +10,14 @@
 
 <main class="m-4 mt-5">
     <div class="container is-max-desktop">
+        <div class="buttons">
+            <a class="button is-primary" href="/admin/products.php?action=new">
+                <span class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span>New Product</span>
+            </a>
+        </div>
         <div class="list has-visible-pointer-controls">
             <? foreach ($products as $product): ?>
                 <div class="list-item">
