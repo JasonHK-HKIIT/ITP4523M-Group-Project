@@ -15,6 +15,8 @@ services:
       - backend
     ports:
       - 80:80
+    environment:
+      IS_DOCKER: "true"
     volumes:
       - ./htdocs:/var/www/html
   database:
@@ -28,11 +30,12 @@ services:
     networks:
       - backend
     environment:
-      MARIADB_DATABASE: itp4523m
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "true"
+      MARIADB_DATABASE: ProjectDB
       MARIADB_USER: itp4523m
       MARIADB_PASSWORD: itp4523m
       # MARIADB_RANDOM_ROOT_PASSWORD: "true"
-      MARIADB_ROOT_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: ""
     volumes:
       - ./CreateProjectDB.sql:/docker-entrypoint-initdb.d/CreateProjectDB.sql:ro
     tmpfs:

@@ -2,8 +2,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS `itp4523m` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `itp4523m`;
+CREATE DATABASE IF NOT EXISTS `ProjectDB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ProjectDB`;
 
 --
 -- Table structure for table `customer`
