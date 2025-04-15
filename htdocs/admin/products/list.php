@@ -7,4 +7,4 @@ $statement->execute();
 $result = $statement->get_result();
 $products = $result->fetch_all(MYSQLI_ASSOC);
 
-render_page("/admin/products/list.tpl.php", "Products", ["products" => $products]);
+render_page("/admin/products/list.tpl.php", "Products", compact("products"));
