@@ -1,6 +1,6 @@
 <div class="list-item">
     <div class="list-item-image">
-        <figure class="image is-96x96">
+        <figure class="image is-64x64">
             <? if (!empty($material)): ?>
                 <img class="material-image" src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= $material["mname"] ?>" />
             <? else: ?>
