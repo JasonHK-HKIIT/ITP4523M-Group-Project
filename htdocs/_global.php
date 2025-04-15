@@ -56,6 +56,15 @@ function ensure_client(): void
     }
 }
 
+function ensure_staff(): void
+{
+    if (!is_staff())
+    {
+        http_response_code(403);
+        render_error_page("Permission Denied", "You don’t have permission to view this page.");
+    }
+}
+
 function render_page(string $template_path, string $title = "", array $vars = [], string $theme = "primary"): void
 {
     $tpl = $_SERVER["DOCUMENT_ROOT"] . $template_path;
