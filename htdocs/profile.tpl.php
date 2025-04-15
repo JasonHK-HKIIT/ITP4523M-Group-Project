@@ -16,7 +16,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="name" class="input" name="cname" placeholder="Name" value="<?= $client["cname"] ?>" type="text" autocomplete="name" required />
+                        <input id="name" class="input is-static" value="<?= $client["cname"] ?>" readonly />
                     </p>
                 </div>
             </div>
