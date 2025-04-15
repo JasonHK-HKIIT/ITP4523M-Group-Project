@@ -2,6 +2,8 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
+ensure_logged_out();
+
 $field_values = [];
 $error_messages = [];
 
