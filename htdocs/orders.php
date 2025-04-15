@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER["DOCUMENT_ROOT"] . "/_global.php");
+
 if (!isset($_GET["action"])) { $_GET["action"] = "list"; }
 
 switch ($_GET["action"])
