@@ -48,11 +48,8 @@
                         </button>
                     </div>
                     <div class="control">
-                        <a class="button is-light" href="/register.php">
-                            <span class="icon is-small">
-                                <i class="fa-solid fa-sparkles"></i>
-                            </span>
-                            <span>Register</span>
+                        <a class="button is-text" href="/register.php<?= !empty($_SERVER["QUERY_STRING"]) ? sprintf("?%s", $_SERVER["QUERY_STRING"]) : "" ?>">
+                            Register a new account
                         </a>
                     </div>
                 </div>

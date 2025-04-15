@@ -92,12 +92,9 @@
                         </button>
                     </div>
                     <div class="control">
-                        <button class="button is-light is-cancel">
-                            <span class="icon is-small">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                            <span>Cancel</span>
-                        </button>
+                        <a class="button is-text" href="/login.php<?= !empty($_SERVER["QUERY_STRING"]) ? sprintf("?%s", $_SERVER["QUERY_STRING"]) : "" ?>">
+                            Login to a existing account
+                        </a>
                     </div>
                 </div>
             </div>
