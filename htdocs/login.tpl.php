@@ -18,11 +18,11 @@
                     <div class="control">
                         <div class="radios">
                             <label class="radio">
-                                <input type="radio" name="user_type" value="0" checked />
+                                <input type="radio" name="user_type" value="0"<?= (!isset($field_values["user_type"]) || ($field_values["user_type"] !== USER_STAFF)) ? " checked" : "" ?> />
                                 Client
                             </label>
                             <label class="radio">
-                                <input type="radio" name="user_type" value="1" />
+                                <input type="radio" name="user_type" value="1"<?= (isset($field_values["user_type"]) && ($field_values["user_type"] === USER_STAFF)) ? " checked" : "" ?> />
                                 Staff
                             </label>
                         </div>
@@ -33,13 +33,16 @@
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="username" class="label">User ID</label>
+                <label for="uid" class="label">User ID</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="username" class="input" name="username" type="text" autocomplete="username" placeholder="Username" required />
+                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= $field_values["uid"] ?? "" ?>" type="text" autocomplete="username" placeholder="Username" required />
                     </p>
+                    <? if (isset($error_messages["uid"])): ?>
+                        <p class="help is-danger"><?= $error_messages["uid"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -51,8 +54,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="password" class="input" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
+                        <input id="password" class="input<?= isset($error_messages["password"]) ? " is-danger" : "" ?>" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
                     </p>
+                    <? if (isset($error_messages["password"])): ?>
+                        <p class="help is-danger"><?= $error_messages["password"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
