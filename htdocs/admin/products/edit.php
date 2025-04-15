@@ -1,21 +1,28 @@
 <?php
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
+
 $action = $_GET["action"];
-
-var_dump($_POST);
-
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
 
 $statement = $database->prepare("SELECT `mid`, `mname`, `munit` FROM `material`");
 $statement->execute();
 $result = $statement->get_result();
 $select_materials = $result->fetch_all(MYSQLI_ASSOC);
 
+$product = [];
+$materials = [];
+
 if ($action === "edit")
 {
     $statement = $database->prepare("SELECT `pid`, `pname`, `pdesc`, `pcost` FROM `product` WHERE `pid` = ?");
     $statement->execute([$_GET["id"]]);
     $result = $statement->get_result();
+    if ($result->num_rows == 0)
+    {
+        http_response_code(404);
+        render_error_page("Product Not Found", "The requested product does not exist.");
+        exit;
+    }
 
     $product = $result->fetch_assoc();
 
@@ -25,13 +32,8 @@ if ($action === "edit")
 
     $materials = $result->fetch_all(MYSQLI_ASSOC);
 }
-else
-{
-    $materials = [];
-}
 
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/products/edit.tpl.php";
-$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_navbar.tpl.php";
-$page_title = (($action === "edit") ? "Edit" : "New") . " Product";
-
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+render_page(
+    "/admin/products/edit.tpl.php", 
+    (($action === "edit") ? "Edit" : "New") . " Product", 
+    compact("action", "select_materials", "product", "materials"));

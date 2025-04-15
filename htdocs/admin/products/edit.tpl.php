@@ -46,7 +46,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <div class="file has-name">
+                        <div class="file has-name mb-0">
                             <label class="file-label">
                                 <input id="image" class="file-input" name="image" data-display="image-name" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
                                 <span class="file-cta">
