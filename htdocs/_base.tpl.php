@@ -37,7 +37,32 @@
             </a>
         </div>
         <div id="main-menu" class="navbar-menu">
-            <? isset($navbar_menu_tpl) ? require($navbar_menu_tpl) : "" ?>
+            <div class="navbar-start">
+                <? if (is_client()): ?>
+                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item" href="/products.php">Products</a>
+                    <a class="navbar-item" href="/orders.php">Orders</a>
+                <? else: ?>
+                    <a class="navbar-item" href="/admin/">Home</a>
+                    <a class="navbar-item" href="/admin/orders.php">Orders</a>
+                    <a class="navbar-item" href="/admin/products.php">Products</a>
+                    <a class="navbar-item" href="/admin/materials.php">Materials</a>
+                    <a class="navbar-item" href="/admin/reports.php">Reports</a>
+                <? endif ?>
+            </div>
+
+            <div class="navbar-end">
+                <? if (is_client()): ?>
+                    <a class="navbar-item" href="/cart.php">Cart</a>
+                    <a class="navbar-item" href="/profile.php">Profile</a>
+                <? endif ?>
+                <? if (is_logged_in()): ?>
+                    <a class="navbar-item" href="/logout.php">Log Out</a>
+                <? else: ?>
+                    <a class="navbar-item" href="/login.php">Log In</a>
+                    <a class="navbar-item" href="/register.php">Register</a>
+                <? endif ?>
+            </div>
         </div>
     </nav>
     <? require($tpl); ?>
