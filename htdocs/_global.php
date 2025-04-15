@@ -14,7 +14,12 @@ function is_logged_in(): bool
 
 function is_staff(): bool
 {
-    return (is_logged_in() && ($_SESSION["user_type"] === "1"));
+    return (is_logged_in() && ($_SESSION["user_type"] === USER_STAFF));
+}
+
+function is_client(): bool
+{
+    return (!is_logged_in() || ($_SESSION["user_type"] === USER_CLIENT));
 }
 
 function is_admin_page(): bool
@@ -22,6 +27,33 @@ function is_admin_page(): bool
     static $value;
     if (isset($value)) { return $value; }
     return ($value = str_starts_with($_SERVER["REQUEST_URI"], "/admin/"));
+}
+
+function ensure_logged_out(): void
+{
+    if (is_logged_in())
+    {
+        header(sprintf("Location: %s", is_staff() ? "/admin" : "/"), true, 307);
+        exit;
+    }
+}
+
+function ensure_logged_in(): void
+{
+    if (!is_logged_in())
+    {
+        header(sprintf("Location: /login.php?return=%s", urlencode(substr($_SERVER['REQUEST_URI'], 1))), true, 307);
+        exit;
+    }
+}
+
+function ensure_client(): void
+{
+    if (!is_client())
+    {
+        header("Location: /admin", true, 307);
+        exit;
+    }
 }
 
 function render_page(string $template_path, string $title = "", array $vars = [], string $theme = "primary"): void

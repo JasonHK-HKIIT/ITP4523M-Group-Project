@@ -10,4 +10,4 @@ $statement->execute([$_SESSION["user_id"]]);
 $result = $statement->get_result();
 $client = $result->fetch_assoc();
 
-render_page("/profile.tpl.php", "Profile", ["client" => $client]);
+render_page("/profile.tpl.php", "Profile", compact("client"));
