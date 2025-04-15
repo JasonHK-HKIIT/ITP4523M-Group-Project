@@ -10,8 +10,30 @@
     <form class="container is-max-desktop" action="/login.php" method="post" enctype="application/x-www-form-urlencoded">
 
         <div class="field is-horizontal">
+            <div class="field-label">
+                <label for="username" class="label">User Type</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <div class="radios">
+                            <label class="radio">
+                                <input type="radio" name="user_type" value="0" checked />
+                                Client
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="user_type" value="1" />
+                                Staff
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="username" class="label">Username</label>
+                <label for="username" class="label">User ID</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
