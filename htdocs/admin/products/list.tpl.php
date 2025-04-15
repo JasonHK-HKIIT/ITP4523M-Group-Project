@@ -20,7 +20,7 @@
         </div>
         <div class="list has-visible-pointer-controls">
             <? foreach ($products as $product): ?>
-                <div class="list-item">
+                <div class="list-item box is-align-items-flex-start">
                     <div class="list-item-image">
                         <figure class="image is-96x96">
                             <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= $product["pname"] ?>">
@@ -28,6 +28,7 @@
                     </div>
                     <div class="list-item-content">
                         <div class="list-item-title"><?= $product["pname"] ?></div>
+                        <div class="list-item-description"><?= $product["pdesc"] ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
