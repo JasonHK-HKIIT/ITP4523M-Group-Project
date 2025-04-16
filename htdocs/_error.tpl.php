@@ -1,7 +1,6 @@
 <main class="hero is-danger is-fullheight-with-navbar">
     <div class="hero-body">
-        <form class="container is-max-desktop has-text-centered" action="/admin/products.php?action=delete" method="post" type="application/x-www-form-urlencoded">
-            <input type="hidden" name="id" value="<?= $product["pid"] ?>" />
+        <div class="container is-max-desktop has-text-centered">
             <h1 class="title">
                 <?= $error_title ?? "Error" ?>
             </h1>
@@ -16,7 +15,7 @@
                     </a>
                 </div>
             </p>
-        </form>
+        </div>
     </div>
 </main>
 
