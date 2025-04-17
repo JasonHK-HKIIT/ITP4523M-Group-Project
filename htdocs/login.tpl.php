@@ -18,11 +18,11 @@
                     <div class="control">
                         <div class="radios">
                             <label class="radio">
-                                <input type="radio" name="user_type" value="0"<?= (!isset($field_values["user_type"]) || ($field_values["user_type"] !== USER_STAFF)) ? " checked" : "" ?> />
+                                <input type="radio" name="user_type" value="0"<?= (@$user["user_type"] !== USER_STAFF) ? " checked" : "" ?> />
                                 Client
                             </label>
                             <label class="radio">
-                                <input type="radio" name="user_type" value="1"<?= (isset($field_values["user_type"]) && ($field_values["user_type"] === USER_STAFF)) ? " checked" : "" ?> />
+                                <input type="radio" name="user_type" value="1"<?= (@$user["user_type"] === USER_STAFF) ? " checked" : "" ?> />
                                 Staff
                             </label>
                         </div>
@@ -38,7 +38,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= $field_values["uid"] ?? "" ?>" type="text" autocomplete="username" placeholder="Username" required />
+                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= @$user["uid"] ?>" type="text" autocomplete="username" placeholder="Username" required />
                     </p>
                     <? if (isset($error_messages["uid"])): ?>
                         <p class="help is-danger"><?= $error_messages["uid"] ?></p>

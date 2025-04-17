@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 ensure_logged_out();
 
-$field_values = [];
+$user = [];
 $error_messages = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 exit;
             }
 
-            $field_values["user_type"] = USER_STAFF;
+            $user["user_type"] = USER_STAFF;
         }
         else
         {
@@ -44,10 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 exit;
             }
 
-            $field_values["user_type"] = USER_CLIENT;
+            $user["user_type"] = USER_CLIENT;
         }
 
-        $field_values["uid"] = $_POST["uid"];
+        $user["uid"] = $_POST["uid"];
         $error_messages["password"] = "User ID or password is incorrect";
     }
     else
@@ -63,4 +63,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
 }
 
-render_page("/login.tpl.php", "Login", compact("field_values", "error_messages"));
+render_page("/login.tpl.php", "Login", compact("user", "error_messages"));
