@@ -38,7 +38,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= @$user["uid"] ?>" type="text" autocomplete="username" placeholder="Username" required />
+                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= @$user["uid"] ?>" type="text" autocomplete="username" placeholder="User ID" required />
                     </p>
                     <? if (isset($error_messages["uid"])): ?>
                         <p class="help is-danger"><?= $error_messages["uid"] ?></p>
