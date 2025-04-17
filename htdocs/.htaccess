@@ -2,3 +2,8 @@
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+<FilesMatch "^_[^/]+\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
