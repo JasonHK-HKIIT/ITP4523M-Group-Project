@@ -3,14 +3,139 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
 
 $material = [];
+$error_messages = [];
 
 $action = $_GET["action"];
-if ($action === "edit")
+
+if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    $statement = $database->prepare("SELECT `mid`, `mname`, `mqty`, `mrqty`, `munit`, `mreorderqty` FROM `material` WHERE `mid` = ?");
-    $statement->execute([$_GET["id"]]);
-    $result = $statement->get_result();
-    $material = $result->fetch_assoc();
+    if ((!empty($_POST["mname"]) && (strlen($_POST["mname"]) <= 255))
+        && ((($action === "edit") && empty($_FILES["image"]["tmp_name"])) || (!empty($_FILES["image"]["tmp_name"]) && is_jpeg($_FILES["image"]["tmp_name"])))
+        && (!empty($_POST["munit"]) && (strlen($_POST["munit"]) <= 20))
+        && (ctype_digit(@$_POST["mqty"]) && ($_POST["mqty"] >= 0))
+        && (ctype_digit(@$_POST["mrqty"]) && ($_POST["mrqty"] >= 0))
+        && (ctype_digit(@$_POST["mreorderqty"]) && ($_POST["mreorderqty"] >= 0)))
+    {
+        if ($action === "edit")
+        {
+            $statement = $database->prepare("UPDATE `material` SET `mname` = ?, `munit` = ?, `mqty` = ?, `mrqty` = ?, `mreorderqty` = ? WHERE `mid` = ?");
+            $statement->execute([$_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"], $_POST["mid"]]);
+            $result = $statement->store_result();
+
+            $mid = $_POST["mid"];
+        }
+        else
+        {
+            $statement = $database->prepare("INSERT INTO `material` (`mname`, `munit`, `mqty`, `mrqty`, `mreorderqty`) VALUES (?, ?, ?, ?, ?)");
+            $statement->execute([$_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"]]);
+            $result = $statement->store_result();
+            if ($statement->affected_rows == 0)
+            {
+                http_response_code(500);
+                render_error_page("Internal Server Error", "The request failed due to unknown reason.");
+                exit;
+            }
+
+            $mid = $statement->insert_id;
+        }
+
+        if (!empty($_FILES["image"]["tmp_name"]))
+        {
+            if (!move_uploaded_file($_FILES["image"]["tmp_name"], sprintf($_SERVER["DOCUMENT_ROOT"] . "/assets/materials/%d.jpg", $mid)))
+            {
+                http_response_code(500);
+                render_error_page("Upload Failed", "Failed to upload the image.");
+                exit;
+            }
+        }
+
+        header("Location: /admin/materials.php", true, 307);
+        exit;
+    }
+    else
+    {
+        $material["mname"] = $_POST["mname"];
+        $material["munit"] = $_POST["munit"];
+        $material["mqty"] = $_POST["mqty"];
+        $material["mrqty"] = $_POST["mrqty"];
+        $material["mreorderqty"] = $_POST["mreorderqty"];
+
+        if (empty($_POST["mname"]))
+        {
+            $error_messages["mname"] = "This field is required";
+        }
+        else if (strlen($_POST["mname"]) > 255)
+        {
+            $error_messages["mname"] = "This field is too long";
+        }
+
+        if (($action !== "edit") && empty($_FILES["image"]["tmp_name"]))
+        {
+            $error_messages["image"] = "This field is required";
+        }
+        else if (!empty($_FILES["image"]) && !is_jpeg($_FILES["image"]["tmp_name"]))
+        {
+            $error_messages["image"] = "This field must be a JPEG image";
+        }
+
+        if (empty($_POST["munit"]))
+        {
+            $error_messages["munit"] = "This field is required";
+        }
+        else if (strlen($_POST["munit"]) > 20)
+        {
+            $error_messages["munit"] = "This field is too long";
+        }
+
+        if (empty($_POST["mqty"]) && ($_POST["mqty"] != 0))
+        {
+            $error_messages["mqty"] = "This field is required";
+        }
+        else if (!ctype_digit($_POST["mqty"]))
+        {
+            $error_messages["mqty"] = "This field must be a number";
+        }
+        else if ($_POST["mqty"] < 0)
+        {
+            $error_messages["mqty"] = "This field must be ≥ 0";
+        }
+
+        if (empty($_POST["mrqty"]) && ($_POST["mrqty"] != 0))
+        {
+            $error_messages["mrqty"] = "This field is required";
+        }
+        else if (!ctype_digit($_POST["mrqty"]))
+        {
+            $error_messages["mrqty"] = "This field must be a number";
+        }
+        else if ($_POST["mrqty"] < 0)
+        {
+            $error_messages["mrqty"] = "This field must be ≥ 0";
+        }
+
+        if (empty($_POST["mreorderqty"]) && ($_POST["mreorderqty"] != 0))
+        {
+            $error_messages["mreorderqty"] = "This field is required";
+        }
+        else if (!ctype_digit($_POST["mreorderqty"]))
+        {
+            $error_messages["mreorderqty"] = "This field must be a number";
+        }
+        else if ($_POST["mreorderqty"] < 0)
+        {
+            $error_messages["mreorderqty"] = "This field must be ≥ 0";
+        }
+    }
+}
+else
+{
+    if ($action === "edit")
+    {
+        $statement = $database->prepare("SELECT `mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty` FROM `material` WHERE `mid` = ?");
+        $statement->execute([$_GET["id"]]);
+        $result = $statement->get_result();
+        $material = $result->fetch_assoc();
+    }
 }
 
-render_page("/admin/_materials/edit.tpl.php",(($action === "edit") ? "Edit" : "New") . " Material", compact("action", "material"));
+render_page("/admin/_materials/edit.tpl.php",(($action === "edit") ? "Edit" : "New") . " Material", compact("action", "material", "error_messages"));

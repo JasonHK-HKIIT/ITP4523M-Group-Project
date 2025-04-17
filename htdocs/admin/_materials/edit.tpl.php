@@ -20,8 +20,11 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input" name="name" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" maxlength="255" required />
+                        <input id="name" class="input<?= isset($error_messages["mname"]) ? " is-danger" : "" ?>" name="mname" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" maxlength="255" required />
                     </p>
+                    <? if (isset($error_messages["mname"])): ?>
+                        <p class="help is-danger"><?= $error_messages["mname"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -33,9 +36,9 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <div class="file has-name mb-0">
+                        <div class="file<?= isset($error_messages["image"]) ? " is-danger" : "" ?> has-name mb-0">
                             <label class="file-label">
-                                <input id="image" name="image" class="file-input" data-display="image-name" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
+                                <input id="image" class="file-input" data-display="image-name" name="image" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fa-solid fa-upload"></i>
@@ -46,6 +49,9 @@
                             </label>
                         </div>
                     </p>
+                    <? if (isset($error_messages["image"])): ?>
+                        <p class="help is-danger"><?= $error_messages["image"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -57,8 +63,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="unit" class="input" name="unit" placeholder="Unit" value="<?= $material["munit"] ?? "" ?>" type="text" maxlength="20" required />
+                        <input id="unit" class="input<?= isset($error_messages["munit"]) ? " is-danger" : "" ?>" name="munit" placeholder="Unit" value="<?= @$material["munit"] ?>" type="text" maxlength="20" required />
                     </p>
+                    <? if (isset($error_messages["munit"])): ?>
+                        <p class="help is-danger"><?= $error_messages["munit"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -70,8 +79,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="reserved-quantity" class="input" name="reserved_quantity" value="<?= $material["mqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
+                        <input id="reserved-quantity" class="input<?= isset($error_messages["mqty"]) ? " is-danger" : "" ?>" name="mqty" value="<?= @$material["mqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
+                    <? if (isset($error_messages["mqty"])): ?>
+                        <p class="help is-danger"><?= $error_messages["mqty"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -83,8 +95,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="physical-quantity" class="input" name="physical_quantity" value="<?= $material["mrqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
+                        <input id="physical-quantity" class="input<?= isset($error_messages["mrqty"]) ? " is-danger" : "" ?>" name="mrqty" value="<?= @$material["mrqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
+                    <? if (isset($error_messages["mrqty"])): ?>
+                        <p class="help is-danger"><?= $error_messages["mrqty"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -96,8 +111,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="reorder-level" class="input" name="reorder_level" value="<?= $material["mreorderqty"] ?? 0 ?>" type="number" inputmode="numeric" min="0" required />
+                        <input id="reorder-level" class="input<?= isset($error_messages["mreorderqty"]) ? " is-danger" : "" ?>" name="mreorderqty" value="<?= @$material["mreorderqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
+                    <? if (isset($error_messages["mreorderqty"])): ?>
+                        <p class="help is-danger"><?= $error_messages["mreorderqty"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>

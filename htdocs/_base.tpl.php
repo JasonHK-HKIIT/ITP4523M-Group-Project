@@ -12,6 +12,13 @@
             --bulma-primary-h: 199deg;
             --bulma-primary-l: 61%;
         }
+
+        .image.is-material img
+        {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+        }
     </style>
     <link rel="stylesheet" href="/assets/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/solid.min.css">
