@@ -2,6 +2,8 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
 
+$material = [];
+
 $action = $_GET["action"];
 if ($action === "edit")
 {
@@ -11,8 +13,4 @@ if ($action === "edit")
     $material = $result->fetch_assoc();
 }
 
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/materials/edit.tpl.php";
-$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_navbar.tpl.php";
-$page_title = (($action === "edit") ? "Edit" : "New") . " Material";
-
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+render_page("/admin/_materials/edit.tpl.php",(($action === "edit") ? "Edit" : "New") . " Material", compact("action", "material"));

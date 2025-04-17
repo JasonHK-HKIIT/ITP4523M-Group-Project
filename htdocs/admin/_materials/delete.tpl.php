@@ -8,7 +8,7 @@
                 Delete Material
             </h1>
             <p class="subtitle">
-                Are you sure to delete the material “<?= $material["mname"] ?>” (ID: <?= $material["mid"] ?>)?
+                Are you sure to delete the material “<?= htmlspecialchars($material["mname"]) ?>” (ID: <?= $material["mid"] ?>)?
                 <div class="buttons is-centered">
                     <button class="button is-danger is-dark" type="submit">
                         <span class="icon">

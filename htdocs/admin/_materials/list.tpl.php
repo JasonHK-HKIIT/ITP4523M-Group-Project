@@ -20,14 +20,14 @@
         </div>
         <div class="list has-visible-pointer-controls">
             <? foreach ($materials as $material): ?>
-                <div class="list-item">
+                <div class="list-item box">
                     <div class="list-item-image">
-                        <figure class="image is-96x96">
-                            <img src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= $material["mname"] ?>">
+                        <figure class="image is-64x64">
+                            <img src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= htmlspecialchars($material["mname"]) ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= $material["mname"] ?></div>
+                        <div class="list-item-title"><?= htmlspecialchars($material["mname"]) ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">

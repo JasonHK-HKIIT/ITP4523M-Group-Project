@@ -20,7 +20,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input" name="name" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" required />
+                        <input id="name" class="input" name="name" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" maxlength="255" required />
                     </p>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <div class="file has-name">
+                        <div class="file has-name mb-0">
                             <label class="file-label">
                                 <input id="image" name="image" class="file-input" data-display="image-name" type="file" accept="image/jpeg,.jpg,.jpeg"<?= ($action === "edit") ? "" : " required" ?> />
                                 <span class="file-cta">
@@ -57,7 +57,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="unit" class="input" name="unit" placeholder="Unit" value="<?= $material["munit"] ?? "" ?>" type="text" required />
+                        <input id="unit" class="input" name="unit" placeholder="Unit" value="<?= $material["munit"] ?? "" ?>" type="text" maxlength="20" required />
                     </p>
                 </div>
             </div>
