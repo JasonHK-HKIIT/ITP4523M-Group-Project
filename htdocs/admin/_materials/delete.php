@@ -19,7 +19,7 @@ $result = $statement->get_result();
 if ($result->num_rows > 0)
 {
     http_response_code(400);
-    render_error_page("Material In Use", sprintf("Delete the %d product(s) using the material first before continue.", $result->num_rows));
+    render_error_page("Material In Use", sprintf("Delete the %d product(s) using this material first before continue.", $result->num_rows));
     exit;
 }
 
@@ -33,7 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
 
     $statement = $database->prepare("DELETE FROM `material` WHERE `mid` = ?");
+    try
+    {
     $statement->execute([$_POST["mid"]]);
+    }
+    catch (mysqli_sql_exception $ex)
+    {
+        http_response_code(500);
+        render_error_page("Execution Falied", "Failed to execute the request.");
+        exit;
+    }
+    
     $statement->store_result();
     if ($statement->affected_rows == 0)
     {
