@@ -16,7 +16,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" value="<?= @$client["cname"] ?>" type="text" placeholder="Name" autocomplete="name" maxlength="255" required />
+                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" placeholder="Name" value="<?= @$client["cname"] ?>" type="text" autocomplete="name" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cname"])): ?>
                         <p class="help is-danger"><?= $error_messages["cname"] ?></p>
@@ -32,7 +32,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword" type="password" placeholder="Password" autocomplete="new-password" maxlength="255" required />
+                        <input id="password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword" placeholder="Password" type="password" autocomplete="new-password" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cpassword"])): ?>
                         <p class="help is-danger"><?= $error_messages["cpassword"] ?></p>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="confirm-password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" type="password" placeholder="Confirm Password" autocomplete="new-password" maxlength="255" required />
+                        <input id="confirm-password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" placeholder="Confirm Password" type="password" autocomplete="new-password" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cpassword_confirm"])): ?>
                         <p class="help is-danger"><?= $error_messages["cpassword_confirm"] ?></p>
@@ -56,7 +56,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" value="<?= @$client["ctel"] ?>" type="tel" size="8" maxlength="8" placeholder="Telephone" />
+                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?= @$client["ctel"] ?>" type="tel" size="8" maxlength="8" />
                     </p>
                     <? if (isset($error_messages["ctel"])): ?>
                         <p class="help is-danger"><?= $error_messages["ctel"] ?></p>
@@ -88,7 +88,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="company-name" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" value="<?= @$client["company"] ?>" type="text" placeholder="Company Name" maxlength="255" />
+                        <input id="company-name" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" placeholder="Company Name" value="<?= @$client["company"] ?>" type="text" maxlength="255" />
                     </p>
                     <? if (isset($error_messages["company"])): ?>
                         <p class="help is-danger"><?= $error_messages["company"] ?></p>
