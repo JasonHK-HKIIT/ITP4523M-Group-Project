@@ -22,7 +22,7 @@
             <? foreach ($materials as $material): ?>
                 <div class="list-item box">
                     <div class="list-item-image">
-                        <figure class="image is-64x64">
+                        <figure class="image is-material is-64x64">
                             <img src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= htmlspecialchars($material["mname"]) ?>">
                         </figure>
                     </div>
