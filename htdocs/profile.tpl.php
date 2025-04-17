@@ -10,13 +10,24 @@
     <form class="container is-max-desktop" action="/profile.php" method="post" enctype="application/x-www-form-urlencoded">
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
+            <div class="field-label">
+                <label for="uid" class="label">User ID</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <?= $client["cid"] ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
                 <label for="name" class="label">Name</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="name" class="input is-static" value="<?= $client["cname"] ?>" readonly />
+                        <?= $client["cname"] ?>
                     </p>
                 </div>
             </div>
