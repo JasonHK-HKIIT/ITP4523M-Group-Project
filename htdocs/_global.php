@@ -42,7 +42,7 @@ function ensure_logged_in(): void
 {
     if (!is_logged_in())
     {
-        header(sprintf("Location: /login.php?return=%s", urlencode(substr($_SERVER['REQUEST_URI'], 1))), true, 307);
+        header(sprintf("Location: /login.php?%s", http_build_query(["return" => substr($_SERVER['REQUEST_URI'], 1)])), true, 307);
         exit;
     }
 }
@@ -61,16 +61,25 @@ function ensure_staff(): void
     if (!is_staff())
     {
         http_response_code(403);
-        render_error_page("Permission Denied", "You don’t have permission to view this page.");
+        render_error_page("Access Denied", "You don’t have permission to view this page.");
     }
+}
+
+function is_telephone(string $telephone): bool
+{
+    return preg_match("/^[2-9]\\d{7}\$/", $telephone);
+}
+
+function is_jpeg(string $file): bool
+{
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    return ($finfo->file($file) === "image/jpeg");
 }
 
 function render_page(string $template_path, string $title = "", array $vars = [], string $theme = "primary"): void
 {
     $tpl = $_SERVER["DOCUMENT_ROOT"] . $template_path;
     $page_title = $title;
-
-    $navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . (is_admin_page() ? "/admin/_navbar.tpl.php" : "/_navbar.tpl.php");
     $navbar_theme = $theme;
 
     unset($template_path, $title, $theme);
