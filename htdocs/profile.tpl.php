@@ -73,7 +73,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" name="address" class="textarea" rows="3"><?= $client["caddr"] ?? "" ?></textarea>
+                        <textarea id="address" name="caddr" class="textarea" rows="3"><?= $client["caddr"] ?? "" ?></textarea>
                     </p>
                 </div>
             </div>
