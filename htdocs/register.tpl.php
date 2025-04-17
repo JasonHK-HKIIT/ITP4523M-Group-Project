@@ -11,12 +11,12 @@
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="username" class="label">Name</label>
+                <label for="name" class="label">Name</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="username" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" value="<?= @$client["cname"] ?>" type="text" autocomplete="name" placeholder="Name" required />
+                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" value="<?= @$client["cname"] ?>" type="text" placeholder="Name" autocomplete="name" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cname"])): ?>
                         <p class="help is-danger"><?= $error_messages["cname"] ?></p>
@@ -32,7 +32,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="password" class="input<?= isset($error_messages["cpassword"]) ? " is-danger" : "" ?>" name="cpassword" type="password" autocomplete="new-password" placeholder="Password" required />
+                        <input id="password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword" type="password" placeholder="Password" autocomplete="new-password" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cpassword"])): ?>
                         <p class="help is-danger"><?= $error_messages["cpassword"] ?></p>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="confirm-password" class="input<?= isset($error_messages["cpassword_confirm"]) ? " is-danger" : "" ?>" name="cpassword_confirm" type="password" autocomplete="new-password" placeholder="Confirm Password" required />
+                        <input id="confirm-password" class="input<?= (isset($error_messages["cpassword"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" type="password" placeholder="Confirm Password" autocomplete="new-password" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cpassword_confirm"])): ?>
                         <p class="help is-danger"><?= $error_messages["cpassword_confirm"] ?></p>
@@ -72,7 +72,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" name="caddr" class="textarea" rows="3"><?= @$client["caddr"] ?></textarea>
+                        <textarea id="address" class="textarea<?= isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?= @$client["caddr"] ?></textarea>
                     </p>
                     <? if (isset($error_messages["caddr"])): ?>
                         <p class="help is-danger"><?= $error_messages["caddr"] ?></p>
@@ -88,7 +88,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="company-name" class="input" name="company" value="<?= @$client["company"] ?>" type="text" placeholder="Company Name" />
+                        <input id="company-name" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" value="<?= @$client["company"] ?>" type="text" placeholder="Company Name" maxlength="255" />
                     </p>
                     <? if (isset($error_messages["company"])): ?>
                         <p class="help is-danger"><?= $error_messages["company"] ?></p>

@@ -13,7 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     if ((!empty($_POST["cname"]) && (strlen($_POST["cname"]) <= 255))
         && ((!empty($_POST["cpassword"]) && (strlen($_POST["cpassword"]) <= 255)) && !empty($_POST["cpassword_confirm"]) && ($_POST["cpassword"] === $_POST["cpassword_confirm"]))
-        && (empty($_POST["ctel"]) || is_telephone($_POST["ctel"])))
+        && (empty($_POST["ctel"]) || is_telephone($_POST["ctel"]))
+        && (empty($_POST["caddr"]) || (strlen($_POST["caddr"]) <= 65535))
+        && (empty($_POST["company"]) || (strlen($_POST["company"]) <= 255)))
     {
         $statement = $database->prepare("INSERT INTO `customer` (`cname`, `cpassword`, `ctel`, `caddr`, `company`) VALUES (?, ?, ?, ?, ?)");
         $statement->execute([$_POST["cname"], $_POST["cpassword"], $_POST["ctel"] ?: null, $_POST["caddr"], $_POST["company"] ?: null]);
@@ -68,6 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if (!empty($_POST["ctel"]) && !is_telephone(empty($_POST["ctel"])))
         {
             $error_messages["ctel"] = "Invalid telephone number";
+        }
+
+        if (!empty($_POST["caddr"]) && (strlen($_POST["caddr"]) > 65535))
+        {
+            $error_messages["caddr"] = "The address is too long";
+        }
+
+        if (!empty($_POST["company"]) && (strlen($_POST["company"]) > 255))
+        {
+            $error_messages["company"] = "The company name is too long";
         }
     }
 }
