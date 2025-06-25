@@ -2,9 +2,7 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
 
-$statement = $database->prepare("SELECT * FROM `material`");
-$statement->execute();
-$result = $statement->get_result();
+$result = $database->query("SELECT * FROM `material`");
 $materials = $result->fetch_all(MYSQLI_ASSOC);
 
 $tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_materials/list.tpl.php";

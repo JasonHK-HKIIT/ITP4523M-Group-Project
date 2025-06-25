@@ -3,7 +3,9 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 $statement = $database->prepare("SELECT `pid`, `pname` FROM `product` WHERE `pid` = ?");
-$statement->execute([$_GET["id"]]);
+$statement->bind_param("i", $_GET["id"]);
+$statement->execute();
+
 $result = $statement->get_result();
 if ($result->num_rows == 0)
 {

@@ -15,8 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         && (empty($_POST["caddr"]) || (strlen($_POST["caddr"]) <= 65535))
         && (empty($_POST["company"]) || (strlen($_POST["company"]) <= 255)))
     {
+        $ctel = $_POST["ctel"] ?: null;
+        $company = $_POST["company"] ?: null;
+        
         $statement = $database->prepare("INSERT INTO `customer` (`cname`, `cpassword`, `ctel`, `caddr`, `company`) VALUES (?, ?, ?, ?, ?)");
-        $statement->execute([$_POST["cname"], $_POST["cpassword"], $_POST["ctel"] ?: null, $_POST["caddr"], $_POST["company"] ?: null]);
+        $statement->bind_param("ssiss", $_POST["cname"], $_POST["cpassword"], $ctel, $_POST["caddr"], $company);
+        $statement->execute();
+
         $result = $statement->store_result();
         if ($statement->affected_rows == 0)
         {

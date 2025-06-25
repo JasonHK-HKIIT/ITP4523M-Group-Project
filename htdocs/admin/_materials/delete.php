@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $statement = $database->prepare("DELETE FROM `material` WHERE `mid` = ?");
     try
     {
-        $statement->execute([$_POST["mid"]]);
+        $statement->bind_param("i", $_POST["mid"]);
+        $statement->execute();
     }
     catch (mysqli_sql_exception $ex)
     {

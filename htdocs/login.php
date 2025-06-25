@@ -14,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($_POST["user_type"] === USER_STAFF)
         {
             $statement = $database->prepare("SELECT `sid` FROM `staff` WHERE `sid` = ? AND `spassword` = ?");
-            $statement->execute([$_POST["uid"], $_POST["password"]]);
+            $statement->bind_param("ss", $_POST["uid"], $_POST["password"]);
+            $statement->execute();
+
             $result = $statement->get_result();
             if ($result->num_rows === 1)
             {
@@ -32,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
 
             $statement = $database->prepare("SELECT `cid` FROM `customer` WHERE `cid` = ? AND `cpassword` = ?");
-            $statement->execute([$_POST["uid"], $_POST["password"]]);
+            $statement->bind_param("ss", $_POST["uid"], $_POST["password"]);
+            $statement->execute();
+
             $result = $statement->get_result();
             if ($result->num_rows === 1)
             {

@@ -6,7 +6,9 @@ ensure_client();
 ensure_logged_in();
 
 $statement = $database->prepare("SELECT `cid`, `cname`, `ctel`, `caddr`, `company` FROM `customer` WHERE `cid` = ?");
-$statement->execute([$_SESSION["user_id"]]);
+$statement->bind_param("i", $_SESSION["user_id"]);
+$statement->execute();
+
 $result = $statement->get_result();
 $client = $result->fetch_assoc();
 

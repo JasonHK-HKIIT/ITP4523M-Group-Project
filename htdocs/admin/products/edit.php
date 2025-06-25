@@ -4,9 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 $action = $_GET["action"];
 
-$statement = $database->prepare("SELECT `mid`, `mname`, `munit` FROM `material`");
-$statement->execute();
-$result = $statement->get_result();
+$result = $database->query("SELECT `mid`, `mname`, `munit` FROM `material`");;
 $select_materials = $result->fetch_all(MYSQLI_ASSOC);
 
 $product = [];
@@ -15,7 +13,9 @@ $materials = [];
 if ($action === "edit")
 {
     $statement = $database->prepare("SELECT `pid`, `pname`, `pdesc`, `pcost` FROM `product` WHERE `pid` = ?");
-    $statement->execute([$_GET["id"]]);
+    $statement->bind_param("i", $_GET["id"]);
+    $statement->execute();
+    
     $result = $statement->get_result();
     if ($result->num_rows == 0)
     {

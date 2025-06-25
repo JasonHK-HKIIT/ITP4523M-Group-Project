@@ -1,6 +1,8 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
+
+$action = $_GET["action"];
 
 $material = [];
 $error_messages = [];
@@ -19,15 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($action === "edit")
         {
             $statement = $database->prepare("UPDATE `material` SET `mname` = ?, `munit` = ?, `mqty` = ?, `mrqty` = ?, `mreorderqty` = ? WHERE `mid` = ?");
-            $statement->execute([$_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"], $_POST["mid"]]);
-            $result = $statement->store_result();
+            $statement->bind_param("ssiii", $_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"]);
+            $statement->execute();
 
+            $result = $statement->store_result();
             $mid = $_POST["mid"];
         }
         else
         {
             $statement = $database->prepare("INSERT INTO `material` (`mname`, `munit`, `mqty`, `mrqty`, `mreorderqty`) VALUES (?, ?, ?, ?, ?)");
-            $statement->execute([$_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"]]);
+            $statement->bind_param("ssiii", $_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"]);
+            $statement->execute();
+
             $result = $statement->store_result();
             if ($statement->affected_rows == 0)
             {
@@ -132,7 +137,9 @@ else
     if ($action === "edit")
     {
         $statement = $database->prepare("SELECT `mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty` FROM `material` WHERE `mid` = ?");
-        $statement->execute([$_GET["id"]]);
+        $statement->bind_param("i", $_GET["id"]);
+        $statement->execute();
+        
         $result = $statement->get_result();
         $material = $result->fetch_assoc();
     }
