@@ -7,8 +7,6 @@ $action = $_GET["action"];
 $material = [];
 $error_messages = [];
 
-$action = $_GET["action"];
-
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     if ((!empty($_POST["mname"]) && (strlen($_POST["mname"]) <= 255))
@@ -18,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         && (ctype_digit(@$_POST["mrqty"]) && ($_POST["mrqty"] >= 0))
         && (ctype_digit(@$_POST["mreorderqty"]) && ($_POST["mreorderqty"] >= 0)))
     {
+        $database->begin_transaction();
+
         if ($action === "edit")
         {
             $statement = $database->prepare("UPDATE `material` SET `mname` = ?, `munit` = ?, `mqty` = ?, `mrqty` = ?, `mreorderqty` = ? WHERE `mid` = ?");
@@ -34,13 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $statement->execute();
 
             $result = $statement->store_result();
-            if ($statement->affected_rows == 0)
-            {
-                http_response_code(500);
-                render_error_page("Internal Server Error", "The request failed due to unknown reason.");
-                exit;
-            }
-
             $mid = $statement->insert_id;
         }
 
@@ -48,17 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             if (!move_uploaded_file($_FILES["image"]["tmp_name"], sprintf($_SERVER["DOCUMENT_ROOT"] . "/assets/materials/%d.jpg", $mid)))
             {
+                $database->rollback();
+
                 http_response_code(500);
                 render_error_page("Upload Failed", "Failed to upload the image.");
                 exit;
             }
         }
-
+        
+        $database->commit();
         header("Location: /admin/materials.php", true, 307);
         exit;
     }
     else
     {
+        http_response_code(400);
+
         $material["mname"] = $_POST["mname"];
         $material["munit"] = $_POST["munit"];
         $material["mqty"] = $_POST["mqty"];
