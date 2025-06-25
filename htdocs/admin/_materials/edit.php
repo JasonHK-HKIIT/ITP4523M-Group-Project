@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($action === "edit")
         {
             $statement = $database->prepare("UPDATE `material` SET `mname` = ?, `munit` = ?, `mqty` = ?, `mrqty` = ?, `mreorderqty` = ? WHERE `mid` = ?");
-            $statement->bind_param("ssiii", $_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"]);
+            $statement->bind_param("ssiiii", $_POST["mname"], $_POST["munit"], $_POST["mqty"], $_POST["mrqty"], $_POST["mreorderqty"], $_POST["mid"]);
             $statement->execute();
 
             $result = $statement->store_result();
