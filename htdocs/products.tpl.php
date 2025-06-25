@@ -31,7 +31,7 @@
                                     </a>
                                 </p>
                                 <p class="control">
-                                    <input class="input" type="number" size="2" value="1" min="1">
+                                    <input class="input" type="number" size="2" value="1" min="1" max="<?= $product["pqty"] ?>">
                                 </p>
                             </div>
                             <div class="buttons ml-3">
