@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     catch (mysqli_sql_exception $ex)
     {
         http_response_code(500);
-        render_error_page("Execution Falied", "Failed to execute the request.");
+        render_error_page(sprintf("MySQL Error %d", $ex->getCode()), $ex->getMessage());
         exit;
     }
     
