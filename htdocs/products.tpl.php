@@ -31,15 +31,12 @@
                                     </a>
                                 </p>
                                 <p class="control">
-                                    <input class="input" type="number" size="2" value="1" min="1" max="<?= $product["pqty"] ?>">
+                                    <a class="button is-primary" href="/orders.php?action=new&id=<?= $product["pid"] ?>" title="Add to Cart" aria-label="Add to Cart">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </span>
+                                    </a>
                                 </p>
-                            </div>
-                            <div class="buttons ml-3">
-                                <button class="button is-primary is-outlined" title="Add to Cart" aria-label="Add to Cart">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-cart-plus"></i>
-                                    </span>
-                                </button>
                             </div>
                         </div>
                     </div>
