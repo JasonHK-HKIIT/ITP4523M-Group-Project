@@ -20,10 +20,10 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input<?= isset($error_messages["mname"]) ? " is-danger" : "" ?>" name="mname" placeholder="Name" value="<?= $material["mname"] ?? "" ?>" type="text" maxlength="255" required />
+                        <input id="name" class="input<?= isset($error_messages["mname"]) ? " is-danger" : "" ?>" name="mname" placeholder="Name" value="<?= htmlspecialchars($material["mname"]) ?? "" ?>" type="text" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["mname"])): ?>
-                        <p class="help is-danger"><?= $error_messages["mname"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["mname"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         </div>
                     </p>
                     <? if (isset($error_messages["image"])): ?>
-                        <p class="help is-danger"><?= $error_messages["image"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["image"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         <input id="unit" class="input<?= isset($error_messages["munit"]) ? " is-danger" : "" ?>" name="munit" placeholder="Unit" value="<?= @$material["munit"] ?>" type="text" maxlength="20" required />
                     </p>
                     <? if (isset($error_messages["munit"])): ?>
-                        <p class="help is-danger"><?= $error_messages["munit"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["munit"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         <input id="reserved-quantity" class="input<?= isset($error_messages["mqty"]) ? " is-danger" : "" ?>" name="mqty" value="<?= @$material["mqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                     <? if (isset($error_messages["mqty"])): ?>
-                        <p class="help is-danger"><?= $error_messages["mqty"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["mqty"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                         <input id="physical-quantity" class="input<?= isset($error_messages["mrqty"]) ? " is-danger" : "" ?>" name="mrqty" value="<?= @$material["mrqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                     <? if (isset($error_messages["mrqty"])): ?>
-                        <p class="help is-danger"><?= $error_messages["mrqty"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["mrqty"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                         <input id="reorder-level" class="input<?= isset($error_messages["mreorderqty"]) ? " is-danger" : "" ?>" name="mreorderqty" value="<?= @$material["mreorderqty"] ?: 0 ?>" type="number" inputmode="numeric" min="0" required />
                     </p>
                     <? if (isset($error_messages["mreorderqty"])): ?>
-                        <p class="help is-danger"><?= $error_messages["mreorderqty"] ?></p>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["mreorderqty"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
