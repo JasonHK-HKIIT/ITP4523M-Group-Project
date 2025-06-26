@@ -18,3 +18,6 @@ def convert_currencies(amount: str, currency: str, rate: str):
         return { "result": "rejected", "reason": "amount and rate must be a number" }, 400
     
     return { "result": "accepted", "converted_amount": float(amount) * float(rate) }
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8080, debug=True)

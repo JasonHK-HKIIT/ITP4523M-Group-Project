@@ -13,10 +13,13 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost/"]
     networks:
       - backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - 80:80
     environment:
-      IS_DOCKER: "true"
+      HOST_HOSTNAME: host.docker.internal
+      DB_HOSTNAME: database
     volumes:
       - ./htdocs:/var/www/html
   database:

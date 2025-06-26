@@ -1,6 +1,6 @@
 <?php
 
-$DB_HOSTNAME = isset($_ENV["IS_DOCKER"]) ? "database" : "127.0.0.1";
+$DB_HOSTNAME = $_ENV["DB_HOSTNAME"] ?? "127.0.0.1";
 $DB_USERNAME = "root";
 $DB_PASSWORD = "";
 $DB_DATABASE = "ProjectDB";
