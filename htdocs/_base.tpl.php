@@ -26,7 +26,7 @@
     <script src="/assets/navbar.js" defer async></script>
 </head>
 <body>
-<nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
+    <nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
                 <span class="icon-text">
@@ -48,7 +48,9 @@
                 <? if (is_client()): ?>
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/products.php">Products</a>
-                    <a class="navbar-item" href="/orders.php">Orders</a>
+                    <? if (is_logged_in()): ?>
+                        <a class="navbar-item" href="/orders.php">Orders</a>
+                    <? endif ?>
                 <? else: ?>
                     <a class="navbar-item" href="/admin/">Home</a>
                     <a class="navbar-item" href="/admin/orders.php">Orders</a>
@@ -60,8 +62,19 @@
 
             <div class="navbar-end">
                 <? if (is_client()): ?>
-                    <a class="navbar-item" href="/cart.php">Cart</a>
-                    <a class="navbar-item" href="/profile.php">Profile</a>
+                    <div class="navbar-item">
+                        <div class="select is-small">
+                            <select id="currency">
+                                <option value="USD">USD ($)</option>
+                                <option value="EUR">EUR (€)</option>
+                                <option value="HKD">HKD (HK$)</option>
+                                <option value="JPY">JPY (¥)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <? if (is_logged_in()): ?>
+                        <a class="navbar-item" href="/profile.php">Profile</a>
+                    <? endif ?>
                 <? endif ?>
                 <? if (is_logged_in()): ?>
                     <a class="navbar-item" href="/logout.php">Log Out</a>
