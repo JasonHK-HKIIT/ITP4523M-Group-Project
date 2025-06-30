@@ -2,6 +2,9 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
+const PNAME_LEN = 255;
+const PDESC_LEN = 65535;
+
 $action = $_GET["action"];
 
 $result = $database->query("SELECT `mid`, `mname`, `munit` FROM `material`");;
@@ -13,10 +16,11 @@ $error_messages = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    if ((!empty($_POST["pname"]) && (mb_strlen($_POST["pname"]) <= 255))
-        && (empty($_POST["pdesc"]) || (mb_strlen($_POST["pdesc"]) <= 65535))
-        && (is_numeric(@$_POST["pcost"]) && ($_POST["pcost"] >= 0))
-        && ((is_array($_POST["mid"]) && is_array($_POST["pmqty"])) && is_balanced($_POST["mid"], $_POST["pmqty"]) && is_materials($_POST["mid"]) && is_quantities($_POST["pmqty"])))
+    if ((!empty($_POST["pname"]) && (mb_strlen($_POST["pname"]) <= PNAME_LEN))
+        && (empty($_POST["pdesc"]) || (mb_strlen($_POST["pdesc"]) <= PDESC_LEN))
+        && (is_numeric(@$_POST["pcost"]) && ($_POST["pcost"] >= 0.01))
+        && ((($action === "edit") && empty($_FILES["image"]["tmp_name"])) || (!empty($_FILES["image"]["tmp_name"]) && is_jpeg($_FILES["image"]["tmp_name"])))
+        && ((is_array(@$_POST["mid"]) && is_array(@$_POST["pmqty"])) && is_balanced($_POST["mid"], $_POST["pmqty"]) && is_materials($_POST["mid"]) && is_quantities($_POST["pmqty"])))
     {
         $database->begin_transaction();
 
@@ -43,12 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $statement->bind_param("i", $pid);
         $statement->execute();
 
-        $mid = $_POST["mid"];
-        $pmqty = $_POST["pmqty"];
-        for ($i = 0; $i < count($mid); $i++)
+        $materials = to_materials($_POST["mid"], $_POST["pmqty"]);
+        foreach ($materials as $material)
         {
             $statement = $database->prepare("INSERT INTO `prodmat` (`pid`, `mid`, `pmqty`) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE `pmqty` = ?");
-            $statement->bind_param("iiii", $pid, $mid[$i], $pmqty[$i], $pmqty[$i]);
+            $statement->bind_param("iiii", $pid, $material["mid"], $material["pmqty"], $material["pmqty"]);
             $statement->execute();
         }
 
@@ -70,7 +73,65 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
     else
     {
-        echo "FALSE";
+        http_response_code(400);
+
+        $product["pname"] = $_POST["pname"];
+        $product["pdesc"] = $_POST["pdesc"];
+        $product["pcost"] = $_POST["pcost"];
+
+        if (empty($_POST["pname"]))
+        {
+            $error_messages["pname"] = "This field is required";
+        }
+        else if (strlen($_POST["pname"]) > PNAME_LEN)
+        {
+            $error_messages["pname"] = "This field is too long";
+        }
+
+        if (!empty($_POST["pdesc"]) && (strlen($_POST["pdesc"]) > PDESC_LEN))
+        {
+            $error_messages["pdesc"] = "This field is too long";
+        }
+
+        if (empty($_POST["pcost"]) && ($_POST["pcost"] != 0))
+        {
+            $error_messages["pcost"] = "This field is required";
+        }
+        else if (!is_numeric($_POST["pcost"]))
+        {
+            $error_messages["pcost"] = "This field must be a number";
+        }
+        else if ($_POST["pcost"] <= 0)
+        {
+            $error_messages["pcost"] = "This field must be > 0";
+        }
+
+        if (($action !== "edit") && empty($_FILES["image"]["tmp_name"]))
+        {
+            $error_messages["image"] = "This field is required";
+        }
+        else if (!empty($_FILES["image"]) && !is_jpeg($_FILES["image"]["tmp_name"]))
+        {
+            $error_messages["image"] = "This field must be a JPEG image";
+        }
+
+        if (!(is_array(@$_POST["mid"]) && is_array(@$_POST["pmqty"])))
+        {
+            $error_messages["materials"] = "This field is required";
+        }
+        else if (!is_balanced($_POST["mid"], $_POST["pmqty"]) || !is_materials($_POST["mid"]))
+        {
+            $error_messages["materials"] = "Malformed materials list";
+        }
+        else if (!is_quantities($_POST["pmqty"]))
+        {
+            $error_messages["materials"] = "Quantities must be > 0";
+            $materials = to_materials($_POST["mid"], $_POST["pmqty"]);
+        }
+        else
+        {
+            $materials = to_materials($_POST["mid"], $_POST["pmqty"]);
+        }
     }
 }
 
@@ -101,7 +162,7 @@ if ($action === "edit")
 render_page(
     "/admin/_products/edit.tpl.php", 
     (($action === "edit") ? "Edit" : "New") . " Product", 
-    compact("action", "select_materials", "product", "materials"));
+    compact("action", "select_materials", "product", "materials", "error_messages"));
 
 function is_materials(array $mid): bool
 {
