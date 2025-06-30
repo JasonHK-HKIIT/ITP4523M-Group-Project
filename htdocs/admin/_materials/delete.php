@@ -2,8 +2,11 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
+$mid = $_POST["mid"] ?? $_GET["id"];
 $statement = $database->prepare("SELECT `mid`, `mname` FROM `material` WHERE `mid` = ?");
-$statement->execute([$_POST["mid"] ?? $_GET["id"]]);
+$statement->bind_param("i", $mid);
+$statement->execute();
+
 $result = $statement->get_result();
 if ($result->num_rows == 0)
 {
@@ -14,7 +17,9 @@ if ($result->num_rows == 0)
 $material = $result->fetch_assoc();
 
 $statement = $database->prepare("SELECT `pid` FROM `prodmat` WHERE `mid` = ?");
-$statement->execute([$_GET["id"]]);
+$statement->bind_param("i", $mid);
+$statement->execute();
+
 $result = $statement->get_result();
 if ($result->num_rows > 0)
 {
@@ -32,24 +37,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit;
     }
 
-    $statement = $database->prepare("DELETE FROM `material` WHERE `mid` = ?");
     try
     {
+        $statement = $database->prepare("DELETE FROM `material` WHERE `mid` = ?");
         $statement->bind_param("i", $_POST["mid"]);
         $statement->execute();
+    
+        $statement->store_result();
+        if ($statement->affected_rows == 0)
+        {
+            http_response_code(500);
+            render_error_page("Material Not Deleted", "The request failed due to unknown reason.");
+            exit;
+        }
     }
     catch (mysqli_sql_exception $ex)
     {
         http_response_code(500);
         render_error_page(sprintf("MySQL Error %d", $ex->getCode()), $ex->getMessage());
-        exit;
-    }
-    
-    $statement->store_result();
-    if ($statement->affected_rows == 0)
-    {
-        http_response_code(500);
-        render_error_page("Material Not Deleted", "The request failed due to unknown reason.");
         exit;
     }
 

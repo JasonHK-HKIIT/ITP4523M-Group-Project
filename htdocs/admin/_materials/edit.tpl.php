@@ -20,7 +20,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <input id="name" class="input<?= isset($error_messages["mname"]) ? " is-danger" : "" ?>" name="mname" placeholder="Name" value="<?= htmlspecialchars($material["mname"]) ?? "" ?>" type="text" maxlength="255" required />
+                        <input id="name" class="input<?= isset($error_messages["mname"]) ? " is-danger" : "" ?>" name="mname" placeholder="Name" value="<?= isset($material["mname"]) ? htmlspecialchars($material["mname"]) : "" ?>" type="text" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["mname"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["mname"]) ?></p>
