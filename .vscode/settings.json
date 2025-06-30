@@ -1,4 +1,4 @@
 {
     "php.validate.executablePath": "./php",
-    "php.version": "8.4"
+    "php.version": "8.0"
 }
