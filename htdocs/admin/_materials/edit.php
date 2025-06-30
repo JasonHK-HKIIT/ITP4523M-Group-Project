@@ -2,6 +2,9 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
+const MNAME_LEN = 255;
+const MUNIT_LEN = 20;
+
 $action = $_GET["action"];
 
 $material = [];
@@ -9,9 +12,9 @@ $error_messages = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    if ((!empty($_POST["mname"]) && (strlen($_POST["mname"]) <= 255))
+    if ((!empty($_POST["mname"]) && (strlen($_POST["mname"]) <= MNAME_LEN))
         && ((($action === "edit") && empty($_FILES["image"]["tmp_name"])) || (!empty($_FILES["image"]["tmp_name"]) && is_jpeg($_FILES["image"]["tmp_name"])))
-        && (!empty($_POST["munit"]) && (strlen($_POST["munit"]) <= 20))
+        && (!empty($_POST["munit"]) && (strlen($_POST["munit"]) <= MUNIT_LEN))
         && (ctype_digit(@$_POST["mqty"]) && ($_POST["mqty"] >= 0))
         && (ctype_digit(@$_POST["mrqty"]) && ($_POST["mrqty"] >= 0))
         && (ctype_digit(@$_POST["mreorderqty"]) && ($_POST["mreorderqty"] >= 0)))
@@ -67,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $error_messages["mname"] = "This field is required";
         }
-        else if (strlen($_POST["mname"]) > 255)
+        else if (mb_strlen($_POST["mname"]) > MNAME_LEN)
         {
             $error_messages["mname"] = "This field is too long";
         }
@@ -85,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $error_messages["munit"] = "This field is required";
         }
-        else if (strlen($_POST["munit"]) > 20)
+        else if (mb_strlen($_POST["munit"]) > MUNIT_LEN)
         {
             $error_messages["munit"] = "This field is too long";
         }
