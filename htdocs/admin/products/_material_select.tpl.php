@@ -2,7 +2,7 @@
     <div class="list-item-image">
         <figure class="image is-material is-64x64">
             <? if (!empty($material)): ?>
-                <img class="material-image" src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= $material["mname"] ?>" />
+                <img class="material-image" src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= htmlspecialchars($material["mname"]) ?>" />
             <? else: ?>
                 <img class="material-image" src="/assets/placeholder.jpg" alt="Select Material" />
             <? endif ?>
@@ -14,7 +14,7 @@
                 <select name="mid[]" required>
                     <option data-image="/assets/placeholder.jpg" data-unit="&ZeroWidthSpace;">Select Material</option>
                     <? foreach ($select_materials as $select_material): ?>
-                        <option value="<?= $select_material["mid"] ?>"<?= (!empty($material) && ($select_material["mid"] === $material["mid"])) ? " selected" : "" ?> data-image="/assets/materials/<?= $select_material["mid"] ?>.jpg" data-unit="<?= $select_material["munit"] ?>"><?= $select_material["mname"] ?></option>
+                        <option value="<?= $select_material["mid"] ?>"<?= (!empty($material) && ($select_material["mid"] == $material["mid"])) ? " selected" : "" ?> data-image="/assets/materials/<?= $select_material["mid"] ?>.jpg" data-unit="<?= htmlspecialchars($select_material["munit"]) ?>"><?= htmlspecialchars($select_material["mname"]) ?></option>
                     <? endforeach ?>
                 </select>
             </div>
@@ -29,7 +29,7 @@
                 <p class="control">
                     <a class="material-unit button is-static">
                         <? if (!empty($material)): ?>
-                            <?= $material["munit"] ?>
+                            <?= htmlspecialchars($material["munit"]) ?>
                         <? else: ?>
                             &ZeroWidthSpace;
                         <? endif ?>

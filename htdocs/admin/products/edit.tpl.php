@@ -33,7 +33,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="description" class="textarea" name="pdesc" placeholder="Description" rows="5" required><?= $product["pdesc"] ?? "" ?></textarea>
+                        <textarea id="description" class="textarea" name="pdesc" placeholder="Description" rows="5"><?= $product["pdesc"] ?? "" ?></textarea>
                     </p>
                 </div>
             </div>
