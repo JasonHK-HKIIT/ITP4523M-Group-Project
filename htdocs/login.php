@@ -1,4 +1,8 @@
 <?php
+// Entrypoint: /login.php
+//
+// Handle user login. The was shared by both customers and staff members. User will be redirected to its default
+// landing page unless ?return=/path/to/page param was set.
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
@@ -9,6 +13,7 @@ $error_messages = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
+    // Input validations
     if (!empty($_POST["uid"]) && !empty($_POST["password"]))
     {
         if ($_POST["user_type"] === USER_STAFF)
@@ -18,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $statement->execute();
 
             $result = $statement->get_result();
-            if ($result->num_rows === 1)
+            if ($result->num_rows == 1)
             {
                 $user = $result->fetch_assoc();
                 $_SESSION["user_type"] = USER_STAFF;
@@ -38,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $statement->execute();
 
             $result = $statement->get_result();
-            if ($result->num_rows === 1)
+            if ($result->num_rows == 1)
             {
                 $user = $result->fetch_assoc();
                 $_SESSION["user_type"] = USER_CLIENT;
@@ -56,10 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
     else
     {
+        // Error messages generation
+
         if (empty($_POST["uid"]))
         {
             $error_messages["uid"] = "This field is required";
         }
+        
         if (empty($_POST["password"]))
         {
             $error_messages["password"] = "This field is required";
