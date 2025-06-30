@@ -99,7 +99,7 @@ if ($action === "edit")
 }
 
 render_page(
-    "/admin/products/edit.tpl.php", 
+    "/admin/_products/edit.tpl.php", 
     (($action === "edit") ? "Edit" : "New") . " Product", 
     compact("action", "select_materials", "product", "materials"));
 

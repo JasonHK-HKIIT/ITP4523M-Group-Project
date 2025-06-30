@@ -15,4 +15,4 @@ if ($result->num_rows == 0)
 }
 
 $product = $result->fetch_assoc();
-render_page("/admin/products/delete.tpl.php", "Delete Product", compact("product"), "warning");
+render_page("/admin/_products/delete.tpl.php", "Delete Product", compact("product"), "warning");
