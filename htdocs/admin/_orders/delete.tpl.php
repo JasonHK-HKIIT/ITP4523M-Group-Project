@@ -6,7 +6,7 @@
                 Delete Order
             </h1>
             <p class="subtitle">
-                Are you sure to delete the order #<?= $order["id"] ?>?
+                Are you sure to delete the order №<?= $order["id"] ?>?
                 <div class="buttons is-centered">
                     <button class="button is-danger is-dark" type="submit">
                         <span class="icon">
