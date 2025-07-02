@@ -23,18 +23,39 @@
                     <tr>
                         <th data-sortable="false">#</th>
                         <th>
-                            Date
-                            <span class="icon is-small is-pulled-right">
-                                <i class="fa-solid fa-sort"></i>
-                            </span>
+                            <div class="is-flex is-flex-direction-row is-align-items-center">
+                                <span class="is-flex-grow-1">Date</span>
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-sort"></i>
+                                </span>
+                            </div>
                         </th>
                         <th>
-                            Product
+                            <div class="is-flex is-flex-direction-row is-align-items-center">
+                                <span class="is-flex-grow-1">Product</span>
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-sort"></i>
+                                </span>
+                            </div>
                         </th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Delivery Date</th>
+                        <th data-sortable="false">Quantity</th>
+                        <th data-sortable="false">Total</th>
+                        <th>
+                            <div class="is-flex is-flex-direction-row is-align-items-center">
+                                <span class="is-flex-grow-1">Status</span>
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-sort"></i>
+                                </span>
+                            </div>
+                        </th>
+                        <th style="min-width: 16ch;">
+                            <div class="is-flex is-flex-direction-row is-align-items-center">
+                                <span class="is-flex-grow-1">Delivery Date</span>
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-sort"></i>
+                                </span>
+                            </div>
+                        </th>
                         <th data-sortable="false" style="min-width: 6.75rem;">Actions</th>
                     </tr>
                 </thead>
@@ -45,7 +66,7 @@
                             <td data-value="<?= strtotime($order["odate"]) ?>"><?= render_date($order["odate"]) ?></td>
                             <td><?= htmlspecialchars($order["pname"]) ?></td>
                             <td><?= $order["oqty"] ?></td>
-                            <td data-value="<?= doubleval($order["ocost"]) ?>"><?= sprintf("\$%.2f", doubleval($order["ocost"])) ?></td>
+                            <td data-ocost="<?= $order["ocost"] ?>"><?= sprintf("\$%.2f", $order["ocost"]) ?></td>
                             <td data-value="<?= $order["ostatus"] ?>"><?= render_order_status($order["ostatus"]) ?></td>
                             <? if (!empty($order["odeliverdate"])) : ?>
                                 <td data-value="<?= strtotime($order["odeliverdate"]) ?>"><?= render_date($order["odeliverdate"]) ?></td>

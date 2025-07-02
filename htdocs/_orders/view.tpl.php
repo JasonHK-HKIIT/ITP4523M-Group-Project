@@ -88,9 +88,7 @@
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
-                    <p>
-                        <?= render_date($order["odeliverdate"]) ?>
-                    </p>
+                    <p><?= !empty($order["odeliverdate"]) ? render_date($order["odeliverdate"]) : "" ?></p>
                 </div>
             </div>
         </div>
