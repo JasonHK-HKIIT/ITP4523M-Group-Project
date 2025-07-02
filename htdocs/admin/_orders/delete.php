@@ -1,9 +1,17 @@
 <?php
 
-$order = ["id" => 1];
+$oid = $_POST["oid"] ?? $_GET["id"];
+$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `oid` = ?");
+$statement->bind_param("i", $oid);
+$statement->execute();
 
-$navbar_theme = "warning";
+$result = $statement->get_result();
+if ($result->num_rows == 0)
+{
+    http_response_code(404);
+    render_error_page("Order Not Found", "The requested order does not exist.");
+    exit;
+}
+$order = $result->fetch_assoc();
 
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_orders/delete.tpl.php";
-$page_title = "Delete Order";
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+render_page("/admin/_orders/delete.tpl.php", "Delete Order", compact("order"), "warning");

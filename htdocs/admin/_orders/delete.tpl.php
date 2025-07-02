@@ -14,7 +14,7 @@
                         </span>
                         <span>Delete</span>
                     </button>
-                    <button class="button is-dark is-cancel">
+                    <button class="button is-dark is-cancel" type="button">
                         <span class="icon is-small">
                             <i class="fa-solid fa-xmark"></i>
                         </span>
