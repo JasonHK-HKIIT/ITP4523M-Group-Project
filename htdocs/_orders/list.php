@@ -9,26 +9,4 @@ $statement->execute();
 $result = $statement->get_result();
 $orders = $result->fetch_all(MYSQLI_ASSOC);
 
-function render_date(string $time_string): string
-{
-    return date("Y-m-d", strtotime($time_string));
-}
-
-function render_order_status(int $status): string
-{
-    return match ($status)
-    {
-        0 => "Rejected",
-        1 => "Open",
-        2 => "Processing",
-        3 => "Approved",
-        4 => "Pending Delivery",
-        5 => "Completed",
-    };
-}
-
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/orders/list.tpl.php";
-$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/_navbar.tpl.php";
-$page_title = "Orders";
-
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+render_page("/_orders/list.tpl.php", "Orders", compact("orders"));

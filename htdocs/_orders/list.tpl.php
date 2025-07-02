@@ -31,6 +31,7 @@
                         <th>
                             Product
                         </th>
+                        <th>Quantity</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Delivery Date</th>
@@ -42,7 +43,8 @@
                         <tr>
                             <th><?= $order["oid"] ?></th>
                             <td data-value="<?= strtotime($order["odate"]) ?>"><?= render_date($order["odate"]) ?></td>
-                            <td><?= $order["pname"] ?></td>
+                            <td><?= htmlspecialchars($order["pname"]) ?></td>
+                            <td><?= $order["oqty"] ?></td>
                             <td data-value="<?= doubleval($order["ocost"]) ?>"><?= sprintf("\$%.2f", doubleval($order["ocost"])) ?></td>
                             <td data-value="<?= $order["ostatus"] ?>"><?= render_order_status($order["ostatus"]) ?></td>
                             <? if (!empty($order["odeliverdate"])) : ?>
