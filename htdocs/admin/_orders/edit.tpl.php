@@ -7,33 +7,51 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="/admin/materials/new" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="container is-max-desktop" action="<?= $_SERVER["REQUEST_URI"] ?>" method="post" enctype="application/x-www-form-urlencoded">
 
         <div class="field is-horizontal">
             <div class="field-label">
-                <label for="order-date" class="label">Date</label>
+                <label class="label">Date</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control"><?= $order["odate"] ?></p>
+                <div class="field">
+                    <p><?= $order["odate"] ?></p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="order-status" class="label">Order Status</label>
+                <label for="status" class="label">Status</label>
             </div>
             <div class="field-body">
                 <div class="field">
                     <div class="select">
-                        <select id="order-status" name="order_status">
-                            <option value="0"<?= $order["ostatus"] == 0 ? " selected" : "" ?>>Rejected</option>
-                            <option value="1"<?= $order["ostatus"] == 1 ? " selected" : "" ?>>Open</option>
-                            <option value="2"<?= $order["ostatus"] == 2 ? " selected" : "" ?>>Accepted</option>
-                            <option value="3"<?= $order["ostatus"] == 3 ? " selected" : "" ?>>Processing</option>
-                            <option value="4"<?= $order["ostatus"] == 4 ? " selected" : "" ?>>Pending Delivery</option>
-                            <option value="5"<?= $order["ostatus"] == 5 ? " selected" : "" ?>>Completed</option>
+                        <select id="status" name="ostatus">
+                            <option value="0"
+                                <? if ($order["ostatus"] == ORDER_STATUS_REJECTED): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_OPEN): ?>disabled<? endif ?>
+                            >Rejected</option>
+                            <option value="1"
+                                <? if ($order["ostatus"] == ORDER_STATUS_OPEN): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_OPEN): ?>disabled<? endif ?>
+                            >Open</option>
+                            <option value="2"
+                                <? if ($order["ostatus"] == ORDER_STATUS_ACCEPTED): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_ACCEPTED): ?>disabled<? endif ?>
+                            >Accepted</option>
+                            <option value="3"
+                                <? if ($order["ostatus"] == ORDER_STATUS_PROCESSING): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_PROCESSING): ?>disabled<? endif ?>
+                            >Processing</option>
+                            <option value="4"
+                                <? if ($order["ostatus"] == ORDER_STATUS_PENDING_DELIVERY): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_PENDING_DELIVERY): ?>disabled<? endif ?>
+                            >Pending Delivery</option>
+                            <option value="5"
+                                <? if ($order["ostatus"] == ORDER_STATUS_COMPLETED): ?>selected<? endif ?>
+                                <? if ($order["ostatus"] > ORDER_STATUS_COMPLETED): ?>disabled<? endif ?>
+                            >Completed</option>
                         </select>
                     </div>
                 </div>
@@ -42,36 +60,38 @@
 
         <div class="field is-horizontal">
             <div class="field-label">
-                <label for="client-name" class="label">Client Name</label>
+                <label class="label">Client Name</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control"><?= htmlspecialchars($order["cname"]) ?></p>
+                <div class="field">
+                    <p><?= htmlspecialchars($order["cname"]) ?></p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
             <div class="field-label">
-                <label for="client-telephone" class="label">Client Telephone</label>
+                <label class="label">Client Telephone</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control"><?= $order["ctel"] ?></p>
+                <div class="field">
+                    <p><?= $order["ctel"] ?></p>
                 </div>
             </div>
         </div>
         
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
+            <div class="field-label is-flex is-flex-direction-column is-justify-content-center">
                 <label class="label">Product</label>
             </div>
             <div class="field-body">
-                <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
-                    <figure class="image is-96x96">
-                        <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
-                    </figure>
-                    <p style="margin-inline-start: 1em;"><?= htmlspecialchars($order["pname"]) ?></p>
+                <div class="field">
+                    <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
+                        <figure class="image is-96x96">
+                            <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
+                        </figure>
+                        <p class="ml-4"><?= htmlspecialchars($order["pname"]) ?></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,9 +101,9 @@
                 <label for="quantity" class="label">Quantity</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow has-addons">
+                <div class="field is-narrow">
                     <p class="control">
-                        <input id="quantity" class="input"  name="oqty" value="<?= $order["oqty"] ?>" type="number" size="4" onchange="updatePrice(<?= $order["pcost"] ?>, this.valueAsNumber, 'price');" />
+                        <input id="quantity" class="input<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " is-static" : "" ?>" name="oqty" value="<?= $order["oqty"] ?>"<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " readonly" : "" ?> type="number" size="4" min="<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? $order["oqty"] : 1 ?>" max="<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? $order["oqty"] : $max_quantity ?>" />
                     </p>
                 </div>
             </div>
@@ -91,11 +111,11 @@
         
         <div class="field is-horizontal">
             <div class="field-label">
-                <label class="label">Price</label>
+                <label class="label">Total Amount</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow has-addons">
-                    <p id="price" class="control" data-unit-price="<?= $order["pcost"] ?>">
+                <div class="field">
+                    <p id="total-amount" data-unit-price="<?= $order["pcost"] ?>">
                         <?= sprintf("\$%.2f", $order["ocost"]) ?>
                     </p>
                 </div>
@@ -107,27 +127,46 @@
                 <label class="label">Materials</label>
             </div>
             <div class="field-body">
-                <div class="is-flex is-flex-direction-column is-flex-grow-1">
-                    <div id="materials" class="list has-visible-pointer-controls">
-                        <? foreach ($materials as $material): ?>
-                            <div class="list-item">
-                                <div class="list-item-content">
-                                    <p><?= htmlspecialchars($material["mname"]) ?></p>
-                                </div>
-                                <div class="list-item-controls">
-                                    <div class="is-flex is-align-items-center">
-                                        <div class="field has-addons mb-0">
-                                            <p class="control">
-                                                <input class="input" value="<?= $material["pmqty"] ?? 1 ?>" size="2" readonly>
-                                            </p>
-                                            <p class="control">
-                                                <a class="material-unit button is-static"><?= $material["munit"] ?></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <? endforeach ?>
+                <div class="field">
+                    <div class="is-flex is-flex-direction-column is-flex-grow-1">
+                        <div class="table-container">
+                            <table class="table is-striped is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>Material</th>
+                                        <th>Quantity Used</th>
+                                        <th>Physical Quantity</th>
+                                        <th>Available Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <? foreach ($materials as $material): ?>
+                                        <tr>
+                                            <td>
+                                                <?= htmlspecialchars($material["mname"]) ?>
+                                                <? if ($material["mqty"] < $material["mreorderqty"]): ?>
+                                                    <div class="notification is-warning mt-1 px-3 py-2">
+                                                        Warning: Low on Stock
+                                                    </div>
+                                                <? endif ?>
+                                            </td>
+                                            <td class="material-quantity" data-pmqty="<?= $material["pmqty"] ?>" data-munit="<?= htmlspecialchars($material["munit"]) ?>">
+                                                <?= $material["omqty"] ?>
+                                                <?= htmlspecialchars($material["munit"]) ?>
+                                            </td>
+                                            <td>
+                                                <?= $material["mqty"] ?>
+                                                <?= htmlspecialchars($material["munit"]) ?>
+                                            </td>
+                                            <td>
+                                                <?= $material["mqty"] - $material["mrqty"] ?>
+                                                <?= htmlspecialchars($material["munit"]) ?>
+                                            </td>
+                                        </tr>
+                                    <? endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,7 +179,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="delivery-date" class="input" name="delivery_date" type="date" value="2025-05-05" />
+                        <input id="delivery-date" class="input" name="odeliverdate" type="datetime-local" value="<?= $order["odeliverdate"] ?>" />
                     </p>
                 </div>
             </div>
@@ -148,12 +187,12 @@
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="delivery-address" class="label">Delivery Address</label>
+                <label class="label">Delivery Address</label>
             </div>
             <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <textarea id="delivery-address" class="textarea" rows="3" readonly><?= htmlspecialchars($order["caddr"]) ?></textarea>
+                <div class="field is-expended">
+                    <p class="control">
+                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?= htmlspecialchars($order["caddr"]) ?></textarea>
                     </p>
                 </div>
             </div>
@@ -187,10 +226,19 @@
 </main>
 
 <script>
-    function updatePrice(unitPrice, quantity, target)
+    document.getElementById("quantity").addEventListener("change", function(event)
     {
-        document.getElementById(target).innerText = `\$${(unitPrice * quantity).toFixed(2)}`;
-    }
+        const quantity = this.valueAsNumber;
+
+        const totalAmountField = document.getElementById("total-amount");
+        totalAmountField.innerText = `\$${(Number.parseFloat(totalAmountField.dataset.unitPrice) * quantity).toFixed(2)}`;
+
+        const materialFields = document.getElementsByClassName("material-quantity");
+        for (const field of materialFields)
+        {
+            field.innerText = `${Number.parseFloat(field.dataset.pmqty) * quantity} ${field.dataset.munit}`;
+        }
+    });
 </script>
 
 <script src="/assets/forms.js" defer async></script>
