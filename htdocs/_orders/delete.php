@@ -1,10 +1,19 @@
 <?php
 
-$order = ["id" => 1];
+require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
-$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/_navbar.tpl.php";
-$navbar_theme = "warning";
+$oid = $_POST["oid"] ?? $_GET["id"];
+$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `cid` = ? AND `oid` = ?");
+$statement->bind_param("ii", $_SESSION["user_id"], $oid);
+$statement->execute();
 
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/admin/orders/delete.tpl.php";
-$page_title = "Delete Order";
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+$result = $statement->get_result();
+if ($result->num_rows == 0)
+{
+    http_response_code(404);
+    render_error_page("Order Not Found", "The requested order does not exist.");
+    exit;
+}
+$order = $result->fetch_assoc();
+
+render_page("/_orders/delete.tpl.php", "Delete Order", compact("order"), "warning");

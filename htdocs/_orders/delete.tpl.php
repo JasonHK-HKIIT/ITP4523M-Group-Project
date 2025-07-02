@@ -1,12 +1,14 @@
 <main class="hero is-warning is-fullheight-with-navbar">
     <div class="hero-body">
-        <form class="container is-max-desktop has-text-centered" action="/admin/orders.php?action=delete" method="post" type="application/x-www-form-urlencoded">
-            <input type="hidden" name="id" value="<?= $order["id"] ?>" />
+        <form class="container is-max-desktop has-text-centered" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" type="application/x-www-form-urlencoded">
+
+            <input name="id" type="hidden" value="<?= $order["oid"] ?>" />
+
             <h1 class="title">
                 Delete Order
             </h1>
             <p class="subtitle">
-                Are you sure to delete the order #<?= $order["id"] ?>?
+                Are you sure to delete the order №<?= $order["oid"] ?>?
                 <div class="buttons is-centered">
                     <button class="button is-danger is-dark" type="submit">
                         <span class="icon">
@@ -14,13 +16,14 @@
                         </span>
                         <span>Delete</span>
                     </button>
-                    <button class="button is-dark is-cancel">
+                    <button class="button is-dark is-cancel" type="button">
                         <span class="icon is-small">
                             <i class="fa-solid fa-xmark"></i>
                         </span>
                         <span>Cancel</span>
                     </button>
                 </div>
+
             </p>
         </form>
     </div>

@@ -7,133 +7,102 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="/admin/materials/new" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="container is-max-desktop">
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="order-date" class="label">Date</label>
+            <div class="field-label">
+                <label class="label">Date</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="order-date" class="input is-static" type="date" value="2025-05-05" readonly />
-                    </p>
+                <div class="field">
+                    <p><?= $order["odate"] ?></p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="order-status" class="label">Order Status</label>
+            <div class="field-label">
+                <label for="status" class="label">Status</label>
             </div>
             <div class="field-body">
-            <div class="field is-narrow">
-                    <p class="control">
-                        <input id="order-date" class="input is-static" type="text" value="Open" readonly />
-                    </p>
+                <div class="field">
+                    <p><?= render_order_status($order["ostatus"]) ?></p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="client-name" class="label">Client Name</label>
+            <div class="field-label">
+                <label class="label">Client Telephone</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="client-name" class="input is-static" type="text" value="Client Name" readonly />
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="client-telephone" class="label">Client Telephone</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="client-telephone" name="client_telephone" class="input is-static" type="tel" />
-                    </p>
+                <div class="field">
+                    <p><?= $order["ctel"] ?></p>
                 </div>
             </div>
         </div>
         
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Products</label>
+            <div class="field-label is-flex is-flex-direction-column is-justify-content-center">
+                <label class="label">Product</label>
             </div>
             <div class="field-body">
-                <div class="is-flex is-flex-direction-column is-flex-grow-1">
-                    <div id="products" class="list has-visible-pointer-controls">
-                        <? foreach ($products as $product): ?>
-                            <div class="list-item">
-                                <div class="list-item-image">
-                                    <figure class="image is-96x96">
-                                        <img src="/assets/products/<?= $product["id"] ?>.jpg" alt="<?= $product["name"] ?>">
-                                    </figure>
-                                </div>
-                                <div class="list-item-content">
-                                    <div class="list-item-title"><?= $product["name"] ?></div>
-                                </div>
-                                <div class="list-item-controls">
-                                    <div class="is-flex is-align-items-center">
-                                        <div class="field has-addons mb-0">
-                                            <p class="control">
-                                                <input class="input" type="number" size="4" value="<?= $product["quantity"] ?>" readonly />
-                                            </p>
-                                            <p class="control">
-                                                <a class="button is-static"><?= sprintf("\$%.2F", $product["unit_proce"] * $product["quantity"]) ?></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <? endforeach ?>
+                <div class="field">
+                    <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
+                        <figure class="image is-96x96">
+                            <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
+                        </figure>
+                        <p class="ml-4"><?= htmlspecialchars($order["pname"]) ?></p>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="total-price" class="label">Total Price</label>
+            <div class="field-label">
+                <label for="quantity" class="label">Quantity</label>
             </div>
             <div class="field-body">
-                <div class="field is-narrow has-addons">
-                    <p class="control">
-                        <a class="button is-static">US$</a>
-                    </p>
-                    <p class="control">
-                        <input id="total-price" class="input is-static" name="unit_cost" type="number" readonly />
+                <div class="field is-narrow">
+                    <p><?= $order["oqty"] ?></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Total Amount</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p id="total-amount" data-ocost="<?= $order["ocost"] ?>">
+                        <?= sprintf("\$%.2f", $order["ocost"]) ?>
                     </p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
+            <div class="field-label">
                 <label for="delivery-date" class="label">Delivery Date</label>
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
-                    <p class="control">
-                        <input id="delivery-date" class="input is-static" type="date" value="2025-05-05" readonly />
+                    <p>
+                        <?= render_date($order["odeliverdate"]) ?>
                     </p>
                 </div>
             </div>
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="delivery-address" class="label">Delivery Address</label>
+            <div class="field-label">
+                <label class="label">Delivery Address</label>
             </div>
             <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <textarea id="delivery-address" name="delivery_address" class="textarea" rows="3" required></textarea>
+                <div class="field is-expended">
+                    <p class="control">
+                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?= htmlspecialchars($order["caddr"]) ?></textarea>
                     </p>
                 </div>
             </div>
@@ -142,20 +111,20 @@
         <div class="field is-horizontal">
             <div class="field-label"></div>
             <div class="field-body">
-                <div class="field">
+                <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-light is-cancel">
+                        <button class="button is-info is-cancel">
                             <span class="icon is-small">
-                                <i class="fa-solid fa-xmark"></i>
+                                <i class="fa-solid fa-arrow-left"></i>
                             </span>
-                            <span>Close</span>
+                            <span>Back</span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-    </form>
+    </div>
 </main>
 
 <script src="/assets/forms.js" defer async></script>

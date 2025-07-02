@@ -1,15 +1,19 @@
 <?php
 
-$action = $_GET["action"];
+require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
-$products = [
-    ["id" => 1, "name" => "Toy Car", "unit_proce" => 50, "quantity" => 10],
-    ["id" => 1, "name" => "Toy Car", "unit_proce" => 50, "quantity" => 10],
-    ["id" => 1, "name" => "Toy Car", "unit_proce" => 50, "quantity" => 10],
-];
+$oid = $_POST["oid"] ?? $_GET["id"];
+$statement = $database->prepare("SELECT `oid`, `odate`, `ostatus`, `cname`, `ctel`, `caddr`, `orders`.`pid`, `pname`, `oqty`, `ocost`, `odeliverdate` FROM `orders` LEFT JOIN `product` ON `orders`.`pid` = `product`.`pid` LEFT JOIN `customer` ON `orders`.`cid` = `customer`.`cid` WHERE `orders`.`cid` = ? AND `orders`.`oid` = ?");
+$statement->bind_param("ii", $_SESSION["user_id"], $oid);
+$statement->execute();
 
-$tpl = $_SERVER["DOCUMENT_ROOT"] . "/orders/view.tpl.php";
-$navbar_menu_tpl = $_SERVER["DOCUMENT_ROOT"] . "/_navbar.tpl.php";
-$page_title = "View Order";
+$result = $statement->get_result();
+if ($result->num_rows == 0)
+{
+    http_response_code(404);
+    render_error_page("Order Not Found", "The requested order does not exist.");
+    exit;
+}
+$order = $result->fetch_assoc();
 
-require_once($_SERVER["DOCUMENT_ROOT"] . "/_base.tpl.php");
+render_page("/_orders/view.tpl.php", "View Order", compact("order"));
