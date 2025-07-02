@@ -31,7 +31,7 @@
                                     </a>
                                 </p>
                                 <p class="control">
-                                    <a class="button is-primary" href="/orders.php?action=new&id=<?= $product["pid"] ?>" title="Add to Cart" aria-label="Add to Cart">
+                                    <a class="button is-primary" href="/orders.php?action=new&pid=<?= $product["pid"] ?>" title="Add to Cart" aria-label="Add to Cart">
                                         <span class="icon">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </span>
