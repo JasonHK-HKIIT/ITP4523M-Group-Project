@@ -1,10 +1,3 @@
-<style>
-    .textarea.is-static[readonly]
-    {
-
-    }
-</style>
-
 <header class="hero is-primary is-medium">
     <div class="hero-body container is-max-desktop">
         <h1 class="title">
@@ -15,6 +8,8 @@
 
 <main class="m-4 mt-5">
     <form class="container is-max-desktop" action="<?= $_SERVER["REQUEST_URI"] ?>" method="post" enctype="application/x-www-form-urlencoded">
+
+        <input name="pid" type="hidden" value="<?= $product["pid"] ?>" />
 
         <div class="field is-horizontal">
             <div class="field-label is-flex is-flex-direction-column is-justify-content-center">
@@ -39,8 +34,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="quantity" class="input" name="oqty" value="<?= $order["oqty"] ?? 1 ?>" type="number" size="4" min="1" max="<?= $product["pqty"] ?>" />
+                        <input id="quantity" class="input<?= isset($error_messages["oqty"]) ? " is-danger" : "" ?>" name="oqty" value="<?= $order["oqty"] ?? 1 ?>" type="number" size="4" min="1" max="<?= $product["pqty"] ?>" />
                     </p>
+                    <? if (isset($error_messages["oqty"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["oqty"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
