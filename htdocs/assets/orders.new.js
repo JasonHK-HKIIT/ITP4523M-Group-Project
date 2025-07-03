@@ -1,13 +1,15 @@
-document.getElementById("currency").addEventListener("change", renderTotalAmount);
-renderTotalAmount();
-
-document.getElementById("quantity").addEventListener("change", renderTotalAmount);
-
-function renderTotalAmount()
+window.addEventListener("load", () =>
 {
-    const quantity = document.getElementById("quantity").valueAsNumber;
+    document.getElementById("currency").addEventListener("change", renderTotalAmount);
+    document.getElementById("quantity").addEventListener("change", renderTotalAmount);
+    renderTotalAmount();
 
-    const totalAmountField = document.getElementById("total-amount");
-    renderPrice(Number.parseFloat(totalAmountField.dataset.pcost) * quantity)
-        .then((price) => (totalAmountField.innerText = price));
-}
+    function renderTotalAmount()
+    {
+        const quantity = document.getElementById("quantity").valueAsNumber;
+
+        const totalAmountField = document.getElementById("total-amount");
+        renderPrice(Number.parseFloat(totalAmountField.dataset.pcost) * quantity)
+            .then((price) => (totalAmountField.innerText = price));
+    }
+});
