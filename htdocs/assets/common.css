@@ -4,6 +4,14 @@
     --bulma-primary-l: 61%;
 }
 
+@media screen and (min-width: 1024px)
+{
+    .hero.is-fullheight-with-navbar
+    {
+        min-height: calc(100vh - var(--bulma-navbar-height) - 2rem);
+    }
+}
+
 .image.is-64x64 img
 {
     width: 64px;
@@ -36,4 +44,14 @@ table[data-sortable] thead th:not([data-sortable=false]) div
 table[data-sortable] thead th:not([data-sortable=false]) div span:first-child
 {
     flex-grow: 1;
+}
+
+.footer
+{
+    margin-top: 3rem;
+}
+
+.hero.is-fullheight-with-navbar + .footer
+{
+    margin-top: 0;
 }
