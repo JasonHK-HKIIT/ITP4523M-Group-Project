@@ -58,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
     else
     {
+        http_response_code(400);
+        
         $order["oqty"] = $_POST["oqty"];
         
         if (empty($_POST["oqty"]) && ($_POST["oqty"] != 0))
