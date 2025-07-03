@@ -9,4 +9,5 @@ $statement->execute();
 $result = $statement->get_result();
 $orders = $result->fetch_all(MYSQLI_ASSOC);
 
-render_page("/_orders/list.tpl.php", "Orders", compact("orders"));
+render_page("/_orders/list.tpl.php", "Orders", compact("orders"),
+    extra_head: ['<script src="/assets/sortable.min.js" async defer></script>']);

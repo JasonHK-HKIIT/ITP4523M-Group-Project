@@ -1,10 +1,3 @@
-<style>
-    table[data-sortable] :is(thead, tfoot) th:not([data-sortable=false])
-    {
-        cursor: pointer;
-    }
-</style>
-
 <header class="hero is-primary is-medium">
     <div class="hero-body">
         <div class="container is-max-desktop">
@@ -23,24 +16,24 @@
                     <tr>
                         <th data-sortable="false">#</th>
                         <th>
-                            <div class="is-flex is-flex-direction-row is-align-items-center">
-                                <span class="is-flex-grow-1">Date</span>
+                            <div>
+                                <span>Date</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>
                             </div>
                         </th>
                         <th>
-                            <div class="is-flex is-flex-direction-row is-align-items-center">
-                                <span class="is-flex-grow-1">client</span>
+                            <div>
+                                <span>client</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>
                             </div>
                         </th>
                         <th>
-                            <div class="is-flex is-flex-direction-row is-align-items-center">
-                                <span class="is-flex-grow-1">Product</span>
+                            <div>
+                                <span>Product</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>
@@ -49,16 +42,16 @@
                         <th data-sortable="false">Quantity</th>
                         <th data-sortable="false">Total</th>
                         <th>
-                            <div class="is-flex is-flex-direction-row is-align-items-center">
-                                <span class="is-flex-grow-1">Status</span>
+                            <div>
+                                <span>Status</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>
                             </div>
                         </th>
                         <th style="min-width: 16ch;">
-                            <div class="is-flex is-flex-direction-row is-align-items-center">
-                                <span class="is-flex-grow-1">Delivery Date</span>
+                            <div>
+                                <span>Delivery Date</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>

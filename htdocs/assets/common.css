@@ -20,3 +20,20 @@
 {
     object-fit: cover;
 }
+
+table[data-sortable] thead th:not([data-sortable=false])
+{
+    cursor: pointer;
+}
+
+table[data-sortable] thead th:not([data-sortable=false]) div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+table[data-sortable] thead th:not([data-sortable=false]) div span:first-child
+{
+    flex-grow: 1;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $page_title ?> :: Smile & Sunshine Toy Co. Ltd.</title>
+    <title><?= htmlspecialchars($page_title) ?> :: Smile & Sunshine Toy Co. Ltd.</title>
     <link rel="stylesheet" href="/assets/bulma.min.css">
     <link rel="stylesheet" href="/assets/bulma-list.css">
     <link rel="stylesheet" href="/assets/common.css">
@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="/assets/fontawesome/css/solid.min.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/duotone.min.css">
     <script src="/assets/common.js" defer async></script>
-    <script src="/assets/sortable.min.js" async defer></script>
+    <? foreach ($extra_head as $entry): ?>
+        <?= $entry ?>
+    <? endforeach ?>
 </head>
 <body>
     <nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
