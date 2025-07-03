@@ -14,7 +14,7 @@
             <? foreach ($products as $product): ?>
                 <div class="list-item box is-align-items-flex-start">
                     <div class="list-item-image">
-                        <figure class="image is-96x96">
+                        <figure class="image is-product is-96x96">
                             <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= $product["pname"] ?>">
                         </figure>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="is-flex is-align-items-center">
                             <div class="field has-addons mb-0">
                                 <p class="control">
-                                    <a class="button is-static" data-price="<?= doubleval($product["pcost"]) ?>">
+                                    <a class="button is-static" data-pcost="<?= doubleval($product["pcost"]) ?>">
                                         $<?= sprintf("%.2f", doubleval($product["pcost"])) ?>
                                     </a>
                                 </p>

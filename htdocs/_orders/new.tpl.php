@@ -107,5 +107,3 @@
         totalAmountField.innerText = `\$${(Number.parseFloat(totalAmountField.dataset.pcost) * quantity).toFixed(2)}`;
     });
 </script>
-
-<script src="/assets/forms.js" defer async></script>

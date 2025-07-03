@@ -86,5 +86,3 @@
 
     </form>
 </main>
-
-<script src="/assets/forms.js" defer async></script>

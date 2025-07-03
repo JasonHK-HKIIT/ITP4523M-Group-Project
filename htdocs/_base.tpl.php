@@ -6,24 +6,12 @@
     <title><?= $page_title ?> :: Smile & Sunshine Toy Co. Ltd.</title>
     <link rel="stylesheet" href="/assets/bulma.min.css">
     <link rel="stylesheet" href="/assets/bulma-list.css">
-    <style>
-        :root
-        {
-            --bulma-primary-h: 199deg;
-            --bulma-primary-l: 61%;
-        }
-
-        .image.is-material img
-        {
-            width: 64px;
-            height: 64px;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/common.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/solid.min.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/duotone.min.css">
-    <script src="/assets/navbar.js" defer async></script>
+    <script src="/assets/common.js" defer async></script>
+    <script src="/assets/sortable.min.js" async defer></script>
 </head>
 <body>
     <nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">

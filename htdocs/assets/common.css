@@ -1,0 +1,22 @@
+:root
+{
+    --bulma-primary-h: 199deg;
+    --bulma-primary-l: 61%;
+}
+
+.image.is-64x64 img
+{
+    width: 64px;
+    height: 64px;
+}
+
+.image.is-96x96 img
+{
+    width: 96px;
+    height: 96px;
+}
+
+.image:is(.is-material, .is-product) img
+{
+    object-fit: cover;
+}

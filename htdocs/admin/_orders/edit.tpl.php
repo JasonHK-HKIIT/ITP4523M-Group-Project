@@ -87,7 +87,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
-                        <figure class="image is-96x96">
+                        <figure class="image is-product is-96x96">
                             <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
                         </figure>
                         <p class="ml-4"><?= htmlspecialchars($order["pname"]) ?></p>
@@ -186,13 +186,13 @@
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
+            <div class="field-label">
                 <label class="label">Delivery Address</label>
             </div>
             <div class="field-body">
                 <div class="field is-expended">
                     <p class="control">
-                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?= htmlspecialchars($order["caddr"]) ?></textarea>
+                        <textarea class="textarea is-static p-0" rows="3" readonly style="min-height: 3lh; border: none; outline: none;"><?= htmlspecialchars($order["caddr"]) ?></textarea>
                     </p>
                 </div>
             </div>
@@ -240,5 +240,3 @@
         }
     });
 </script>
-
-<script src="/assets/forms.js" defer async></script>

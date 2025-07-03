@@ -49,7 +49,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
-                        <figure class="image is-96x96">
+                        <figure class="image is-product is-96x96">
                             <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
                         </figure>
                         <p class="ml-4"><?= htmlspecialchars($order["pname"]) ?></p>
@@ -124,5 +124,3 @@
 
     </div>
 </main>
-
-<script src="/assets/forms.js" defer async></script>

@@ -94,6 +94,3 @@
         </div>
     </div>
 </main>
-
-<script src="/assets/sortable.min.js" async defer></script>
-<script src="/assets/orders.js" async defer></script>
