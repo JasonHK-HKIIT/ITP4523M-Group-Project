@@ -3,7 +3,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 $mid = $_POST["mid"] ?? $_GET["id"];
-$statement = $database->prepare("SELECT `mid`, `mname` FROM `material` WHERE `mid` = ?");
+$statement = $database->prepare("SELECT `mid`, `mname` FROM `material` WHERE `mid` = ? LIMIT 1");
 $statement->bind_param("i", $mid);
 $statement->execute();
 

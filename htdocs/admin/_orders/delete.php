@@ -1,7 +1,7 @@
 <?php
 
 $oid = $_POST["oid"] ?? $_GET["id"];
-$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `oid` = ?");
+$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `oid` = ? LIMIT 1");
 $statement->bind_param("i", $oid);
 $statement->execute();
 
