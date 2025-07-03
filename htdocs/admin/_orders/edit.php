@@ -6,7 +6,7 @@ $error_messages = [];
 
 $max_quantity = PHP_INT_MAX;
 
-$statement = $database->prepare("SELECT `oid`, `odate`, `cname`, `ctel`, `caddr`, `orders`.`pid`, `pname`, `pcost`, `oqty`, `ocost`, `ostatus`, `odeliverdate` FROM `orders` LEFT JOIN `product` ON `orders`.`pid` = `product`.`pid` LEFT JOIN `customer` ON `orders`.`cid` = `customer`.`cid` WHERE `oid` = ?");
+$statement = $database->prepare("SELECT `oid`, `odate`, `cname`, `ctel`, `caddr`, `orders`.`pid`, `pname`, `pcost`, `oqty`, `ocost`, `ostatus`, `odeliverdate` FROM `orders` LEFT JOIN `product` ON `orders`.`pid` = `product`.`pid` LEFT JOIN `customer` ON `orders`.`cid` = `customer`.`cid` WHERE `oid` = ? LIMIT 1");
 $statement->bind_param("i", $_GET["id"]);
 $statement->execute();
 

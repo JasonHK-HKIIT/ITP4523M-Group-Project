@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
 if ($action === "edit")
 {
-    $statement = $database->prepare("SELECT `pid`, `pname`, `pdesc`, `pcost` FROM `product` WHERE `pid` = ?");
+    $statement = $database->prepare("SELECT `pid`, `pname`, `pdesc`, `pcost` FROM `product` WHERE `pid` = ? LIMIT 1");
     $statement->bind_param("i", $_GET["id"]);
     $statement->execute();
 

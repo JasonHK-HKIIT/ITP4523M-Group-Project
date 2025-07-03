@@ -137,7 +137,7 @@ else
 {
     if ($action === "edit")
     {
-        $statement = $database->prepare("SELECT `mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty` FROM `material` WHERE `mid` = ?");
+        $statement = $database->prepare("SELECT `mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty` FROM `material` WHERE `mid` = ? LIMIT 1");
         $statement->bind_param("i", $_GET["id"]);
         $statement->execute();
         
