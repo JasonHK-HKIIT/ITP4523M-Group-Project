@@ -43,7 +43,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button is-danger" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?= $material["mid"] ?>">
+                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?= $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>

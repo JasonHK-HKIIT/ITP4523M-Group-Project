@@ -82,7 +82,7 @@
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </span>
                                     </a>
-                                    <a class="button is-danger" href="/admin/orders.php?action=delete&id=<?= $order["oid"] ?>">
+                                    <a class="button is-danger is-outlined" href="/admin/orders.php?action=delete&id=<?= $order["oid"] ?>">
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-trash"></i>
                                         </span>

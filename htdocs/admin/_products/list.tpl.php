@@ -44,7 +44,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?= $product["pid"] ?>">
+                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?= $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>
