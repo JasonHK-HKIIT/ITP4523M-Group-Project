@@ -11,6 +11,12 @@ $statement->bind_param("i", $_GET["id"]);
 $statement->execute();
 
 $result = $statement->get_result();
+if ($result->num_rows == 0)
+{
+    http_response_code(404);
+    render_error_page("Order Not Found", "The requested order does not exist.");
+    exit;
+}
 $order = $result->fetch_assoc();
 
 $statement = $database->prepare("SELECT `prodmat`.`mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty`, `pmqty`, `oqty` * `pmqty` AS `omqty` FROM `orders` CROSS JOIN `prodmat` ON `orders`.`pid` = `prodmat`.`pid` LEFT JOIN `material` ON `prodmat`.`mid` = `material`.`mid` WHERE `oid` = ?");
