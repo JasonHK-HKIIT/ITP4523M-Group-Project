@@ -148,5 +148,3 @@
 <template id="material">
     <? require "_material_select.tpl.php" ?>
 </template>
-
-<script src="/assets/product-edit.js" defer async></script>

@@ -1,3 +1,4 @@
+window.addEventListener("load", () =>
 {
     /** @type {HTMLElement} */
     const list = document.getElementById("materials");
@@ -31,4 +32,4 @@
         if (!(unit instanceof HTMLElement)) { return; }
         unit.innerText = select.selectedOptions[0].dataset.unit;
     });
-}
+});

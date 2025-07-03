@@ -30,4 +30,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     
 }
 
-render_page("/admin/_orders/edit.tpl.php", "Update Order", compact("order", "materials", "max_quantity", "error_messages"));
+render_page("/admin/_orders/edit.tpl.php", "Update Order", compact("order", "materials", "max_quantity", "error_messages"),
+    extra_head: ['<script src="/assets/admin/orders.edit.js" defer async></script>']);

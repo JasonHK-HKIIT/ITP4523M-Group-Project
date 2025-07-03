@@ -31,4 +31,5 @@ else
 
 }
 
-render_page("/_orders/new.tpl.php", "New Order", compact("order", "product", "client", "error_messages"));
+render_page("/_orders/new.tpl.php", "New Order", compact("order", "product", "client", "error_messages"),
+    extra_head: ['<script src="/assets/orders.new.js" defer async></script>']);

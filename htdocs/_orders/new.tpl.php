@@ -51,7 +51,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p id="total-amount" data-pcost="<?= $product["pcost"] ?>">
+                    <p id="total-amount" data-pcost="<?= $product["pcost"] ?>" data-auto-exchange="false">
                         <?= sprintf("\$%.2f", $product["pcost"]) ?>
                     </p>
                 </div>
@@ -99,11 +99,20 @@
 </main>
 
 <script>
-    document.getElementById("quantity").addEventListener("change", function(event)
+    window.addEventListener("load", () =>
     {
-        const quantity = this.valueAsNumber;
+        document.getElementById("currency").addEventListener("change", renderTotalAmount);
+        renderTotalAmount();
+    });
+
+    document.getElementById("quantity").addEventListener("change", renderTotalAmount);
+
+    function renderTotalAmount()
+    {
+        const quantity = document.getElementById("quantity").valueAsNumber;
 
         const totalAmountField = document.getElementById("total-amount");
-        totalAmountField.innerText = `\$${(Number.parseFloat(totalAmountField.dataset.pcost) * quantity).toFixed(2)}`;
-    });
+        renderPrice(Number.parseFloat(totalAmountField.dataset.pcost) * quantity)
+            .then((price) => (totalAmountField.innerText = price));
+    }
 </script>

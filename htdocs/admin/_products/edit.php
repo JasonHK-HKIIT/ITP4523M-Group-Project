@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $error_messages["image"] = "This field is required";
         }
-        else if (!empty($_FILES["image"]) && !is_jpeg($_FILES["image"]["tmp_name"]))
+        else if (!empty($_FILES["image"]["tmp_name"]) && !is_jpeg($_FILES["image"]["tmp_name"]))
         {
             $error_messages["image"] = "This field must be a JPEG image";
         }
@@ -162,7 +162,8 @@ if ($action === "edit")
 render_page(
     "/admin/_products/edit.tpl.php", 
     (($action === "edit") ? "Edit" : "New") . " Product", 
-    compact("action", "select_materials", "product", "materials", "error_messages"));
+    compact("action", "select_materials", "product", "materials", "error_messages"),
+    extra_head: ['<script src="/assets/admin/products.edit.js" defer async></script>']);
 
 function is_materials(array $mid): bool
 {

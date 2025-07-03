@@ -115,7 +115,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p id="total-amount" data-unit-price="<?= $order["pcost"] ?>">
+                    <p id="total-amount" data-pcost="<?= $order["pcost"] ?>" data-auto-exchange="false">
                         <?= sprintf("\$%.2f", $order["ocost"]) ?>
                     </p>
                 </div>
@@ -231,7 +231,8 @@
         const quantity = this.valueAsNumber;
 
         const totalAmountField = document.getElementById("total-amount");
-        totalAmountField.innerText = `\$${(Number.parseFloat(totalAmountField.dataset.unitPrice) * quantity).toFixed(2)}`;
+        renderPrice(Number.parseFloat(totalAmountField.dataset.pcost) * quantity, "USD")
+            .then((price) => (totalAmountField.innerText = price));
 
         const materialFields = document.getElementsByClassName("material-quantity");
         for (const field of materialFields)
