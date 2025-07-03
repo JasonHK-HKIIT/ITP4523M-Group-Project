@@ -133,7 +133,7 @@ function render_order_status(int $status): string
  * @param string $theme         The theme for the page
  * @return void
  */
-function render_page(string $template_path, string $title = "", array $vars = [], string $theme = "primary"): void
+function render_page(string $template_path, string $title = "", array $vars = [], string $theme = "primary", array $extra_head = []): void
 {
     $tpl = $_SERVER["DOCUMENT_ROOT"] . $template_path;
     $page_title = $title;

@@ -75,6 +75,19 @@
             </div>
         </div>
     </nav>
+
     <? require($tpl); ?>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                Copyright &copy; <?= date("Y") ?> <a href="/">Smile & Sunshine Toy Co. Ltd.</a>
+                &middot;
+                Designed by <a href="https://imjason.hk/">Jason Kwok</a>
+                &middot;
+                Powered by <a href="https://bulma.io/">Bulma</a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

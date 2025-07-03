@@ -1,13 +1,3 @@
-<style>
-    @media screen and (min-width: 1024px)
-    {
-        .hero.is-fullheight-with-navbar
-        {
-            min-height: calc(100vh - var(--bulma-navbar-height) - 2rem);
-        }
-    }
-</style>
-
 <main class="hero is-primary is-fullheight-with-navbar">
     <div class="hero-body">
         <div class="container is-max-desktop has-text-centered">
