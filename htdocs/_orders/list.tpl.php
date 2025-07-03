@@ -68,7 +68,7 @@
                             <? endif ?>
                             <td>
                                 <div class="buttons are-small">
-                                    <a class="button is-primary" href="/orders.php?action=view&id=<?= $order["oid"] ?>">
+                                    <a class="button" href="/orders.php?action=view&id=<?= $order["oid"] ?>">
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-eye"></i>
                                         </span>
