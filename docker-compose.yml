@@ -18,6 +18,7 @@ services:
     ports:
       - 80:80
     environment:
+      TZ: Asia/Hong_Kong
       HOST_HOSTNAME: host.docker.internal
       DB_HOSTNAME: database
     volumes:

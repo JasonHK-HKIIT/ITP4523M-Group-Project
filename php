@@ -1,4 +1,4 @@
 #!/bin/sh
 
-command="docker exec itp4523m php "$@""
+command="docker exec -it itp4523m php "$@""
 $command
