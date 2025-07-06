@@ -111,12 +111,12 @@
             <div class="field-body">
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-info is-cancel">
+                        <a class="button is-info" href="<?= $_SERVER["SCRIPT_NAME"] ?>">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-arrow-left"></i>
                             </span>
                             <span>Back</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
