@@ -40,7 +40,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" placeholder="Name" value="<?= @$client["cname"] ?>" type="text" autocomplete="name" maxlength="255" required />
+                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" placeholder="Name" value="<?= htmlspecialchars(@$client["cname"]) ?>" type="text" autocomplete="name" maxlength="255" required />
                     </p>
                     <? if (isset($error_messages["cname"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["cname"]) ?></p>
@@ -56,7 +56,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="company" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" placeholder="Company Name" value="<?= @$client["company"] ?>" type="text" maxlength="255" />
+                        <input id="company" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" placeholder="Company Name" value="<?= htmlspecialchars(@$client["company"]) ?>" type="text" maxlength="255" />
                     </p>
                     <? if (isset($error_messages["company"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["company"]) ?></p>
@@ -72,7 +72,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?= @$client["ctel"] ?>" type="tel" size="8" maxlength="8" />
+                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?= htmlspecialchars(@$client["ctel"]) ?>" type="tel" size="8" maxlength="8" />
                     </p>
                     <? if (isset($error_messages["ctel"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["ctel"]) ?></p>
@@ -88,7 +88,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" class="textarea<?= isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?= @$client["caddr"] ?></textarea>
+                        <textarea id="address" class="textarea<?= isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?= htmlspecialchars(@$client["caddr"]) ?></textarea>
                     </p>
                     <? if (isset($error_messages["caddr"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["caddr"]) ?></p>

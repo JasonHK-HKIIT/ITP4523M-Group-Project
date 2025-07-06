@@ -38,7 +38,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="uid" class="input<?= isset($error_messages["uid"]) ? " is-danger" : "" ?>" name="uid" value="<?= @$user["uid"] ?>" type="text" autocomplete="username" placeholder="User ID" required />
+                        <input id="uid" class="input<?= (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="uid" value="<?= htmlspecialchars(@$user["uid"]) ?>" type="text" autocomplete="username" placeholder="User ID" required />
                     </p>
                     <? if (isset($error_messages["uid"])): ?>
                         <p class="help is-danger"><?= $error_messages["uid"] ?></p>
@@ -54,7 +54,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="password" class="input<?= isset($error_messages["password"]) ? " is-danger" : "" ?>" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
+                        <input id="password" class="input<?= (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
                     </p>
                     <? if (isset($error_messages["password"])): ?>
                         <p class="help is-danger"><?= $error_messages["password"] ?></p>
