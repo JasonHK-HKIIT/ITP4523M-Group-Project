@@ -22,7 +22,7 @@ if ($result->num_rows == 0)
 $order = $result->fetch_assoc();
 
 $statement = $database->prepare("SELECT `prodmat`.`mid`, `mname`, `munit`, `mqty`, `mrqty`, `mreorderqty`, `pmqty`, `oqty` * `pmqty` AS `omqty` FROM `orders` CROSS JOIN `prodmat` ON `orders`.`pid` = `prodmat`.`pid` LEFT JOIN `material` ON `prodmat`.`mid` = `material`.`mid` WHERE `oid` = ?");
-$statement->bind_param("i", $_GET["id"]);
+$statement->bind_param("i", $oid);
 $statement->execute();
 
 $result = $statement->get_result();

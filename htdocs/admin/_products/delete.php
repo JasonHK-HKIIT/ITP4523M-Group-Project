@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $database->rollback();
             http_response_code(500);
-            render_error_page("Product Not Deleted", "The request failed due to unknown reason.");
+            render_error_page("Product Not Deleted", "The request failed due to unknown reasons.");
             exit;
         }
     }

@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($statement->affected_rows == 0)
         {
             http_response_code(500);
-            render_error_page("Material Not Deleted", "The request failed due to unknown reason.");
+            render_error_page("Material Not Deleted", "The request failed due to unknown reasons.");
             exit;
         }
     }
