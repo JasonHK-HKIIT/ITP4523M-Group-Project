@@ -82,12 +82,12 @@
                         </button>
                     </div>
                     <div class="control">
-                        <button class="button is-light is-cancel">
+                        <a class="button is-light" href="<?= $_SERVER["SCRIPT_NAME"] ?>">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
                             <span>Cancel</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
