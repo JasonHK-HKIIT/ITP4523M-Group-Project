@@ -27,8 +27,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="current-password" class="input" name="cpassword" placeholder="Current Password" type="password" autocomplete="current-password" />
+                        <input id="current-password" class="input<?= isset($error_messages["cpassword"]) ? " is-danger" : "" ?>" name="cpassword" placeholder="Current Password" type="password" autocomplete="current-password" />
                     </p>
+                    <? if (isset($error_messages["cpassword"])): ?>
+                        <p class="help is-danger"><?= $error_messages["cpassword"] ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -40,13 +43,19 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="new-password" class="input" name="cpassword_new" placeholder="New Password" type="password" autocomplete="new-password" />
+                        <input id="new-password" class="input<?= (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_new" placeholder="New Password" type="password" autocomplete="new-password" />
                     </p>
+                    <? if (isset($error_messages["cpassword_new"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cpassword"]) ?></p>
+                    <? endif ?>
                 </div>
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="confirm-password" class="input" name="cpassword_confirm" placeholder="Confirm New Password" type="password" autocomplete="new-password" />
+                        <input id="confirm-password" class="input<?= (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" placeholder="Confirm New Password" type="password" autocomplete="new-password" />
                     </p>
+                    <? if (isset($error_messages["cpassword_confirm"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cpassword_confirm"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -84,8 +93,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input" name="ctel" placeholder="Telephone" value="<?= $client["ctel"] ?? "" ?>" type="tel" size="8" />
+                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?= htmlspecialchars(@$client["ctel"]) ?>" type="tel" size="8" maxlength="8" />
                     </p>
+                    <? if (isset($error_messages["ctel"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["ctel"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -97,8 +109,11 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" name="caddr" class="textarea" rows="3"><?= htmlspecialchars($client["caddr"] ?? "") ?></textarea>
+                        <textarea id="address" class="textarea<?= isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?= htmlspecialchars(@$client["caddr"]) ?></textarea>
                     </p>
+                    <? if (isset($error_messages["caddr"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["caddr"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -116,12 +131,12 @@
                         </button>
                     </div>
                     <div class="control">
-                        <button class="button is-light is-cancel">
+                        <a class="button is-light is-cancel" href="/">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
                             <span>Cancel</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
