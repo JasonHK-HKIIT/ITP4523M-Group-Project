@@ -1,5 +1,10 @@
 <?php
 
+if (isset($_ENV["TZ"]))
+{
+    date_default_timezone_set($_ENV["TZ"]);
+}
+
 session_start();
 
 const USER_CLIENT = "0";
