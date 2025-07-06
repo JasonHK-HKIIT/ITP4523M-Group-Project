@@ -9,11 +9,11 @@ $error_messages = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    if ((!empty($_POST["cname"]) && (strlen($_POST["cname"]) <= 255))
-        && ((!empty($_POST["cpassword"]) && (strlen($_POST["cpassword"]) <= 255)) && !empty($_POST["cpassword_confirm"]) && ($_POST["cpassword"] === $_POST["cpassword_confirm"]))
+    if (((!empty($_POST["cpassword"]) && (strlen($_POST["cpassword"]) <= 255)) && !empty($_POST["cpassword_confirm"]) && ($_POST["cpassword"] === $_POST["cpassword_confirm"]))
+        && (!empty($_POST["cname"]) && (strlen($_POST["cname"]) <= 255))
+        && (empty($_POST["company"]) || (strlen($_POST["company"]) <= 255))
         && (empty($_POST["ctel"]) || is_telephone($_POST["ctel"]))
-        && (empty($_POST["caddr"]) || (strlen($_POST["caddr"]) <= 65535))
-        && (empty($_POST["company"]) || (strlen($_POST["company"]) <= 255)))
+        && (empty($_POST["caddr"]) || (strlen($_POST["caddr"]) <= 65535)))
     {
         $ctel = $_POST["ctel"] ?: null;
         $company = $_POST["company"] ?: null;
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         }
         else if (strlen($_POST["cpassword"]) > 255)
         {
-            $error_messages["cname"] = "The password is too long";
+            $error_messages["cpassword"] = "The password is too long";
         }
 
         if (empty($_POST["cpassword_confirm"]))

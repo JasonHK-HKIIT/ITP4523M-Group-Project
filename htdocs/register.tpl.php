@@ -11,22 +11,6 @@
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label for="name" class="label">Name</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" placeholder="Name" value="<?= @$client["cname"] ?>" type="text" autocomplete="name" maxlength="255" required />
-                    </p>
-                    <? if (isset($error_messages["cname"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cname"]) ?></p>
-                    <? endif ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
                 <label for="password" class="label">Password</label>
             </div>
             <div class="field-body">
@@ -44,6 +28,38 @@
                     </p>
                     <? if (isset($error_messages["cpassword_confirm"])): ?>
                         <p class="help is-danger"><?= htmlspecialchars($error_messages["cpassword_confirm"]) ?></p>
+                    <? endif ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="name" class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p class="control">
+                        <input id="name" class="input<?= isset($error_messages["cname"]) ? " is-danger" : "" ?>" name="cname" placeholder="Name" value="<?= @$client["cname"] ?>" type="text" autocomplete="name" maxlength="255" required />
+                    </p>
+                    <? if (isset($error_messages["cname"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cname"]) ?></p>
+                    <? endif ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="company" class="label">Company</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p class="control">
+                        <input id="company" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" placeholder="Company Name" value="<?= @$client["company"] ?>" type="text" maxlength="255" />
+                    </p>
+                    <? if (isset($error_messages["company"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["company"]) ?></p>
                     <? endif ?>
                 </div>
             </div>
@@ -82,22 +98,6 @@
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="company-name" class="label">Company Name</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="company-name" class="input<?= isset($error_messages["company"]) ? " is-danger" : "" ?>" name="company" placeholder="Company Name" value="<?= @$client["company"] ?>" type="text" maxlength="255" />
-                    </p>
-                    <? if (isset($error_messages["company"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["company"]) ?></p>
-                    <? endif ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
             <div class="field-label"></div>
             <div class="field-body">
                 <div class="field is-grouped">
@@ -111,7 +111,7 @@
                     </div>
                     <div class="control">
                         <a class="button is-text" href="/login.php<?= !empty($_SERVER["QUERY_STRING"]) ? sprintf("?%s", $_SERVER["QUERY_STRING"]) : "" ?>">
-                            Login to a existing account
+                            Login to an existing account
                         </a>
                     </div>
                 </div>
