@@ -99,6 +99,24 @@ function is_balanced(array $array, array ...$arrays): bool
     return true;
 }
 
+function is_order_status(int $current, int $new)
+{
+    return ((($new >= ORDER_STATUS_REJECTED) && ($new <= ORDER_STATUS_COMPLETED))
+        && (($current <= ORDER_STATUS_OPEN) ? true : ($new >= $current)));
+}
+
+function is_datetime(string $text): bool
+{
+    $datetime = date_parse_from_format("Y-m-d?G:i", $text);
+    return (($datetime["warning_count"] == 0) && ($datetime["error_count"] == 0));
+}
+
+function datetime_to_timestamp(string $text): int
+{
+    $datetime = date_parse_from_format("Y-m-d?G:i", $text);
+    return mktime($datetime["hour"], $datetime["minute"], $datetime["second"], $datetime["month"], $datetime["day"], $datetime["year"]);
+}
+
 function render_date(string $time_string): string
 {
     return date("Y-m-d", strtotime($time_string));
