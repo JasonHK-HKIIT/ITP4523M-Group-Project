@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 $_SESSION["user_type"] = USER_STAFF;
                 $_SESSION["user_id"] = $user["sid"];
 
-                header(sprintf("Location: /%s", $_GET["return"] ?? "admin"), true, 307);
+                header(sprintf("Location: /%s", $_GET["return"] ?? "admin"), true, 303);
                 exit;
             }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 $_SESSION["user_type"] = USER_CLIENT;
                 $_SESSION["user_id"] = $user["cid"];
 
-                header(sprintf("Location: /%s", $_GET["return"] ?? ""), true, 307);
+                header(sprintf("Location: /%s", $_GET["return"] ?? ""), true, 303);
                 exit;
             }
 

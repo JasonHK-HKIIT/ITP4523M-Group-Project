@@ -6,4 +6,4 @@
 require_once($_SERVER["DOCUMENT_ROOT"] . "/_global.php");
 
 $_SESSION = [];
-header("Location: /", true, 307);
+header("Location: /", true, 303);

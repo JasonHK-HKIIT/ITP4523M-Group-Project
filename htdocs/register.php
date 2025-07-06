@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $_SESSION["user_type"] = USER_CLIENT;
         $_SESSION["user_id"] = $statement->insert_id;
 
-        header(sprintf("Location: /%s", $_GET["return"] ?? ""), true, 307);
+        header(sprintf("Location: /%s", $_GET["return"] ?? ""), true, 303);
         exit;
     }
     else
