@@ -3,7 +3,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 $oid = $_POST["oid"] ?? $_GET["id"];
-$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `cid` = ? AND `oid` = ?");
+$statement = $database->prepare("SELECT `oid`, `ostatus` FROM `orders` WHERE `cid` = ? AND `oid` = ? LIMIT 1");
 $statement->bind_param("ii", $_SESSION["user_id"], $oid);
 $statement->execute();
 
