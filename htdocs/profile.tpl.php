@@ -21,19 +21,6 @@
         </div>
 
         <div class="field is-horizontal">
-            <div class="field-label">
-                <label for="name" class="label">Name</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <?= $client["cname"] ?>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label for="current-password" class="label">Current Password</label>
             </div>
@@ -65,6 +52,32 @@
         </div>
 
         <div class="field is-horizontal">
+            <div class="field-label">
+                <label for="name" class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <p>
+                        <?= htmlspecialchars($client["cname"]) ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label for="company" class="label">Company</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p>
+                        <?= htmlspecialchars($client["company"]) ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label for="telephone" class="label">Telephone</label>
             </div>
@@ -84,20 +97,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" name="caddr" class="textarea" rows="3"><?= $client["caddr"] ?? "" ?></textarea>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label for="company" class="label">Company</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <p class="control">
-                        <input id="company" class="input" name="company" placeholder="Company" value="<?= $client["company"] ?>" type="text" />
+                        <textarea id="address" name="caddr" class="textarea" rows="3"><?= htmlspecialchars($client["caddr"] ?? "") ?></textarea>
                     </p>
                 </div>
             </div>
