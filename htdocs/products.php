@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
 
 $sort = $_GET["sort"] ?? "magic";
 
-$query = "SELECT * FROM (SELECT *, MIN(`pqty`) AS `pqty_min` FROM (SELECT `product`.`pid`, `pname`, `pdesc`, `pcost`, FLOOR((`mqty` - `mrqty`) / `pmqty`) AS `pqty` FROM `product` CROSS JOIN `prodmat` ON `product`.`pid` = `prodmat`.`pid` LEFT JOIN `material` ON `prodmat`.`mid` = `material`.`mid`) `p` GROUP BY `pid` HAVING `pqty_min` > 0) `pp`";
+$query = "SELECT * FROM (SELECT *, MIN(`pqty`) AS `pqty_min` FROM (SELECT `product`.`pid`, `pname`, `pdesc`, `pcost`, FLOOR((`mqty` - `mrqty`) / `pmqty`) AS `pqty` FROM `product` CROSS JOIN `prodmat` ON `product`.`pid` = `prodmat`.`pid` LEFT JOIN `material` ON `prodmat`.`mid` = `material`.`mid`) `p1` GROUP BY `pid` HAVING `pqty_min` > 0) `p2`";
 $query .= match ($sort)
 {
     "magic" => "",
