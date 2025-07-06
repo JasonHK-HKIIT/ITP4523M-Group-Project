@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             exit;
         }
 
-        header("Location: /orders.php", true, 307);
+        header("Location: /orders.php", true, 303);
         exit;
     }
     else

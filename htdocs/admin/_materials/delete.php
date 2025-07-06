@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit;
     }
 
-    header("Location: /admin/materials.php", true, 308);
+    header("Location: /admin/materials.php", true, 303);
     exit;
 }
 

@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         }
         
         $database->commit();
-        header("Location: /admin/materials.php", true, 307);
+        header("Location: /admin/materials.php", true, 303);
         exit;
     }
     else

@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
     
     $database->commit();
-    header("Location: /admin/products.php", true, 308);
+    header("Location: /admin/products.php", true, 303);
     exit;
 }
 
