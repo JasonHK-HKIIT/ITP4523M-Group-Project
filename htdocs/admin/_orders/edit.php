@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         try
         {
             $ocost = $order["pcost"] * $_POST["oqty"];
-            $odeliverdate = !empty($_POST["odeliverdate"]) ? datetime_to_timestamp($_POST["odeliverdate"]) : null;
+            $odeliverdate = !empty($_POST["odeliverdate"]) ? date("Y-m-d H:i:s", datetime_to_timestamp($_POST["odeliverdate"])) : null;
             $statement = $database->prepare("UPDATE `orders` SET `ostatus` = ?, `oqty` = ?, `ocost` = ?, `odeliverdate` = ? WHERE `oid` = ?");
             $statement->bind_param("iiisi", $_POST["ostatus"], $_POST["oqty"], $ocost, $odeliverdate, $_POST["oid"]);
             $statement->execute();
