@@ -65,12 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $error_messages["cpassword_confirm"] = "This field is required";
         }
-        else if ($_POST["cpassword_confirm"] !== $_POST["cpassword"])
+        else if ($_POST["cpassword_confirm"] != $_POST["cpassword"])
         {
             $error_messages["cpassword_confirm"] = "The password does not match";
         }
 
-        if (!empty($_POST["ctel"]) && !is_telephone(empty($_POST["ctel"])))
+        if (!empty($_POST["ctel"]) && !is_telephone($_POST["ctel"]))
         {
             $error_messages["ctel"] = "Invalid telephone number";
         }
