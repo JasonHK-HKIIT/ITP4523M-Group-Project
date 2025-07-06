@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         && ((($action === "edit") && empty($_FILES["image"]["tmp_name"])) || (!empty($_FILES["image"]["tmp_name"]) && is_jpeg($_FILES["image"]["tmp_name"])))
         && (!empty($_POST["munit"]) && (strlen($_POST["munit"]) <= MUNIT_LEN))
         && (ctype_digit(@$_POST["mqty"]) && ($_POST["mqty"] >= 0))
-        && (ctype_digit(@$_POST["mrqty"]) && ($_POST["mrqty"] >= 0))
+        && (ctype_digit(@$_POST["mrqty"]) && ($_POST["mrqty"] >= 0) && ($_POST["mrqty"] <= $_POST["mqty"]))
         && (ctype_digit(@$_POST["mreorderqty"]) && ($_POST["mreorderqty"] >= 0)))
     {
         $database->begin_transaction();
@@ -112,9 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $error_messages["mrqty"] = "This field must be a number";
         }
-        else if ($_POST["mrqty"] < 0)
+        else if (($_POST["mrqty"] < 0) || ($_POST["mrqty"] > $_POST["mqty"]))
         {
-            $error_messages["mrqty"] = "This field must be ≥ 0";
+            $error_messages["mrqty"] = sprintf("This field must be between 0 and %d", $_POST["mqty"]);
         }
 
         if (empty($_POST["mreorderqty"]) && ($_POST["mreorderqty"] != 0))
