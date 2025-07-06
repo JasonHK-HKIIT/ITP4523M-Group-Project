@@ -9,6 +9,8 @@
 <main class="m-4 mt-5">
     <form class="container is-max-desktop" action="<?= $_SERVER["REQUEST_URI"] ?>" method="post" enctype="application/x-www-form-urlencoded">
 
+        <input name="oid" type="hidden" value="<?= $order["oid"] ?>" />
+
         <div class="field is-horizontal">
             <div class="field-label">
                 <label class="label">Date</label>
@@ -26,7 +28,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <div class="select">
+                    <div class="select<?= isset($error_messages["ostatus"]) ? " is-danger" : "" ?>">
                         <select id="status" name="ostatus">
                             <option value="0"
                                 <? if ($order["ostatus"] == ORDER_STATUS_REJECTED): ?>selected<? endif ?>
@@ -54,6 +56,9 @@
                             >Completed</option>
                         </select>
                     </div>
+                    <? if (isset($error_messages["ostatus"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["ostatus"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -103,8 +108,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="quantity" class="input<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " is-static" : "" ?>" name="oqty" value="<?= $order["oqty"] ?>"<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " readonly" : "" ?> type="number" size="4" min="<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? $order["oqty"] : 1 ?>" max="<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? $order["oqty"] : $max_quantity ?>" />
+                        <input id="quantity" class="input<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " is-static" : "" ?><?= isset($error_messages["oqty"]) ? " is-danger" : "" ?>" name="oqty" value="<?= $order["oqty"] ?>"<?= ($order["ostatus"] >= ORDER_STATUS_ACCEPTED) ? " readonly" : "" ?> type="number" size="4" min="<?= $min_quantity ?>" max="<?= $max_quantity ?>" />
                     </p>
+                    <? if (isset($error_messages["oqty"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["oqty"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
@@ -130,7 +138,7 @@
                 <div class="field">
                     <div class="is-flex is-flex-direction-column is-flex-grow-1">
                         <div class="table-container">
-                            <table class="table is-striped is-fullwidth">
+                            <table class="table is-striped is-hoverable is-fullwidth">
                                 <thead>
                                     <tr>
                                         <th>Material</th>
@@ -179,8 +187,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="delivery-date" class="input" name="odeliverdate" type="datetime-local" value="<?= $order["odeliverdate"] ?>" />
+                        <input id="delivery-date" class="input<?= isset($error_messages["odeliverdate"]) ? " is-danger" : "" ?>" name="odeliverdate" type="datetime-local" value="<?= $order["odeliverdate"] ?>" />
                     </p>
+                    <? if (isset($error_messages["odeliverdate"])): ?>
+                        <p class="help is-danger"><?= htmlspecialchars($error_messages["odeliverdate"]) ?></p>
+                    <? endif ?>
                 </div>
             </div>
         </div>
