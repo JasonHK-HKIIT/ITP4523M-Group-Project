@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
-
 $error_messages = [];
 $max_quantity = PHP_INT_MAX;
 

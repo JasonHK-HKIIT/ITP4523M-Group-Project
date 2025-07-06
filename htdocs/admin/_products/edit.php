@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
-
 const PNAME_LEN = 255;
 const PDESC_LEN = 65535;
 

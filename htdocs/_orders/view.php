@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
-
 $oid = $_POST["oid"] ?? $_GET["id"];
 $statement = $database->prepare("SELECT `oid`, `odate`, `ostatus`, `cname`, `ctel`, `caddr`, `orders`.`pid`, `pname`, `oqty`, `ocost`, `odeliverdate` FROM `orders` LEFT JOIN `product` ON `orders`.`pid` = `product`.`pid` LEFT JOIN `customer` ON `orders`.`cid` = `customer`.`cid` WHERE `orders`.`cid` = ? AND `orders`.`oid` = ? LIMIT 1");
 $statement->bind_param("ii", $_SESSION["user_id"], $oid);

@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
-
 const MNAME_LEN = 255;
 const MUNIT_LEN = 20;
 

@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_database.php";
-
 $statement = $database->prepare("SELECT `oid`, `odate`, `pname`, `oqty`, `ocost`, `ostatus`, `odeliverdate` FROM `orders` LEFT JOIN `product` ON `orders`.`pid` = `product`.`pid` WHERE `orders`.`cid` = ?");
 $statement->bind_param("i", $_SESSION["user_id"]);
 $statement->execute();

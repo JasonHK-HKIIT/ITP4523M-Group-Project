@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/_global.php";
-
 $pid = $_POST["pid"] ?? $_GET["id"];
 $statement = $database->prepare("SELECT `pid`, `pname` FROM `product` WHERE `pid` = ? LIMIT 1");
 $statement->bind_param("i", $pid);
