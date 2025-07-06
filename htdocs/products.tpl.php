@@ -10,6 +10,36 @@
 
 <main class="m-4 mt-5">
     <div class="container is-max-desktop">
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="company" class="label">Ordered By</label>
+            </div>
+            <div class="field-body" style="flex-basis: initial;">
+                <div class="field is-narrow">
+                    <div class="select">
+                        <select id="sort">
+                            <option value="magic"
+                                <? if ($sort == "magic"): ?>selected<? endif ?>
+                            >Magic</option>
+                            <option value="price_asc"
+                                <? if ($sort == "price_asc"): ?>selected<? endif ?>
+                            >Price (Low to High)</option>
+                            <option value="price_desc"
+                                <? if ($sort == "price_desc"): ?>selected<? endif ?>
+                            >Price (High to Low)</option>
+                            <option value="name_asc"
+                                <? if ($sort == "name_asc"): ?>selected<? endif ?>
+                            >Name (A to Z)</option>
+                            <option value="name_desc"
+                                <? if ($sort == "name_desc"): ?>selected<? endif ?>
+                            >Name (Z to A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="list has-visible-pointer-controls">
             <? foreach ($products as $product): ?>
                 <div class="list-item box is-align-items-flex-start">
@@ -43,5 +73,16 @@
                 </div>
             <? endforeach ?>
         </div>
+
     </div>
 </main>
+
+<script>
+    document.getElementById("sort").addEventListener("change", function()
+    {
+        const query = new URLSearchParams(location.search);
+        query.set("sort", this.value);
+
+        location.search = `?${query}`;
+    });
+</script>
