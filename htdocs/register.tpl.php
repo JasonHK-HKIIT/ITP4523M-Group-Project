@@ -7,7 +7,7 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="/register.php" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="container is-max-desktop" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="application/x-www-form-urlencoded">
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
