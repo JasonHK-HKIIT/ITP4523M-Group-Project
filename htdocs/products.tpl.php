@@ -13,7 +13,7 @@
 
         <div class="field is-horizontal ml-4">
             <div class="field-label is-normal is-flex-grow-0" style="flex-basis: initial;">
-                <label for="company" class="label">Ordered By</label>
+                <label for="sort" class="label">Ordered By</label>
             </div>
             <div class="field-body is-flex-grow-0" style="flex-basis: initial;">
                 <div class="field is-narrow">
