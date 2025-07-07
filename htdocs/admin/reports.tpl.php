@@ -44,14 +44,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($products as $product): ?>
+                    <?php foreach ($products as $product): ?>
                         <tr>
-                            <th><?= $product["pid"] ?></th>
-                            <td data-value="<?= $product["pid"] ?>"><?= $product["pname"] ?></td>
-                            <td><?= $product["ocount"] ?></td>
-                            <td data-value="<?= $product["ocost"] ?>">$<?= sprintf("%.2f", $product["ocost"]) ?></td>
+                            <th><?php echo $product["pid"] ?></th>
+                            <td data-value="<?php echo $product["pid"] ?>"><?php echo $product["pname"] ?></td>
+                            <td><?php echo $product["ocount"] ?></td>
+                            <td data-value="<?php echo $product["ocost"] ?>">$<?php echo sprintf("%.2f", $product["ocost"]) ?></td>
                         </tr>
-                    <? endforeach ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -89,14 +89,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($clients as $client): ?>
+                    <?php foreach ($clients as $client): ?>
                         <tr>
-                            <th><?= $client["cid"] ?></th>
-                            <td data-value="<?= $client["cid"] ?>"><?= $client["cname"] ?></td>
-                            <td><?= $client["ocount"] ?></td>
-                            <td data-value="<?= $client["ocost"] ?>">$<?= sprintf("%.2f", $client["ocost"]) ?></td>
+                            <th><?php echo $client["cid"] ?></th>
+                            <td data-value="<?php echo $client["cid"] ?>"><?php echo $client["cname"] ?></td>
+                            <td><?php echo $client["ocount"] ?></td>
+                            <td data-value="<?php echo $client["ocost"] ?>">$<?php echo sprintf("%.2f", $client["ocost"]) ?></td>
                         </tr>
-                    <? endforeach ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

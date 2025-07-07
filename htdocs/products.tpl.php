@@ -20,19 +20,19 @@
                     <div class="select">
                         <select id="sort">
                             <option value="magic"
-                                <? if ($sort == "magic"): ?>selected<? endif ?>
+                                <?php if ($sort == "magic"): ?>selected<?php endif ?>
                             >Magic</option>
                             <option value="price_asc"
-                                <? if ($sort == "price_asc"): ?>selected<? endif ?>
+                                <?php if ($sort == "price_asc"): ?>selected<?php endif ?>
                             >Price (Low to High)</option>
                             <option value="price_desc"
-                                <? if ($sort == "price_desc"): ?>selected<? endif ?>
+                                <?php if ($sort == "price_desc"): ?>selected<?php endif ?>
                             >Price (High to Low)</option>
                             <option value="name_asc"
-                                <? if ($sort == "name_asc"): ?>selected<? endif ?>
+                                <?php if ($sort == "name_asc"): ?>selected<?php endif ?>
                             >Name (A to Z)</option>
                             <option value="name_desc"
-                                <? if ($sort == "name_desc"): ?>selected<? endif ?>
+                                <?php if ($sort == "name_desc"): ?>selected<?php endif ?>
                             >Name (Z to A)</option>
                         </select>
                     </div>
@@ -41,27 +41,27 @@
         </div>
 
         <div class="list has-visible-pointer-controls">
-            <? foreach ($products as $product): ?>
+            <?php foreach ($products as $product): ?>
                 <div class="list-item box is-align-items-flex-start">
                     <div class="list-item-image">
                         <figure class="image is-product is-96x96">
-                            <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= $product["pname"] ?>">
+                            <img src="/assets/products/<?php echo $product["pid"] ?>.jpg" alt="<?php echo $product["pname"] ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= $product["pname"] ?></div>
-                        <div class="list-item-description"><?= $product["pdesc"] ?></div>
+                        <div class="list-item-title"><?php echo $product["pname"] ?></div>
+                        <div class="list-item-description"><?php echo $product["pdesc"] ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
                             <div class="field has-addons mb-0">
                                 <p class="control">
-                                    <a class="button is-static" data-pcost="<?= doubleval($product["pcost"]) ?>">
-                                        $<?= sprintf("%.2f", doubleval($product["pcost"])) ?>
+                                    <a class="button is-static" data-pcost="<?php echo doubleval($product["pcost"]) ?>">
+                                        $<?php echo sprintf("%.2f", doubleval($product["pcost"])) ?>
                                     </a>
                                 </p>
                                 <p class="control">
-                                    <a class="button is-primary" href="/orders.php?action=new&pid=<?= $product["pid"] ?>" title="Add to Cart" aria-label="Add to Cart">
+                                    <a class="button is-primary" href="/orders.php?action=new&pid=<?php echo $product["pid"] ?>" title="Add to Cart" aria-label="Add to Cart">
                                         <span class="icon">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </span>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-            <? endforeach ?>
+            <?php endforeach ?>
         </div>
 
     </div>

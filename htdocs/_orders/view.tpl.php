@@ -15,7 +15,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p><?= $order["odate"] ?></p>
+                    <p><?php echo $order["odate"] ?></p>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p><?= render_order_status($order["ostatus"]) ?></p>
+                    <p><?php echo render_order_status($order["ostatus"]) ?></p>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p><?= $order["ctel"] ?></p>
+                    <p><?php echo $order["ctel"] ?></p>
                 </div>
             </div>
         </div>
@@ -50,9 +50,9 @@
                 <div class="field">
                     <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
                         <figure class="image is-product is-96x96">
-                            <img src="/assets/products/<?= $order["pid"] ?>.jpg" alt="<?= htmlspecialchars($order["pname"]) ?>">
+                            <img src="/assets/products/<?php echo $order["pid"] ?>.jpg" alt="<?php echo htmlspecialchars($order["pname"]) ?>">
                         </figure>
-                        <p class="ml-4"><?= htmlspecialchars($order["pname"]) ?></p>
+                        <p class="ml-4"><?php echo htmlspecialchars($order["pname"]) ?></p>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
-                    <p><?= $order["oqty"] ?></p>
+                    <p><?php echo $order["oqty"] ?></p>
                 </div>
             </div>
         </div>
@@ -75,8 +75,8 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p id="total-amount" data-ocost="<?= $order["ocost"] ?>">
-                        <?= sprintf("\$%.2f", $order["ocost"]) ?>
+                    <p id="total-amount" data-ocost="<?php echo $order["ocost"] ?>">
+                        <?php echo sprintf("\$%.2f", $order["ocost"]) ?>
                     </p>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
-                    <p><?= !empty($order["odeliverdate"]) ? render_date($order["odeliverdate"]) : "" ?></p>
+                    <p><?php echo !empty($order["odeliverdate"]) ? render_date($order["odeliverdate"]) : "" ?></p>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
             <div class="field-body">
                 <div class="field is-expended">
                     <p class="control">
-                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?= htmlspecialchars($order["caddr"]) ?></textarea>
+                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?php echo htmlspecialchars($order["caddr"]) ?></textarea>
                     </p>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div class="field-body">
                 <div class="field is-grouped">
                     <div class="control">
-                        <a class="button is-info" href="<?= $_SERVER["SCRIPT_NAME"] ?>">
+                        <a class="button is-info" href="<?php echo $_SERVER["SCRIPT_NAME"] ?>">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-arrow-left"></i>
                             </span>

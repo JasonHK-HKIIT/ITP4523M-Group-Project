@@ -1,11 +1,11 @@
 <div class="list-item">
     <div class="list-item-image">
         <figure class="image is-material is-64x64">
-            <? if (!empty($material)): ?>
-                <img class="material-image" src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= htmlspecialchars($material["mname"]) ?>" />
-            <? else: ?>
+            <?php if (!empty($material)): ?>
+                <img class="material-image" src="/assets/materials/<?php echo $material["mid"] ?>.jpg" alt="<?php echo htmlspecialchars($material["mname"]) ?>" />
+            <?php else: ?>
                 <img class="material-image" src="/assets/placeholder.jpg" alt="Select Material" />
-            <? endif ?>
+            <?php endif ?>
         </figure>
     </div>
     <div class="list-item-content">
@@ -13,9 +13,9 @@
             <div class="select">
                 <select name="mid[]" required>
                     <option data-image="/assets/placeholder.jpg" data-unit="&ZeroWidthSpace;">Select Material</option>
-                    <? foreach ($select_materials as $select_material): ?>
-                        <option value="<?= $select_material["mid"] ?>"<?= (!empty($material) && ($select_material["mid"] == $material["mid"])) ? " selected" : "" ?> data-image="/assets/materials/<?= $select_material["mid"] ?>.jpg" data-unit="<?= htmlspecialchars($select_material["munit"]) ?>"><?= htmlspecialchars($select_material["mname"]) ?></option>
-                    <? endforeach ?>
+                    <?php foreach ($select_materials as $select_material): ?>
+                        <option value="<?php echo $select_material["mid"] ?>"<?php echo (!empty($material) && ($select_material["mid"] == $material["mid"])) ? " selected" : "" ?> data-image="/assets/materials/<?php echo $select_material["mid"] ?>.jpg" data-unit="<?php echo htmlspecialchars($select_material["munit"]) ?>"><?php echo htmlspecialchars($select_material["mname"]) ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>
@@ -24,15 +24,15 @@
         <div class="is-flex is-align-items-center">
             <div class="field has-addons mb-0">
                 <p class="control">
-                    <input class="input" name="pmqty[]" value="<?= $material["pmqty"] ?? 1 ?>" type="number" size="2" min="1">
+                    <input class="input" name="pmqty[]" value="<?php echo $material["pmqty"] ?? 1 ?>" type="number" size="2" min="1">
                 </p>
                 <p class="control">
                     <a class="material-unit button is-static">
-                        <? if (!empty($material)): ?>
-                            <?= htmlspecialchars($material["munit"]) ?>
-                        <? else: ?>
+                        <?php if (!empty($material)): ?>
+                            <?php echo htmlspecialchars($material["munit"]) ?>
+                        <?php else: ?>
                             &ZeroWidthSpace;
-                        <? endif ?>
+                        <?php endif ?>
                     </a>
                 </p>
             </div>

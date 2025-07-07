@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($page_title) ?> :: Smile & Sunshine Toy Co. Ltd.</title>
+    <title><?php echo htmlspecialchars($page_title) ?> :: Smile & Sunshine Toy Co. Ltd.</title>
     <link rel="stylesheet" href="/assets/bulma.min.css">
     <link rel="stylesheet" href="/assets/bulma-list.css">
     <link rel="stylesheet" href="/assets/common.css">
@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="/assets/fontawesome/css/solid.min.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/duotone.min.css">
     <script src="/assets/common.js" defer async></script>
-    <? foreach ($extra_head as $entry): ?>
-        <?= $entry ?>
-    <? endforeach ?>
+    <?php foreach ($extra_head as $entry): ?>
+        <?php echo $entry ?>
+    <?php endforeach ?>
 </head>
 <body>
-    <nav class="navbar is-<?= $navbar_theme ?? "primary" ?> is-spaced">
+    <nav class="navbar is-<?php echo $navbar_theme ?? "primary" ?> is-spaced">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
                 <span class="icon-text">
@@ -35,23 +35,23 @@
         </div>
         <div id="main-menu" class="navbar-menu">
             <div class="navbar-start">
-                <? if (is_client()): ?>
+                <?php if (is_client()): ?>
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/products.php">Products</a>
-                    <? if (is_logged_in()): ?>
+                    <?php if (is_logged_in()): ?>
                         <a class="navbar-item" href="/orders.php">Orders</a>
-                    <? endif ?>
-                <? else: ?>
+                    <?php endif ?>
+                <?php else: ?>
                     <a class="navbar-item" href="/admin/">Home</a>
                     <a class="navbar-item" href="/admin/orders.php">Orders</a>
                     <a class="navbar-item" href="/admin/products.php">Products</a>
                     <a class="navbar-item" href="/admin/materials.php">Materials</a>
                     <a class="navbar-item" href="/admin/reports.php">Reports</a>
-                <? endif ?>
+                <?php endif ?>
             </div>
 
             <div class="navbar-end">
-                <? if (is_client()): ?>
+                <?php if (is_client()): ?>
                     <div class="navbar-item">
                         <div class="select is-small">
                             <select id="currency">
@@ -62,26 +62,26 @@
                             </select>
                         </div>
                     </div>
-                    <? if (is_logged_in()): ?>
+                    <?php if (is_logged_in()): ?>
                         <a class="navbar-item" href="/profile.php">Profile</a>
-                    <? endif ?>
-                <? endif ?>
-                <? if (is_logged_in()): ?>
+                    <?php endif ?>
+                <?php endif ?>
+                <?php if (is_logged_in()): ?>
                     <a class="navbar-item" href="/logout.php">Log Out</a>
-                <? else: ?>
+                <?php else: ?>
                     <a class="navbar-item" href="/login.php">Log In</a>
                     <a class="navbar-item" href="/register.php">Register</a>
-                <? endif ?>
+                <?php endif ?>
             </div>
         </div>
     </nav>
 
-    <? require($tpl); ?>
+    <?php require($tpl); ?>
 
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                Copyright &copy; <?= date("Y") ?> <a href="/">Smile & Sunshine Toy Co. Ltd.</a>
+                Copyright &copy; <?php echo date("Y") ?> <a href="/">Smile & Sunshine Toy Co. Ltd.</a>
                 &middot;
                 Designed by <a href="https://imjason.hk/">Jason Kwok</a>
                 &middot;

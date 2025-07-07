@@ -15,7 +15,7 @@
             </div>
             <div class="field-body">
                 <div class="field is-narrow">
-                    <?= $client["cid"] ?>
+                    <?php echo $client["cid"] ?>
                 </div>
             </div>
         </div>
@@ -27,11 +27,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="current-password" class="input<?= isset($error_messages["cpassword"]) ? " is-danger" : "" ?>" name="cpassword" placeholder="Current Password" type="password" autocomplete="current-password" />
+                        <input id="current-password" class="input<?php echo isset($error_messages["cpassword"]) ? " is-danger" : "" ?>" name="cpassword" placeholder="Current Password" type="password" autocomplete="current-password" />
                     </p>
-                    <? if (isset($error_messages["cpassword"])): ?>
-                        <p class="help is-danger"><?= $error_messages["cpassword"] ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["cpassword"])): ?>
+                        <p class="help is-danger"><?php echo $error_messages["cpassword"] ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -43,19 +43,19 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="new-password" class="input<?= (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_new" placeholder="New Password" type="password" autocomplete="new-password" />
+                        <input id="new-password" class="input<?php echo (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_new" placeholder="New Password" type="password" autocomplete="new-password" />
                     </p>
-                    <? if (isset($error_messages["cpassword_new"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cpassword"]) ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["cpassword_new"])): ?>
+                        <p class="help is-danger"><?php echo htmlspecialchars($error_messages["cpassword"]) ?></p>
+                    <?php endif ?>
                 </div>
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="confirm-password" class="input<?= (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" placeholder="Confirm New Password" type="password" autocomplete="new-password" />
+                        <input id="confirm-password" class="input<?php echo (isset($error_messages["cpassword_new"]) || isset($error_messages["cpassword_confirm"])) ? " is-danger" : "" ?>" name="cpassword_confirm" placeholder="Confirm New Password" type="password" autocomplete="new-password" />
                     </p>
-                    <? if (isset($error_messages["cpassword_confirm"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["cpassword_confirm"]) ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["cpassword_confirm"])): ?>
+                        <p class="help is-danger"><?php echo htmlspecialchars($error_messages["cpassword_confirm"]) ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p>
-                        <?= htmlspecialchars($client["cname"]) ?>
+                        <?php echo htmlspecialchars($client["cname"]) ?>
                     </p>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="field-body">
                 <div class="field">
                     <p>
-                        <?= htmlspecialchars($client["company"]) ?>
+                        <?php echo htmlspecialchars($client["company"]) ?>
                     </p>
                 </div>
             </div>
@@ -93,11 +93,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="telephone" class="input<?= isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?= htmlspecialchars(@$client["ctel"]) ?>" type="tel" size="8" maxlength="8" />
+                        <input id="telephone" class="input<?php echo isset($error_messages["ctel"]) ? " is-danger" : "" ?>" name="ctel" placeholder="Telephone" value="<?php echo htmlspecialchars(@$client["ctel"]) ?>" type="tel" size="8" maxlength="8" />
                     </p>
-                    <? if (isset($error_messages["ctel"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["ctel"]) ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["ctel"])): ?>
+                        <p class="help is-danger"><?php echo htmlspecialchars($error_messages["ctel"]) ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -109,11 +109,11 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded">
-                        <textarea id="address" class="textarea<?= isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?= htmlspecialchars(@$client["caddr"]) ?></textarea>
+                        <textarea id="address" class="textarea<?php echo isset($error_messages["caddr"]) ? " is-danger" : "" ?>" name="caddr" rows="3" maxlength="25565"><?php echo htmlspecialchars(@$client["caddr"]) ?></textarea>
                     </p>
-                    <? if (isset($error_messages["caddr"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["caddr"]) ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["caddr"])): ?>
+                        <p class="help is-danger"><?php echo htmlspecialchars($error_messages["caddr"]) ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

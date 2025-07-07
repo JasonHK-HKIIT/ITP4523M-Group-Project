@@ -7,9 +7,9 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="<?= $_SERVER["REQUEST_URI"] ?>" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="container is-max-desktop" action="<?php echo $_SERVER["REQUEST_URI"] ?>" method="post" enctype="application/x-www-form-urlencoded">
 
-        <input name="pid" type="hidden" value="<?= $product["pid"] ?>" />
+        <input name="pid" type="hidden" value="<?php echo $product["pid"] ?>" />
 
         <div class="field is-horizontal">
             <div class="field-label is-flex is-flex-direction-column is-justify-content-center">
@@ -19,9 +19,9 @@
                 <div class="field">
                     <div class="is-flex is-flex-direction-row is-flex-grow-1 is-align-items-center">
                         <figure class="image is-96x96">
-                            <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= htmlspecialchars($product["pname"]) ?>">
+                            <img src="/assets/products/<?php echo $product["pid"] ?>.jpg" alt="<?php echo htmlspecialchars($product["pname"]) ?>">
                         </figure>
-                        <p class="ml-4"><?= htmlspecialchars($product["pname"]) ?></p>
+                        <p class="ml-4"><?php echo htmlspecialchars($product["pname"]) ?></p>
                     </div>
                 </div>
             </div>
@@ -34,11 +34,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="quantity" class="input<?= isset($error_messages["oqty"]) ? " is-danger" : "" ?>" name="oqty" value="<?= $order["oqty"] ?? 1 ?>" type="number" size="4" min="1" max="<?= $product["pqty"] ?>" />
+                        <input id="quantity" class="input<?php echo isset($error_messages["oqty"]) ? " is-danger" : "" ?>" name="oqty" value="<?php echo $order["oqty"] ?? 1 ?>" type="number" size="4" min="1" max="<?php echo $product["pqty"] ?>" />
                     </p>
-                    <? if (isset($error_messages["oqty"])): ?>
-                        <p class="help is-danger"><?= htmlspecialchars($error_messages["oqty"]) ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["oqty"])): ?>
+                        <p class="help is-danger"><?php echo htmlspecialchars($error_messages["oqty"]) ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p id="total-amount" data-pcost="<?= $product["pcost"] ?>" data-auto-exchange="false">
-                        <?= sprintf("\$%.2f", $product["pcost"]) ?>
+                    <p id="total-amount" data-pcost="<?php echo $product["pcost"] ?>" data-auto-exchange="false">
+                        <?php echo sprintf("\$%.2f", $product["pcost"]) ?>
                     </p>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="field-body">
                 <div class="field is-expended">
                     <p class="control">
-                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?= htmlspecialchars($client["caddr"]) ?></textarea>
+                        <textarea class="textarea is-static p-0" rows="3" readonly style="border: none; outline: none;"><?php echo htmlspecialchars($client["caddr"]) ?></textarea>
                     </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         </button>
                     </div>
                     <div class="control">
-                        <a class="button is-light" href="<?= $_SERVER["SCRIPT_NAME"] ?>">
+                        <a class="button is-light" href="<?php echo $_SERVER["SCRIPT_NAME"] ?>">
                             <span class="icon is-small">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>

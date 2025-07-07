@@ -7,7 +7,7 @@
 </header>
 
 <main class="m-4 mt-5">
-    <form class="container is-max-desktop" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="container is-max-desktop" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="application/x-www-form-urlencoded">
 
         <div class="field is-horizontal">
             <div class="field-label">
@@ -18,11 +18,11 @@
                     <div class="control">
                         <div class="radios">
                             <label class="radio">
-                                <input type="radio" name="user_type" value="0"<?= (@$user["user_type"] !== USER_STAFF) ? " checked" : "" ?> />
+                                <input type="radio" name="user_type" value="0"<?php echo (@$user["user_type"] !== USER_STAFF) ? " checked" : "" ?> />
                                 Client
                             </label>
                             <label class="radio">
-                                <input type="radio" name="user_type" value="1"<?= (@$user["user_type"] === USER_STAFF) ? " checked" : "" ?> />
+                                <input type="radio" name="user_type" value="1"<?php echo (@$user["user_type"] === USER_STAFF) ? " checked" : "" ?> />
                                 Staff
                             </label>
                         </div>
@@ -38,11 +38,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="uid" class="input<?= (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="uid" value="<?= htmlspecialchars(@$user["uid"]) ?>" type="text" autocomplete="username" placeholder="User ID" required />
+                        <input id="uid" class="input<?php echo (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="uid" value="<?php echo htmlspecialchars(@$user["uid"]) ?>" type="text" autocomplete="username" placeholder="User ID" required />
                     </p>
-                    <? if (isset($error_messages["uid"])): ?>
-                        <p class="help is-danger"><?= $error_messages["uid"] ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["uid"])): ?>
+                        <p class="help is-danger"><?php echo $error_messages["uid"] ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -54,11 +54,11 @@
             <div class="field-body">
                 <div class="field is-narrow">
                     <p class="control">
-                        <input id="password" class="input<?= (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
+                        <input id="password" class="input<?php echo (isset($error_messages["uid"]) || isset($error_messages["password"])) ? " is-danger" : "" ?>" name="password" type="password" autocomplete="current-password" placeholder="Password" required />
                     </p>
-                    <? if (isset($error_messages["password"])): ?>
-                        <p class="help is-danger"><?= $error_messages["password"] ?></p>
-                    <? endif ?>
+                    <?php if (isset($error_messages["password"])): ?>
+                        <p class="help is-danger"><?php echo $error_messages["password"] ?></p>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                         </button>
                     </div>
                     <div class="control">
-                        <a class="button is-text" href="/register.php<?= !empty($_SERVER["QUERY_STRING"]) ? sprintf("?%s", $_SERVER["QUERY_STRING"]) : "" ?>">
+                        <a class="button is-text" href="/register.php<?php echo !empty($_SERVER["QUERY_STRING"]) ? sprintf("?%s", $_SERVER["QUERY_STRING"]) : "" ?>">
                             Register a new account
                         </a>
                     </div>

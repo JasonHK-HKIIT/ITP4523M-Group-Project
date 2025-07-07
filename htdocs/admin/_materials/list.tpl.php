@@ -19,31 +19,31 @@
             </a>
         </div>
         <div class="list has-visible-pointer-controls">
-            <? foreach ($materials as $material): ?>
+            <?php foreach ($materials as $material): ?>
                 <div class="list-item box">
                     <div class="list-item-image">
                         <figure class="image is-material is-64x64">
-                            <img src="/assets/materials/<?= $material["mid"] ?>.jpg" alt="<?= htmlspecialchars($material["mname"]) ?>">
+                            <img src="/assets/materials/<?php echo $material["mid"] ?>.jpg" alt="<?php echo htmlspecialchars($material["mname"]) ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= htmlspecialchars($material["mname"]) ?></div>
+                        <div class="list-item-title"><?php echo htmlspecialchars($material["mname"]) ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
                             <div class="buttons ml-3">
-                                <a class="button is-hidden-mobile" href="/admin/materials.php?action=edit&id=<?= $material["mid"] ?>">
+                                <a class="button is-hidden-mobile" href="/admin/materials.php?action=edit&id=<?php echo $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                     <span>Edit</span>
                                 </a>
-                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/materials.php?action=edit&id=<?= $material["mid"] ?>">
+                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/materials.php?action=edit&id=<?php echo $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?= $material["mid"] ?>">
+                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/materials.php?action=delete&id=<?php echo $material["mid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-            <? endforeach ?>
+            <?php endforeach ?>
         </div>
     </div>
 </main>

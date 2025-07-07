@@ -19,32 +19,32 @@
             </a>
         </div>
         <div class="list has-visible-pointer-controls">
-            <? foreach ($products as $product): ?>
+            <?php foreach ($products as $product): ?>
                 <div class="list-item box is-align-items-flex-start">
                     <div class="list-item-image">
                         <figure class="image is-96x96">
-                            <img src="/assets/products/<?= $product["pid"] ?>.jpg" alt="<?= htmlspecialchars($product["pname"]) ?>">
+                            <img src="/assets/products/<?php echo $product["pid"] ?>.jpg" alt="<?php echo htmlspecialchars($product["pname"]) ?>">
                         </figure>
                     </div>
                     <div class="list-item-content">
-                        <div class="list-item-title"><?= htmlspecialchars($product["pname"]) ?></div>
-                        <div class="list-item-description"><?= htmlspecialchars($product["pdesc"]) ?></div>
+                        <div class="list-item-title"><?php echo htmlspecialchars($product["pname"]) ?></div>
+                        <div class="list-item-description"><?php echo htmlspecialchars($product["pdesc"]) ?></div>
                     </div>
                     <div class="list-item-controls">
                         <div class="is-flex is-align-items-center">
                             <div class="buttons ml-3">
-                                <a class="button is-hidden-mobile" href="/admin/products.php?action=edit&id=<?= $product["pid"] ?>">
+                                <a class="button is-hidden-mobile" href="/admin/products.php?action=edit&id=<?php echo $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                     <span>Edit</span>
                                 </a>
-                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/products.php?action=edit&id=<?= $product["pid"] ?>">
+                                <a class="button is-hidden-tablet" title="Edit" aria-label="Edit" href="/admin/products.php?action=edit&id=<?php echo $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </span>
                                 </a>
-                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?= $product["pid"] ?>">
+                                <a class="button is-danger is-outlined" title="Delete" aria-label="Delete" href="/admin/products.php?action=delete&id=<?php echo $product["pid"] ?>">
                                     <span class="icon">
                                         <i class="fa-solid fa-trash"></i>
                                     </span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-            <? endforeach ?>
+            <?php endforeach ?>
         </div>
     </div>
 </main>

@@ -53,27 +53,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($orders as $order): ?>
+                    <?php foreach ($orders as $order): ?>
                         <tr>
-                            <th><?= $order["oid"] ?></th>
-                            <td data-value="<?= strtotime($order["odate"]) ?>"><?= render_date($order["odate"]) ?></td>
-                            <td><?= htmlspecialchars($order["pname"]) ?></td>
-                            <td><?= $order["oqty"] ?></td>
-                            <td data-ocost="<?= $order["ocost"] ?>"><?= sprintf("\$%.2f", $order["ocost"]) ?></td>
-                            <td data-value="<?= $order["ostatus"] ?>"><?= render_order_status($order["ostatus"]) ?></td>
-                            <? if (!empty($order["odeliverdate"])) : ?>
-                                <td data-value="<?= strtotime($order["odeliverdate"]) ?>"><?= render_date($order["odeliverdate"]) ?></td>
-                            <? else: ?>
+                            <th><?php echo $order["oid"] ?></th>
+                            <td data-value="<?php echo strtotime($order["odate"]) ?>"><?php echo render_date($order["odate"]) ?></td>
+                            <td><?php echo htmlspecialchars($order["pname"]) ?></td>
+                            <td><?php echo $order["oqty"] ?></td>
+                            <td data-ocost="<?php echo $order["ocost"] ?>"><?php echo sprintf("\$%.2f", $order["ocost"]) ?></td>
+                            <td data-value="<?php echo $order["ostatus"] ?>"><?php echo render_order_status($order["ostatus"]) ?></td>
+                            <?php if (!empty($order["odeliverdate"])) : ?>
+                                <td data-value="<?php echo strtotime($order["odeliverdate"]) ?>"><?php echo render_date($order["odeliverdate"]) ?></td>
+                            <?php else: ?>
                                 <td data-value=""></td>
-                            <? endif ?>
+                            <?php endif ?>
                             <td>
                                 <div class="buttons are-small">
-                                    <a class="button" href="/orders.php?action=view&id=<?= $order["oid"] ?>">
+                                    <a class="button" href="/orders.php?action=view&id=<?php echo $order["oid"] ?>">
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-eye"></i>
                                         </span>
                                     </a>
-                                    <a class="button is-danger is-outlined" href="/orders.php?action=delete&id=<?= $order["oid"] ?>">
+                                    <a class="button is-danger is-outlined" href="/orders.php?action=delete&id=<?php echo $order["oid"] ?>">
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-trash"></i>
                                         </span>
@@ -81,7 +81,7 @@
                                 </div>  
                             </td>
                         </tr>
-                    <? endforeach ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
