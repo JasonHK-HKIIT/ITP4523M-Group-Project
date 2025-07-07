@@ -25,7 +25,7 @@
                         </th>
                         <th>
                             <div>
-                                <span>client</span>
+                                <span>Client</span>
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-sort"></i>
                                 </span>
